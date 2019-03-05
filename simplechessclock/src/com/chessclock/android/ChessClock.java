@@ -366,11 +366,6 @@ public class ChessClock extends Activity {
 				
 		p1_button.performHapticFeedback(1);
 		
-		/** Un-dim the screen */
-		PowerManager pm = (PowerManager)getBaseContext().getSystemService(
-                Context.POWER_SERVICE);
-		pm.userActivity(1, true);
-		
 		/** Check if this is valid (i.e. if our time is running */
 		if ( onTheClock == 1 )
 			return;
@@ -525,11 +520,6 @@ public class ChessClock extends Activity {
 		Button p2_button = (Button)findViewById(R.id.Player2);
 
 		p2_button.performHapticFeedback(1);
-
-		/** Un-dim the screen */
-		PowerManager pm = (PowerManager)getBaseContext().getSystemService(
-                Context.POWER_SERVICE);
-		pm.userActivity(1, true);
 		
 		/** Check if this is valid (i.e. if our time is running */
 		if ( onTheClock == 2 )

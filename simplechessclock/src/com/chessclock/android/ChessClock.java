@@ -68,7 +68,6 @@ public class ChessClock extends Activity {
 	public static final String V_MINI = "0";
 
 	/** Constants for the dialog windows */
-	private static final int SETTINGS = 0;
 	private static final int RESET = 1;
 	private static final int ABOUT = 2;
 	
@@ -201,7 +200,6 @@ public class ChessClock extends Activity {
     }
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, SETTINGS, 0, "Settings").setIcon(R.drawable.settings);
 		menu.add(0, RESET, 0, "Reset Clocks").setIcon(R.drawable.refresh);
 		menu.add(0, ABOUT, 0, "About").setIcon(R.drawable.about);
 		
@@ -210,10 +208,6 @@ public class ChessClock extends Activity {
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch( item.getItemId() ) {
-			case SETTINGS:
-				showPrefs();
-				Log.v(TAG, "INFO: Trying to create Preferences screen");
-				return true;
 			case RESET:
 				showDialog(RESET);
 				return true;
@@ -268,6 +262,13 @@ public class ChessClock extends Activity {
 		}
 	};
 	
+    /** Click handler for the menu button */
+    public OnClickListener MenuListener = new OnClickListener() {
+        public void onClick(View v) {
+            showPrefs();
+        }
+    };
+
 	/** Starts the Preferences menu intent */
 	private void showPrefs() {
 		Intent prefsActivity = new Intent(ChessClock.this, Prefs.class);
@@ -412,7 +413,7 @@ public class ChessClock extends Activity {
 		}
 			   
 		Button pp = (Button)findViewById(R.id.Pause);
-		pp.setBackgroundColor(Color.LTGRAY);
+        pp.setBackgroundResource(R.drawable.button_right);
 			   
 		/** 
 		 * Unregister the handler from player 2's clock and 
@@ -567,7 +568,7 @@ public class ChessClock extends Activity {
 		}
 		
 		Button pp = (Button)findViewById(R.id.Pause);
-		pp.setBackgroundColor(Color.LTGRAY);
+        pp.setBackgroundResource(R.drawable.button_right);
 		
 		/** 
 		 * Unregister the handler from player 1's clock and 
@@ -729,7 +730,7 @@ public class ChessClock extends Activity {
 			
 			p1.setBackgroundColor(Color.LTGRAY);
 			p2.setBackgroundColor(Color.LTGRAY);
-			pp.setBackgroundColor(Color.BLUE);
+            pp.setBackgroundResource(R.drawable.button_right_active);
 		
 			myHandler.removeCallbacks(mUpdateTimeTask);
 			myHandler.removeCallbacks(mUpdateTimeTask2);
@@ -751,7 +752,7 @@ public class ChessClock extends Activity {
 			
 			p1.setBackgroundColor(Color.LTGRAY);
 			p2.setBackgroundColor(Color.LTGRAY);
-			pp.setBackgroundColor(Color.BLUE);
+            pp.setBackgroundResource(R.drawable.button_right_active);
 		
 			myHandler.removeCallbacks(mUpdateTimeTask);
 			myHandler.removeCallbacks(mUpdateTimeTask2);
@@ -784,10 +785,12 @@ public class ChessClock extends Activity {
         Button p1_button = (Button)findViewById(R.id.Player1);
         Button p2_button = (Button)findViewById(R.id.Player2);
         Button pause = (Button)findViewById(R.id.Pause);
+        Button menu = (Button)findViewById(R.id.Menu);
 
         p1_button.setHapticFeedbackEnabled(haptic);
         p2_button.setHapticFeedbackEnabled(haptic);
         pause.setHapticFeedbackEnabled(haptic);
+        menu.setHapticFeedbackEnabled(haptic);
         
         if (hapticChange)
         {
@@ -843,7 +846,6 @@ public class ChessClock extends Activity {
 		/** Set up the buttons */
 		p1_button.setBackgroundColor(Color.LTGRAY);
 	    p2_button.setBackgroundColor(Color.LTGRAY);
-	    pause.setBackgroundColor(Color.LTGRAY);
                
         /** Format and display the clocks */
         p1.setText(FormatTime(t_P1));
@@ -855,6 +857,7 @@ public class ChessClock extends Activity {
         p1_button.setOnClickListener(P1ClickHandler);
         p2_button.setOnClickListener(P2ClickHandler);
         pause.setOnClickListener(PauseListener);
+        menu.setOnClickListener(MenuListener);
         myHandler.removeCallbacks(Blink);
         myHandler.removeCallbacks(Blink2);
         

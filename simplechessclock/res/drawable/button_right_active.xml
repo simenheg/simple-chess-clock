@@ -10,9 +10,9 @@
           android:bottomLeftRadius="100dp"
           android:bottomRightRadius="0dp" />
       <solid
-          android:color="#c16021" />
+          android:color="@color/highlight" />
       <size
-          android:width="70dp"
+          android:width="65dp"
           android:height="80dp" />
     </shape>
   </item>

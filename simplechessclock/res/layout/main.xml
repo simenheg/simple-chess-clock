@@ -1,41 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
-<!-- Menu button -->
-<Button
-    android:layout_width="wrap_content"
-    android:layout_alignParentLeft="true"
-    android:layout_centerVertical="true"
-    android:layout_height="wrap_content"
-    android:id="@+id/Menu"
-    android:height="50sp"
-    android:width="50sp"
-    android:layout_gravity="center"
-    android:background="@drawable/button_left"
-    android:onClick="MenuListener">
-</Button>
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-<!-- Pause button -->
-<Button
-    android:layout_width="wrap_content"
-    android:layout_alignParentRight="true"
-    android:layout_centerVertical="true"
-    android:layout_height="wrap_content"
-    android:id="@+id/Pause"
-    android:height="50sp"
-    android:width="50sp"
-    android:layout_gravity="center"
-    android:background="@drawable/button_right"
-    android:onClick="PauseListener">
-</Button>
+      <!-- Player 1 (top) -->
+      <Button
+          android:layout_alignParentTop="true"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:id="@+id/Player1"
+          android:width="980sp"
+          android:onClick="P1ClickHandler">
+      </Button>
 
-<Button android:layout_alignParentTop="true" android:layout_gravity="top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/Player1" android:height="85sp" android:width="980sp" android:onClick="P1ClickHandler"></Button>
-<com.chessclock.android.CTextView android:layout_below="@+id/Player1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:cursorVisible="false" android:id="@+id/t_Player2" android:selectAllOnFocus="false" android:text="" android:gravity="center" android:textSize="72sp" android:width="980sp"></com.chessclock.android.CTextView>
+      <TextView
+          android:rotation="180"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:id="@+id/t_Player1"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:textAlignment="gravity"
+          android:fontFamily="sans-serif"
+          android:textSize="90sp">
+      </TextView>
 
-<TextView android:layout_above="@+id/Player2" android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:cursorVisible="false" android:id="@+id/t_Player1" android:selectAllOnFocus="false" android:text="" android:gravity="center" android:textSize="72sp" android:width="980sp"></TextView>
-<Button android:layout_alignParentBottom="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/Player2" android:height="85sp" android:width="980sp" android:onClick="P2ClickHandler"></Button>
+      <View
+          android:id="@+id/l_Player1"
+          android:layout_width="0sp"
+          android:layout_height="5sp"
+          android:layout_above="@+id/t_Player1"
+          android:layout_alignLeft="@+id/t_Player1"
+          android:layout_alignRight="@+id/t_Player1"
+          android:background="@color/highlight"
+          android:visibility="invisible">
+      </View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_height="5sp"
+        android:background="@color/bg_light"
+        android:layout_width="match_parent">
+    </RelativeLayout>
+
+    <!-- Player 2 (bottom) -->
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <Button
+          android:layout_alignParentBottom="true"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:id="@+id/Player2"
+          android:width="980sp"
+          android:onClick="P2ClickHandler">
+      </Button>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:id="@+id/t_Player2"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:textAlignment="gravity"
+          android:fontFamily="sans-serif"
+          android:textSize="90sp">
+      </TextView>
+
+      <View
+          android:id="@+id/l_Player2"
+          android:layout_width="0sp"
+          android:layout_height="5sp"
+          android:layout_below="@+id/t_Player2"
+          android:layout_alignLeft="@+id/t_Player2"
+          android:layout_alignRight="@+id/t_Player2"
+          android:background="@color/highlight"
+          android:visibility="invisible">
+      </View>
+    </RelativeLayout>
+  </LinearLayout>
+
+  <!-- Menu button -->
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_centerVertical="true"
+      android:layout_height="wrap_content"
+      android:id="@+id/Menu"
+      android:height="50sp"
+      android:width="50sp"
+      android:layout_gravity="center"
+      android:background="@drawable/button_left"
+      android:onClick="MenuListener">
+  </Button>
+
+  <!-- Pause button -->
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:layout_height="wrap_content"
+      android:id="@+id/Pause"
+      android:height="50sp"
+      android:width="50sp"
+      android:layout_gravity="center"
+      android:background="@drawable/button_right"
+      android:onClick="PauseListener">
+  </Button>
 </RelativeLayout>

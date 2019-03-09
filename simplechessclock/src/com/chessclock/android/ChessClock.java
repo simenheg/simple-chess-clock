@@ -100,7 +100,6 @@ public class ChessClock extends Activity {
 	
 	/** booleans */
 	private boolean haptic = false;
-	private boolean blink = false;
 	private boolean timeup = false;
 	private boolean prefmenu = false;
 	private boolean delayed = false;
@@ -111,6 +110,14 @@ public class ChessClock extends Activity {
             HapticFeedbackConstants.VIRTUAL_KEY,
             HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
         );
+    }
+
+    /**
+     * Return the color corresponding to the given ID (as defined in
+     * colors.xml).
+     */
+    private int color(int id) {
+        return getResources().getColor(id, null);
     }
 
     /** Called when the activity is first created. */
@@ -252,7 +259,7 @@ public class ChessClock extends Activity {
 	/** Click handler for player 1's clock. */
 	public OnClickListener P1ClickHandler = new OnClickListener() {
 		public void onClick(View v) {
-            if (onTheClock == 2) {
+            if (onTheClock == 1 || onTheClock == 0) {
                 performHapticFeedback(v);
             }
 			P1Click();
@@ -262,7 +269,7 @@ public class ChessClock extends Activity {
 	/** Click handler for player 2's clock */
 	public OnClickListener P2ClickHandler = new OnClickListener() {
 		public void onClick(View v) {
-            if (onTheClock == 1) {
+            if (onTheClock == 2 || onTheClock == 0) {
                 performHapticFeedback(v);
             }
 			P2Click();
@@ -377,34 +384,33 @@ public class ChessClock extends Activity {
 	
 	/** Called when P1ClickHandler registers a click/touch event */
 	private void P1Click() {
-		Button p1_button = (Button)findViewById(R.id.Player1);
-		Button p2_button = (Button)findViewById(R.id.Player2);
-		
-		/** Check if this is valid (i.e. if our time is running */
-		if ( onTheClock == 1 )
-			return;
-		
-		/** 
-		 * Register that our time is running now 
-		 * and that we haven't yet received our delay
-		 */
-		onTheClock = 1;
-		if ( savedOTC == 0 ) {
+        TextView p1 = (TextView)findViewById(R.id.t_Player1);
+        TextView p2 = (TextView)findViewById(R.id.t_Player2);
+        View l1 = (View)findViewById(R.id.l_Player1);
+        View l2 = (View)findViewById(R.id.l_Player2);
+
+        if (onTheClock == 2) {
+            return;
+        }
+
+        /**
+         * Register that player 2's time is running now and that we haven't yet
+         * received our delay.
+         */
+        onTheClock = 2;
+        if (savedOTC == 0) {
 			delayed = false;
 		} else {
 			savedOTC = 0;
 		}
 		
-		/** 
-		 * Make the other player's button green and our
-		 * button and the pause button gray.
-		 */
-		p2_button.setBackgroundColor(Color.GREEN);   
-		p1_button.setBackgroundColor(Color.LTGRAY);
+        p2.setTextColor(color(R.color.active_text));
+        p1.setTextColor(color(R.color.inactive_text));
+        l2.setBackgroundColor(color(R.color.highlight));
+        l1.setVisibility(View.INVISIBLE);
+        l2.setVisibility(View.VISIBLE);
 		
 		if ( delay.equals(BRONSTEIN) ) {
-			TextView p2 = (TextView)findViewById(R.id.t_Player2);
-			
 			int secondsLeft = (int) (t_P2 / 1000);
 			int minutesLeft = secondsLeft / 60;
 			secondsLeft     = secondsLeft % 60;
@@ -419,9 +425,9 @@ public class ChessClock extends Activity {
 				secondsLeft -= 1;
 			}
 			if (secondsLeft < 10) {
-			    p2.setText("" + minutesLeft + ":0" + secondsLeft);
+                p1.setText("" + minutesLeft + ":0" + secondsLeft);
 			} else {
-			    p2.setText("" + minutesLeft + ":" + secondsLeft);            
+                p1.setText("" + minutesLeft + ":" + secondsLeft);
 			}
 		}
 			   
@@ -429,18 +435,21 @@ public class ChessClock extends Activity {
         pp.setBackgroundResource(R.drawable.button_right);
 			   
 		/** 
-		 * Unregister the handler from player 2's clock and 
-		 * create a new one which we register with this clock.
+         * Unregister the handler from player 1's clock and create a new one
+         * which we register with player 2's clock.
 		 */
 		myHandler.removeCallbacks(mUpdateTimeTask);
 		myHandler.removeCallbacks(mUpdateTimeTask2);
-		myHandler.postDelayed(mUpdateTimeTask, 100);
+        myHandler.postDelayed(mUpdateTimeTask2, 100);
 	}
 		
 	/** Handles the "tick" event for Player 1's clock */
 	private Runnable mUpdateTimeTask = new Runnable() {
 		public void run() {
-			TextView p1 = (TextView)findViewById(R.id.t_Player1);
+            Button b1 = (Button)findViewById(R.id.Player1);
+            Button b2 = (Button)findViewById(R.id.Player2);
+            TextView p1 = (TextView)findViewById(R.id.t_Player1);
+            TextView p2 = (TextView)findViewById(R.id.t_Player2);
 			String delay_string = "";
 			
 			/** Check for delays and apply them */
@@ -484,13 +493,12 @@ public class ChessClock extends Activity {
 			/** Did we run out of time? */
 			if ( timeLeft == 0 ) {
 				timeup = true;
-				Button b1 = (Button)findViewById(R.id.Player1);
-				Button b2 = (Button)findViewById(R.id.Player2);
 				Button pp = (Button)findViewById(R.id.Pause);
-				
-				/** Set P1's button and clock text to red */
-				p1.setTextColor(Color.RED);
-				b2.setBackgroundColor(Color.RED);
+                View l1 = (View)findViewById(R.id.l_Player1);
+
+                l1.setBackgroundColor(color(R.color.timesup));
+                performHapticFeedback(l1);
+                p1.setText("0:00");
 				
 				b1.setClickable(false);
 				b2.setClickable(false);
@@ -501,26 +509,16 @@ public class ChessClock extends Activity {
 				if ( null != ringtone ) {
 					ringtone.play();
 				}
-				
-				/** Blink the clock display */
-				myHandler.removeCallbacks(mUpdateTimeTask2);
-				myHandler.postDelayed(Blink, 500);
+
+                myHandler.removeCallbacks(mUpdateTimeTask);
 				return;
-				
 			}
-			       		
-			/** Color clock yellow if we're under 1 minute */
-			if ( timeLeft < 60000 ) {
-				p1.setTextColor(Color.YELLOW);
-			} else {
-				p1.setTextColor(Color.LTGRAY);
-			}
-			
+
 			/** Display the time, omitting leading 0's for times < 10 minutes */
 			if (secondsLeft < 10) {
-			    p1.setText("" + minutesLeft + ":0" + secondsLeft + delay_string);
+                p1.setText("" + minutesLeft + ":0" + secondsLeft + delay_string);
 			} else {
-			    p1.setText("" + minutesLeft + ":" + secondsLeft + delay_string);            
+                p1.setText("" + minutesLeft + ":" + secondsLeft + delay_string);
 			}
 			     
 			/** Re-post the handler so it fires in another 0.1s */
@@ -530,34 +528,35 @@ public class ChessClock extends Activity {
 	
 	/** Called when P2ClickHandler registers a click/touch event */
 	private void P2Click() {
-		Button p1_button = (Button)findViewById(R.id.Player1);
-		Button p2_button = (Button)findViewById(R.id.Player2);
-		
-		/** Check if this is valid (i.e. if our time is running */
-		if ( onTheClock == 2 )
+        Button b1 = (Button)findViewById(R.id.Player1);
+        Button b2 = (Button)findViewById(R.id.Player2);
+        TextView p1 = (TextView)findViewById(R.id.t_Player1);
+        TextView p2 = (TextView)findViewById(R.id.t_Player2);
+        View l1 = (View)findViewById(R.id.l_Player1);
+        View l2 = (View)findViewById(R.id.l_Player2);
+
+        if (onTheClock == 1) {
 			return;
+        }
 				 
 		/** 
-		 * Register that our time is running now 
-		 * and that we haven't yet received our delay
+         * Register that player 1's time is running now and that we haven't yet
+         * received our delay.
 		 */
-		onTheClock = 2;
-		if ( savedOTC == 0 ) {
+        onTheClock = 1;
+        if (savedOTC == 0) {
 			delayed = false;
 		} else {
 			savedOTC = 0;
 		}
-		
-		/** 
-		 * Make the other player's button green and our
-		 * button and the pause button gray.
-		 */
-		p1_button.setBackgroundColor(Color.GREEN);
-		p2_button.setBackgroundColor(Color.LTGRAY);
+
+        p1.setTextColor(color(R.color.active_text));
+        p2.setTextColor(color(R.color.inactive_text));
+        l1.setBackgroundColor(color(R.color.highlight));
+        l1.setVisibility(View.VISIBLE);
+        l2.setVisibility(View.INVISIBLE);
 		
 		if ( delay.equals(BRONSTEIN) ) {
-			TextView p1 = (TextView)findViewById(R.id.t_Player1);
-			
 			int secondsLeft = (int) (t_P1 / 1000);
 			int minutesLeft = secondsLeft / 60;
 			secondsLeft     = secondsLeft % 60;
@@ -572,9 +571,9 @@ public class ChessClock extends Activity {
 				secondsLeft -= 1;
 			}
 			if (secondsLeft < 10) {
-			    p1.setText("" + minutesLeft + ":0" + secondsLeft);
+                p1.setText("" + minutesLeft + ":0" + secondsLeft);
 			} else {
-			    p1.setText("" + minutesLeft + ":" + secondsLeft);            
+                p1.setText("" + minutesLeft + ":" + secondsLeft);
 			}
 		}
 		
@@ -582,18 +581,21 @@ public class ChessClock extends Activity {
         pp.setBackgroundResource(R.drawable.button_right);
 		
 		/** 
-		 * Unregister the handler from player 1's clock and 
-		 * create a new one which we register with this clock.
+         * Unregister the handler from player 2's clock and create a new one
+         * which we register with player 1's clock.
 		 */
 		myHandler.removeCallbacks(mUpdateTimeTask);
 		myHandler.removeCallbacks(mUpdateTimeTask2);
-		myHandler.postDelayed(mUpdateTimeTask2, 100);
+        myHandler.postDelayed(mUpdateTimeTask, 100);
 	}
 				
 	/** Handles the "tick" event for Player 2's clock */
 	private Runnable mUpdateTimeTask2 = new Runnable() {
 		public void run() {
-			TextView p2 = (TextView)findViewById(R.id.t_Player2);
+            Button b1 = (Button)findViewById(R.id.Player1);
+            Button b2 = (Button)findViewById(R.id.Player2);
+            TextView p1 = (TextView)findViewById(R.id.t_Player1);
+            TextView p2 = (TextView)findViewById(R.id.t_Player2);
 			String delay_string = "";
 			
 			/** Check for delays and apply them */
@@ -637,16 +639,15 @@ public class ChessClock extends Activity {
 			/** Did we run out of time? */
 			if ( timeLeft == 0 ) {
 				timeup = true;
-				Button b1 = (Button)findViewById(R.id.Player1);
-				Button b2 = (Button)findViewById(R.id.Player2);
 				Button pp = (Button)findViewById(R.id.Pause);
-				
-				/** Set P1's button and clock text to red */
-				p2.setTextColor(Color.RED);
-				b1.setBackgroundColor(Color.RED);
+                View l2 = (View)findViewById(R.id.l_Player2);
+
+                l2.setBackgroundColor(color(R.color.timesup));
+                performHapticFeedback(l2);
+				p2.setText("0:00");
 				
 				b1.setClickable(false);
-				b2.setClickable(false);
+                b2.setClickable(false);
 				pp.setClickable(false);
 				
 				Uri uri = Uri.parse(alertTone);
@@ -654,75 +655,23 @@ public class ChessClock extends Activity {
 				if ( null != ringtone ) {
 					ringtone.play();
 				}
-				/** Blink the clock display */
+
 				myHandler.removeCallbacks(mUpdateTimeTask2);
-				myHandler.postDelayed(Blink2, 500);
-				return;		
+                return;
 			}
-			
-			/** Color clock yellow if we're under 1 minute */
-			if ( timeLeft < 60000) {
-				p2.setTextColor(Color.YELLOW);
-			} else {
-				p2.setTextColor(Color.LTGRAY);
-			}
-			
+
 			/** Display the time, omitting leading 0's for times < 10 minutes */
 			if (secondsLeft < 10) {
-				p2.setText("" + minutesLeft + ":0" + secondsLeft + delay_string);
+                p2.setText("" + minutesLeft + ":0" + secondsLeft + delay_string);
 			} else {
-				p2.setText("" + minutesLeft + ":" + secondsLeft + delay_string);            
+                p2.setText("" + minutesLeft + ":" + secondsLeft + delay_string);
 			}
 					     
 			/** Re-post the handler so it fires in another 0.1s */
 			myHandler.postDelayed(this, 100);
 		}
 	};
-	
-	/** Blinks the clock text if Player 1's time hits 0:00 */
-	private Runnable Blink = new Runnable() {
-		public void run() {
-			TextView p1 = (TextView)findViewById(R.id.t_Player1);
-			
-			/**
-			 * Display the clock if it's blank, or blank it if
-			 * it's currently displayed.
-			 */
-			if ( !blink ) {
-				blink = true;
-				p1.setText("");
-			} else {
-				blink = false;
-				p1.setText("0:00");
-			}
-			
-			/** Register a handler to fire again in 0.5s */
-			myHandler.postDelayed(this, 500);	
-		}
-	};
-	
-	/** Blinks the clock text if Player 2's time hits 0:00 */
-	private Runnable Blink2 = new Runnable() {
-		public void run() {
-			TextView p2 = (TextView)findViewById(R.id.t_Player2);
-			
-			/**
-			 * Display the clock if it's blank, or blank it if
-			 * it's currently displayed.
-			 */
-			if ( !blink ) {
-				blink = true;
-				p2.setText("");
-			} else {
-				blink = false;
-				p2.setText("0:00");
-			}
-			
-			/** Register a handler to fire again in 0.5s */
-			myHandler.postDelayed(this, 500);	
-		}
-	};
-	
+
 	/** 
 	 * Pauses both clocks. This is called when the options
 	 * menu is opened, since the game needs to pause
@@ -730,8 +679,10 @@ public class ChessClock extends Activity {
 	 * back and forth between the two.
 	 *  */
 	private void PauseGame() {
-		Button p1 = (Button)findViewById(R.id.Player1);
-		Button p2 = (Button)findViewById(R.id.Player2);
+        TextView p1 = (TextView)findViewById(R.id.t_Player1);
+        TextView p2 = (TextView)findViewById(R.id.t_Player2);
+        View l1 = (View)findViewById(R.id.l_Player1);
+        View l2 = (View)findViewById(R.id.l_Player2);
 		Button pp = (Button)findViewById(R.id.Pause);
 		
 		/** Save the currently running clock, then pause */
@@ -739,8 +690,10 @@ public class ChessClock extends Activity {
 			savedOTC = onTheClock;
 			onTheClock = 0;
 			
-			p1.setBackgroundColor(Color.LTGRAY);
-			p2.setBackgroundColor(Color.LTGRAY);
+            p1.setTextColor(color(R.color.inactive_text));
+            p2.setTextColor(color(R.color.inactive_text));
+            l1.setBackgroundColor(color(R.color.inactive_text));
+            l2.setBackgroundColor(color(R.color.inactive_text));
             pp.setBackgroundResource(R.drawable.button_right_active);
 		
 			myHandler.removeCallbacks(mUpdateTimeTask);
@@ -750,8 +703,10 @@ public class ChessClock extends Activity {
 	
 	/** Called when the pause button is clicked */
 	private void PauseToggle() {
-		Button p1 = (Button)findViewById(R.id.Player1);
-		Button p2 = (Button)findViewById(R.id.Player2);
+        TextView p1 = (TextView)findViewById(R.id.t_Player1);
+        TextView p2 = (TextView)findViewById(R.id.t_Player2);
+        View l1 = (View)findViewById(R.id.l_Player1);
+        View l2 = (View)findViewById(R.id.l_Player2);
 		Button pp = (Button)findViewById(R.id.Pause);
 
 		/** Figure out if we need to pause or unpause */
@@ -759,18 +714,20 @@ public class ChessClock extends Activity {
 			savedOTC = onTheClock;
 			onTheClock = 0;
 			
-			p1.setBackgroundColor(Color.LTGRAY);
-			p2.setBackgroundColor(Color.LTGRAY);
+            p1.setTextColor(color(R.color.inactive_text));
+            p2.setTextColor(color(R.color.inactive_text));
+            l1.setBackgroundColor(color(R.color.inactive_text));
+            l2.setBackgroundColor(color(R.color.inactive_text));
             pp.setBackgroundResource(R.drawable.button_right_active);
 		
 			myHandler.removeCallbacks(mUpdateTimeTask);
 			myHandler.removeCallbacks(mUpdateTimeTask2);
 		} else {
 			Log.v(TAG, "Info: Unpausing.");
-			if ( savedOTC == 1 ) {
-				P1Click();
-			} else if ( savedOTC == 2 ) {
-				P2Click();
+            if (savedOTC == 1) {
+                P2Click();
+            } else if (savedOTC == 2) {
+                P1Click();
 			} else {
 				return;
 			}
@@ -783,20 +740,20 @@ public class ChessClock extends Activity {
 	    SharedPreferences prefs = PreferenceManager
     	.getDefaultSharedPreferences(this);
 
-		TextView p1 = (TextView)findViewById(R.id.t_Player1);
+        TextView p1 = (TextView)findViewById(R.id.t_Player1);
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
-        p1.setTextColor(Color.LTGRAY);
-        p2.setTextColor(Color.LTGRAY);
+        p1.setTextColor(color(R.color.active_text));
+        p2.setTextColor(color(R.color.active_text));
 
         /** Take care of a haptic change if needed */
         haptic = prefs.getBoolean("prefHaptic", false);
-        Button p1_button = (Button)findViewById(R.id.Player1);
-        Button p2_button = (Button)findViewById(R.id.Player2);
+        Button b1 = (Button)findViewById(R.id.Player1);
+        Button b2 = (Button)findViewById(R.id.Player2);
         Button pause = (Button)findViewById(R.id.Pause);
         Button menu = (Button)findViewById(R.id.Menu);
 
-        p1_button.setHapticFeedbackEnabled(haptic);
-        p2_button.setHapticFeedbackEnabled(haptic);
+        b1.setHapticFeedbackEnabled(haptic);
+        b2.setHapticFeedbackEnabled(haptic);
         pause.setHapticFeedbackEnabled(haptic);
         menu.setHapticFeedbackEnabled(haptic);
         
@@ -846,23 +803,16 @@ public class ChessClock extends Activity {
 		t_P2 = time * 60000;
 		
 		/** Set up the buttons */
-		p1_button.setBackgroundColor(Color.LTGRAY);
-	    p2_button.setBackgroundColor(Color.LTGRAY);
+        b1.setBackgroundColor(Color.DKGRAY);
+        b2.setBackgroundColor(Color.DKGRAY);
                
         /** Format and display the clocks */
         p1.setText(FormatTime(t_P1));
-	    p2.setText(FormatTime(t_P2));
-	    /** 
-	     * Register the click listeners and unregister any
-	     * text blinking timers that may exist.
-	     */
-        p1_button.setOnClickListener(P1ClickHandler);
-        p2_button.setOnClickListener(P2ClickHandler);
+        p2.setText(FormatTime(t_P2));
+        /** Register the click listeners */
+        b1.setOnClickListener(P1ClickHandler);
+        b2.setOnClickListener(P2ClickHandler);
         pause.setOnClickListener(PauseListener);
         menu.setOnClickListener(MenuListener);
-        myHandler.removeCallbacks(Blink);
-        myHandler.removeCallbacks(Blink2);
-        
 	}
 }
-    

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="active_text">#fff</color>
+  <color name="inactive_text">#bbb</color>
+  <color name="bg_light">#4f4f4f</color>
+  <color name="bg_dark">#499ebd</color>
+  <color name="highlight">#499ebd</color>
+  <color name="timesup">#ff785c</color>
+  <color name="button_icon">#000</color>
+</resources>

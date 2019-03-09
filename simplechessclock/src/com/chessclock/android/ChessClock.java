@@ -47,6 +47,7 @@ import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.provider.*;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -103,8 +104,15 @@ public class ChessClock extends Activity {
 	private boolean timeup = false;
 	private boolean prefmenu = false;
 	private boolean delayed = false;
-	private boolean hapticChange = false;
-	
+
+    /** Provide haptic feedback to the user of the given view. */
+    private void performHapticFeedback(View v) {
+        v.performHapticFeedback(
+            HapticFeedbackConstants.VIRTUAL_KEY,
+            HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+        );
+    }
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -121,7 +129,7 @@ public class ChessClock extends Activity {
         
         setContentView(R.layout.main);
         
-        SetUpGame();        
+        setUpGame(true);
     }
     
     @Override
@@ -244,6 +252,9 @@ public class ChessClock extends Activity {
 	/** Click handler for player 1's clock. */
 	public OnClickListener P1ClickHandler = new OnClickListener() {
 		public void onClick(View v) {
+            if (onTheClock == 2) {
+                performHapticFeedback(v);
+            }
 			P1Click();
 		}
 	};
@@ -251,6 +262,9 @@ public class ChessClock extends Activity {
 	/** Click handler for player 2's clock */
 	public OnClickListener P2ClickHandler = new OnClickListener() {
 		public void onClick(View v) {
+            if (onTheClock == 1) {
+                performHapticFeedback(v);
+            }
 			P2Click();
 		}
 	};
@@ -258,13 +272,15 @@ public class ChessClock extends Activity {
 	/** Click handler for the pause button */
 	public OnClickListener PauseListener = new OnClickListener() {
 		public void onClick(View v) {
-			PauseToggle();
+            performHapticFeedback(v);
+            PauseToggle();
 		}
 	};
 	
     /** Click handler for the menu button */
     public OnClickListener MenuListener = new OnClickListener() {
         public void onClick(View v) {
+            performHapticFeedback(v);
             showPrefs();
         }
     };
@@ -296,7 +312,7 @@ public class ChessClock extends Activity {
 		}
 		
 		if ( new_delay != delay ) {
-			SetUpGame();
+            setUpGame(true);
 		}
 		
 		/** Check for a new game time setting */
@@ -312,7 +328,7 @@ public class ChessClock extends Activity {
 		}
 		
 		if ( new_time != time ) {
-			SetUpGame();
+            setUpGame(true);
 		}
 		
 		/** Check for a new delay time */
@@ -327,14 +343,13 @@ public class ChessClock extends Activity {
 		}
 		
 		if ( new_delay_time != delay_time ) {
-			SetUpGame();
+            setUpGame(true);
 		}
 		
 		boolean new_haptic = prefs.getBoolean("prefHaptic", false);
 		if ( new_haptic != haptic ) {
 			// No reason to reload the clocks for this one
-			hapticChange = true;
-			SetUpGame();
+            setUpGame(false);
 		}
 	}
 	
@@ -345,9 +360,9 @@ public class ChessClock extends Activity {
 		       .setCancelable(false)
 		       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-		        	   	SetUpGame();
-		        	   	onTheClock = 0;
-		                dialog.dismiss();
+                       setUpGame(true);
+                       onTheClock = 0;
+                       dialog.dismiss();
 		           }
 		       })
 		       .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -364,8 +379,6 @@ public class ChessClock extends Activity {
 	private void P1Click() {
 		Button p1_button = (Button)findViewById(R.id.Player1);
 		Button p2_button = (Button)findViewById(R.id.Player2);
-				
-		p1_button.performHapticFeedback(1);
 		
 		/** Check if this is valid (i.e. if our time is running */
 		if ( onTheClock == 1 )
@@ -519,8 +532,6 @@ public class ChessClock extends Activity {
 	private void P2Click() {
 		Button p1_button = (Button)findViewById(R.id.Player1);
 		Button p2_button = (Button)findViewById(R.id.Player2);
-
-		p2_button.performHapticFeedback(1);
 		
 		/** Check if this is valid (i.e. if our time is running */
 		if ( onTheClock == 2 )
@@ -742,9 +753,7 @@ public class ChessClock extends Activity {
 		Button p1 = (Button)findViewById(R.id.Player1);
 		Button p2 = (Button)findViewById(R.id.Player2);
 		Button pp = (Button)findViewById(R.id.Pause);
-		
-		pp.performHapticFeedback(1);
-		
+
 		/** Figure out if we need to pause or unpause */
 		if ( onTheClock != 0 ) {
 			savedOTC = onTheClock;
@@ -769,19 +778,18 @@ public class ChessClock extends Activity {
 	}
 	
 	/** Set up (or refresh) all game parameters */
-	private void SetUpGame() { 
+    private void setUpGame(boolean resetClocks) {
 	    /** Load all stored preferences */
 	    SharedPreferences prefs = PreferenceManager
     	.getDefaultSharedPreferences(this);
-	    
-	    /** Take care of a haptic change if needed */
-		haptic = prefs.getBoolean("prefHaptic", false);
 
 		TextView p1 = (TextView)findViewById(R.id.t_Player1);
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
         p1.setTextColor(Color.LTGRAY);
         p2.setTextColor(Color.LTGRAY);
 
+        /** Take care of a haptic change if needed */
+        haptic = prefs.getBoolean("prefHaptic", false);
         Button p1_button = (Button)findViewById(R.id.Player1);
         Button p2_button = (Button)findViewById(R.id.Player2);
         Button pause = (Button)findViewById(R.id.Pause);
@@ -792,14 +800,8 @@ public class ChessClock extends Activity {
         pause.setHapticFeedbackEnabled(haptic);
         menu.setHapticFeedbackEnabled(haptic);
         
-        if (hapticChange)
-        {
-        	/**
-        	 * We're just changing haptic feedback on this run through,
-        	 * don't reload everything else!
-        	 */
-        	hapticChange = false;
-        	return;
+        if (!resetClocks) {
+            return;
         }
 	    
 		delay = prefs.getString("prefDelay","None");

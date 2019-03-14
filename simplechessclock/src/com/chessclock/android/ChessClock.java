@@ -215,7 +215,6 @@ public class ChessClock extends Activity {
     }
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, RESET, 0, "Reset Clocks").setIcon(R.drawable.refresh);
 		menu.add(0, ABOUT, 0, "About").setIcon(R.drawable.about);
 		
 		return true;
@@ -223,9 +222,6 @@ public class ChessClock extends Activity {
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch( item.getItemId() ) {
-			case RESET:
-				showDialog(RESET);
-				return true;
 			case ABOUT:
 				showDialog(ABOUT);
 				return true;
@@ -432,7 +428,7 @@ public class ChessClock extends Activity {
 		}
 			   
 		Button pp = (Button)findViewById(R.id.Pause);
-        pp.setBackgroundResource(R.drawable.button_right);
+        pp.setBackgroundResource(R.drawable.pause_button);
 			   
 		/** 
          * Unregister the handler from player 1's clock and create a new one
@@ -502,7 +498,7 @@ public class ChessClock extends Activity {
 				
 				b1.setClickable(false);
 				b2.setClickable(false);
-				pp.setClickable(false);
+                pp.setBackgroundResource(R.drawable.reset_button);
 				
 				Uri uri = Uri.parse(alertTone);
 				ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
@@ -578,7 +574,7 @@ public class ChessClock extends Activity {
 		}
 		
 		Button pp = (Button)findViewById(R.id.Pause);
-        pp.setBackgroundResource(R.drawable.button_right);
+        pp.setBackgroundResource(R.drawable.pause_button);
 		
 		/** 
          * Unregister the handler from player 2's clock and create a new one
@@ -648,7 +644,7 @@ public class ChessClock extends Activity {
 				
 				b1.setClickable(false);
                 b2.setClickable(false);
-				pp.setClickable(false);
+                pp.setBackgroundResource(R.drawable.reset_button);
 				
 				Uri uri = Uri.parse(alertTone);
 				ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
@@ -694,7 +690,7 @@ public class ChessClock extends Activity {
             p2.setTextColor(color(R.color.inactive_text));
             l1.setBackgroundColor(color(R.color.inactive_text));
             l2.setBackgroundColor(color(R.color.inactive_text));
-            pp.setBackgroundResource(R.drawable.button_right_active);
+            pp.setBackgroundResource(R.drawable.reset_button);
 		
 			myHandler.removeCallbacks(mUpdateTimeTask);
 			myHandler.removeCallbacks(mUpdateTimeTask2);
@@ -709,29 +705,23 @@ public class ChessClock extends Activity {
         View l2 = (View)findViewById(R.id.l_Player2);
 		Button pp = (Button)findViewById(R.id.Pause);
 
-		/** Figure out if we need to pause or unpause */
-		if ( onTheClock != 0 ) {
-			savedOTC = onTheClock;
-			onTheClock = 0;
-			
+        /** Figure out if we need to pause or reset. */
+        if (onTheClock == 0 || t_P1 == 0 || t_P2 == 0) {
+            Log.v(TAG, "Info: Resetting.");
+            showDialog(RESET);
+        } else {
+            savedOTC = onTheClock;
+            onTheClock = 0;
+
             p1.setTextColor(color(R.color.inactive_text));
             p2.setTextColor(color(R.color.inactive_text));
             l1.setBackgroundColor(color(R.color.inactive_text));
             l2.setBackgroundColor(color(R.color.inactive_text));
-            pp.setBackgroundResource(R.drawable.button_right_active);
-		
-			myHandler.removeCallbacks(mUpdateTimeTask);
-			myHandler.removeCallbacks(mUpdateTimeTask2);
-		} else {
-			Log.v(TAG, "Info: Unpausing.");
-            if (savedOTC == 1) {
-                P2Click();
-            } else if (savedOTC == 2) {
-                P1Click();
-			} else {
-				return;
-			}
-		}
+            pp.setBackgroundResource(R.drawable.reset_button);
+
+            myHandler.removeCallbacks(mUpdateTimeTask);
+            myHandler.removeCallbacks(mUpdateTimeTask2);
+        }
 	}
 	
 	/** Set up (or refresh) all game parameters */
@@ -744,6 +734,11 @@ public class ChessClock extends Activity {
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
         p1.setTextColor(color(R.color.active_text));
         p2.setTextColor(color(R.color.active_text));
+
+        View l1 = (View)findViewById(R.id.l_Player1);
+        View l2 = (View)findViewById(R.id.l_Player2);
+        l1.setVisibility(View.INVISIBLE);
+        l2.setVisibility(View.INVISIBLE);
 
         /** Take care of a haptic change if needed */
         haptic = prefs.getBoolean("prefHaptic", false);

@@ -10,14 +10,14 @@
           android:bottomLeftRadius="100dp"
           android:bottomRightRadius="0dp" />
       <solid
-          android:color="@color/highlight" />
+          android:color="@color/bg_light" />
       <size
           android:width="65dp"
           android:height="80dp" />
     </shape>
   </item>
   <item
-      android:drawable="@drawable/pause"
+      android:drawable="@drawable/reset"
       android:gravity="center"
       android:width="50dp"
       android:height="50dp" />

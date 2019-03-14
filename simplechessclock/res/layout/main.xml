@@ -106,7 +106,7 @@
       android:height="50sp"
       android:width="50sp"
       android:layout_gravity="center"
-      android:background="@drawable/button_left"
+      android:background="@drawable/menu_button"
       android:onClick="MenuListener">
   </Button>
 
@@ -120,7 +120,7 @@
       android:height="50sp"
       android:width="50sp"
       android:layout_gravity="center"
-      android:background="@drawable/button_right"
+      android:background="@drawable/reset_button"
       android:onClick="PauseListener">
   </Button>
 </RelativeLayout>

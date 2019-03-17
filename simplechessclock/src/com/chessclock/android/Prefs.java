@@ -27,17 +27,47 @@
  *************************************************************************/
 package com.chessclock.android;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.util.Log;
  
 public class Prefs extends PreferenceActivity {
+    private static final int ABOUT = 1;
+
+    private DialogFactory DF = new DialogFactory();
+
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog = new Dialog(this);
+        switch (id) {
+            case ABOUT:
+                dialog = DF.AboutDialog(
+                    this,
+                    ChessClock.V_MAJOR,
+                    ChessClock.V_MINOR,
+                    ChessClock.V_MINI
+                );
+                break;
+        }
+
+        return dialog;
+    }
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	    Log.v("INFO", "INFO: Read prefs.xml");
 	    addPreferencesFromResource(R.xml.preferences);
 	    Log.v("INFO", "INFO: Finished onCreate");
-	}
 
+        Preference about = (Preference)getPreferenceScreen().findPreference("about");
+        about.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                showDialog(ABOUT);
+                return true;
+            }
+        });
+    }
 }

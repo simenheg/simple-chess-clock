@@ -57,4 +57,8 @@
         android:key="prefHaptic">
     </CheckBoxPreference>
   </PreferenceCategory>
+  <PreferenceCategory
+      android:title="About">
+    <Preference android:key="about" android:title="About Simple Chess Clock" />
+  </PreferenceCategory>
 </PreferenceScreen>

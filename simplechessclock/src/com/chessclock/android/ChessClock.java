@@ -70,7 +70,6 @@ public class ChessClock extends Activity {
 
 	/** Constants for the dialog windows */
 	private static final int RESET = 1;
-	private static final int ABOUT = 2;
 	
 	/** Time control values */
 	private static String NO_DELAY = "None";
@@ -213,23 +212,7 @@ public class ChessClock extends Activity {
     	PauseGame();
     	return true;
     }
-	
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, ABOUT, 0, "About").setIcon(R.drawable.about);
-		
-		return true;
-	}
-	
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch( item.getItemId() ) {
-			case ABOUT:
-				showDialog(ABOUT);
-				return true;
-		}
-		
-		return false;
-	}
-	
+
 	public void onWindowFocusChanged(boolean b) {
 		if ( !prefmenu ) {
 			CheckForNewPrefs();
@@ -241,9 +224,6 @@ public class ChessClock extends Activity {
 	protected Dialog onCreateDialog(int id) {
 		Dialog dialog = new Dialog(this);
 		switch ( id ) {
-			case ABOUT:
-				dialog = DF.AboutDialog(this, V_MAJOR, V_MINOR, V_MINI);
-				break;
 			case RESET:
 				dialog = ResetDialog();
 				break;

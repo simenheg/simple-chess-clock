@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android">
-<PreferenceCategory android:title="Game Time">
-<EditTextPreference android:inputType="number" android:positiveButtonText="Okay" android:negativeButtonText="Cancel" android:dialogTitle="Enter Time (mins)" android:title="Set Starting Time" android:summary="Set how much time each player starts with." android:defaultValue="10" android:selectable="true" android:enabled="true" android:key="prefTime"></EditTextPreference>
-
-
-</PreferenceCategory>
-<PreferenceCategory android:title="Time Control"><ListPreference android:entries="@array/delayTypes" android:negativeButtonText="Cancel" android:dialogTitle="Select Time Delay" android:entryValues="@array/delayVals" android:selectable="true" android:summary="Set the time delay scheme to use during play." android:enabled="true" android:title="Set Time Delay" android:key="prefDelay" android:defaultValue="None" android:positiveButtonText="Okay"></ListPreference>
-<EditTextPreference android:inputType="number" android:key="prefDelayTime" android:summary="Set the amount of time used for time control delays." android:title="Set Delay Length" android:enabled="true" android:defaultValue="0" android:selectable="true" android:negativeButtonText="Cancel" android:positiveButtonText="Okay" android:dialogTitle="Enter Time (seconds)"></EditTextPreference>
-</PreferenceCategory>
-<PreferenceCategory android:title="Other Options"><RingtonePreference android:showSilent="true" android:enabled="true" android:ringtoneType="ringtone|notification|alarm|all" android:showDefault="true" android:title="Alert Ringtone" android:summary="Sets the ringtone/alert sound to be played when time expires." android:key="prefAlertSound"></RingtonePreference>
-<CheckBoxPreference android:title="Haptic Feedback" android:enabled="true" android:selectable="true" android:defaultValue="false" android:summary="When enabled, the phone will vibrate slightly after button presses." android:summaryOn="Haptic feedback is enabled." android:summaryOff="Haptic feedback is disabled." android:key="prefHaptic"></CheckBoxPreference>
-</PreferenceCategory>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+      android:title="Game Time">
+    <EditTextPreference
+        android:inputType="number"
+        android:positiveButtonText="Okay"
+        android:negativeButtonText="Cancel"
+        android:dialogTitle="Enter Time (minutes)"
+        android:title="Starting Time"
+        android:summary="Set how much time each player starts with."
+        android:defaultValue="10"
+        android:selectable="true"
+        android:enabled="true"
+        android:key="prefTime">
+    </EditTextPreference>
+    <ListPreference
+        android:entries="@array/delayTypes"
+        android:negativeButtonText="Cancel"
+        android:dialogTitle="Select Time Delay"
+        android:entryValues="@array/delayVals"
+        android:selectable="true"
+        android:summary="Set the time delay scheme to use during play."
+        android:enabled="true"
+        android:title="Delay Type"
+        android:key="prefDelay"
+        android:defaultValue="None"
+        android:positiveButtonText="Okay">
+    </ListPreference>
+    <EditTextPreference
+        android:inputType="number"
+        android:key="prefDelayTime"
+        android:summary="Set the amount of time used for time delays."
+        android:title="Delay Length"
+        android:enabled="true"
+        android:defaultValue="0"
+        android:selectable="true"
+        android:negativeButtonText="Cancel"
+        android:positiveButtonText="Okay"
+        android:dialogTitle="Enter Time (seconds)">
+    </EditTextPreference>
+  </PreferenceCategory>
+  <PreferenceCategory
+      android:title="Other Options">
+    <RingtonePreference
+        android:showSilent="true"
+        android:enabled="true"
+        android:ringtoneType="ringtone|notification|alarm|all"
+        android:showDefault="true"
+        android:title="Alert Ringtone"
+        android:summary="Set the ringtone to be played when time expires."
+        android:key="prefAlertSound">
+    </RingtonePreference>
+    <CheckBoxPreference
+        android:title="Haptic Feedback"
+        android:enabled="true"
+        android:selectable="true"
+        android:defaultValue="false"
+        android:summary="When enabled, the phone will vibrate slightly after button presses."
+        android:summaryOn="Haptic feedback is enabled."
+        android:summaryOff="Haptic feedback is disabled."
+        android:key="prefHaptic">
+    </CheckBoxPreference>
+  </PreferenceCategory>
 </PreferenceScreen>

@@ -24,6 +24,10 @@
    copyright.
 
 ** Changelog
+   v2.0.0 (3-24-2019)
+   - Major overhaul of the user interface.
+   - Should now work on modern Android versions.
+
    v1.2.0 (11-28-2010)
    - Added ability to move SCC to SD storage.
 

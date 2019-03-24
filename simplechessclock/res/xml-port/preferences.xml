@@ -5,8 +5,6 @@
       android:title="Game Time">
     <EditTextPreference
         android:inputType="number"
-        android:positiveButtonText="Okay"
-        android:negativeButtonText="Cancel"
         android:dialogTitle="Enter Time (minutes)"
         android:title="Starting Time"
         android:summary="Set how much time each player starts with."
@@ -17,7 +15,6 @@
     </EditTextPreference>
     <ListPreference
         android:entries="@array/delayTypes"
-        android:negativeButtonText="Cancel"
         android:dialogTitle="Select Time Delay"
         android:entryValues="@array/delayVals"
         android:selectable="true"
@@ -25,8 +22,7 @@
         android:enabled="true"
         android:title="Delay Type"
         android:key="prefDelay"
-        android:defaultValue="None"
-        android:positiveButtonText="Okay">
+        android:defaultValue="None">
     </ListPreference>
     <EditTextPreference
         android:inputType="number"
@@ -36,8 +32,6 @@
         android:enabled="true"
         android:defaultValue="0"
         android:selectable="true"
-        android:negativeButtonText="Cancel"
-        android:positiveButtonText="Okay"
         android:dialogTitle="Enter Time (seconds)">
     </EditTextPreference>
   </PreferenceCategory>

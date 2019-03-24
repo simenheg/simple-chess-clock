@@ -4,14 +4,14 @@
 
 The source code for Simple Chess Clock is licensed
 under the GPLv3. You should have received a copy of
-this licence within the LICENSE file. You may also
+this license within the LICENSE file. You may also
 view the license at:
 
 http://www.gnu.org/licenses/gpl.html
 
 2. Icons License
 
-The icons for Simple Chess Clock are license under
+The Simple Chess Clock app icon is licensed under
 the GNU Free Documentation License (GFDL). You
 should have received a copy of this license within
 the LICENSE_ICONS file. You may also view the
@@ -27,7 +27,15 @@ Clock: http://commons.wikimedia.org/wiki/File:Clock.gif
 Queen: http://commons.wikimedia.org/wiki/File:Queen_Chess.jpg
 King: http://commons.wikimedia.org/wiki/File:King_Chess.jpg
 
+In in-app icons are part of the Material Design
+suite and are licensed under the Apache License
+version 2.0. You should have received a copy of this
+license within the LICENSE_ICONS_2 file. You may
+also view the license at:
+
+https://www.apache.org/licenses/LICENSE-2.0.html
+
 3. Developers/Credits
 
 Simple Chess Clock was created in 2010 by Carter Dewey.
-
+Simen Heggestøyl is maintaining the app since 2019.

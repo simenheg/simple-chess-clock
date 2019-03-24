@@ -11,5 +11,6 @@
               android:layout_height="fill_parent"
               android:textColor="#FFF"
               android:gravity="center"
+              android:textSize="12sp"
               />
 </LinearLayout>

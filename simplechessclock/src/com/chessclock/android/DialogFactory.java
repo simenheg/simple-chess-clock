@@ -46,15 +46,18 @@ public class DialogFactory {
 				+ MINI);
 
 		TextView text = (TextView) d.findViewById(R.id.text);
-		text.setText("Design/Coding: Carter Dewey\n\n"
+        text.setText("Design/Coding: Carter Dewey & Simen Heggestøyl\n\n"
 				+ "SCC is free software licensed under the "
 				+ "GNU GPLv3. You can view the GPLv3 at\n"
 				+ "http://www.gnu.org/licenses/gpl-3.0.html\n\n"
-				+ "Portions of the icon are licensed under the "
+                + "Portions of the app icon are licensed under the "
 				+ "GFDL. You can view the GFDL at:\n"
 				+ "http://www.gnu.org/copyleft/fdl.html\n\n"
+                + "The in-app icons licensed under the Apache License "
+                + "2.0. You can view the license at:\n"
+                + "https://www.apache.org/licenses/LICENSE-2.0.html\n\n"
 				+ "To report bugs or view source code, visit:\n"
-				+ "http://code.google.com/p/simplechessclock/");
+                + "https://github.com/simenheg/simple-chess-clock");
 		
 		return d;
 	}

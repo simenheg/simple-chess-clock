@@ -401,9 +401,9 @@ public class ChessClock extends Activity {
 				secondsLeft -= 1;
 			}
 			if (secondsLeft < 10) {
-                p1.setText("" + minutesLeft + ":0" + secondsLeft);
+                p2.setText("" + minutesLeft + ":0" + secondsLeft);
 			} else {
-                p1.setText("" + minutesLeft + ":" + secondsLeft);
+                p2.setText("" + minutesLeft + ":" + secondsLeft);
 			}
 		}
 			   

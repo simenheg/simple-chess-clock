@@ -14,16 +14,20 @@
         android:layout_height="wrap_content">
 
       <!-- Player 1 (top) -->
-      <Button
-          android:layout_alignParentTop="true"
+      <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:id="@+id/Player1"
-          android:width="980sp"
-          android:background="@color/bg_dark"
-          android:onClick="P1ClickHandler">
-      </Button>
+          android:layout_height="match_parent">
+        <Button
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/Player1"
+            android:width="980sp"
+            android:background="@color/bg_dark"
+            android:onClick="P1ClickHandler">
+        </Button>
+      </LinearLayout>
 
       <TextView
           android:rotation="180"
@@ -62,16 +66,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-      <Button
-          android:layout_alignParentBottom="true"
+      <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:id="@+id/Player2"
-          android:width="980sp"
-          android:background="@color/bg_dark"
-          android:onClick="P2ClickHandler">
-      </Button>
+          android:layout_height="match_parent">
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/Player2"
+            android:width="980sp"
+            android:background="@color/bg_dark"
+            android:onClick="P2ClickHandler">
+        </Button>
+      </LinearLayout>
 
       <TextView
           android:layout_width="wrap_content"

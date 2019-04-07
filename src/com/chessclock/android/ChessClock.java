@@ -776,11 +776,7 @@ public class ChessClock extends Activity {
 		/** Set time equal to minutes * ms per minute */
 		t_P1 = time * 60000;
 		t_P2 = time * 60000;
-		
-		/** Set up the buttons */
-        b1.setBackgroundColor(Color.DKGRAY);
-        b2.setBackgroundColor(Color.DKGRAY);
-               
+
         /** Format and display the clocks */
         p1.setText(FormatTime(t_P1));
         p2.setText(FormatTime(t_P2));

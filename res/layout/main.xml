@@ -21,6 +21,7 @@
           android:layout_weight="1"
           android:id="@+id/Player1"
           android:width="980sp"
+          android:background="@color/bg_dark"
           android:onClick="P1ClickHandler">
       </Button>
 
@@ -68,6 +69,7 @@
           android:layout_weight="1"
           android:id="@+id/Player2"
           android:width="980sp"
+          android:background="@color/bg_dark"
           android:onClick="P2ClickHandler">
       </Button>
 

@@ -40,10 +40,8 @@ public class DialogFactory {
 		Dialog d = new Dialog(c);
 		
 		d.setContentView(R.layout.about_dialog);
-		d.setTitle("Simple Chess Clock (SCC) v"
-				+ MAJOR + "."
-				+ MINOR + "."
-				+ MINI);
+		d.setTitle(String.format("Simple Chess Clock v%s.%s.%s",
+                                 MAJOR, MINOR, MINI));
 
 		TextView text = (TextView) d.findViewById(R.id.text);
         text.setText("Design/Coding: Carter Dewey & Simen Heggestøyl\n\n"

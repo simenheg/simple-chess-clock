@@ -9,7 +9,6 @@
     <TextView android:id="@+id/text"
               android:layout_width="wrap_content"
               android:layout_height="fill_parent"
-              android:textColor="#FFF"
               android:gravity="center"
               android:textSize="12sp"
               />

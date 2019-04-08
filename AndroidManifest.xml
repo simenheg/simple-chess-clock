@@ -6,17 +6,16 @@
         <activity android:name=".ChessClock"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
-                  
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Prefs" 
-        		  android:label="@string/app_name"
-        		  android:screenOrientation="portrait">
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/android:Theme.Material">
         </activity>
-
     </application>
     <uses-sdk
         android:minSdkVersion="5"

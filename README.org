@@ -24,6 +24,12 @@
    copyright.
 
 ** Changelog
+   v2.1.0 (4-14-2019)
+   - Fixed an issue with clocks disappearing on Android 7.0 and above.
+   - The minimum Android version was corrected to Android 5.0 and above, since
+     SCC is using scalable vector graphics.
+   - Material theme is now applied in menus and dialogs.
+
    v2.0.0 (3-24-2019)
    - Major overhaul of the user interface.
    - Should now work on modern Android versions.

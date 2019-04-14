@@ -1,8 +1,7 @@
 * Simple Chess Clock
   Simple Chess Clock is what its name implies: a chess clock (that's
   simple!). It aims to be easy to use and easy to read, while also providing
-  some reasonably expected features. Simple Chess Clock (SCC) was developed for
-  devices running Android 2.0 or later, using API revision 5 or later.
+  some reasonably expected features.
 
   If you experience problems on your device, please visit
   https://github.com/simenheg/simple-chess-clock to report a bug (click the

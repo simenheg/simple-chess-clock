@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="time_pref">time_pref</string>
-
-<string name="app_name">Simple Chess Clock</string>
-<string name="checkbox">CheckBox</string>
-
-<string-array name="delayTypes">
-<item>None</item>
-<item>Fischer</item>
-<item>Bronstein</item>
-</string-array>
-
-<string-array name="delayVals">
-<item>None</item>
-<item>Fischer</item>
-<item>Bronstein</item>
-</string-array>
-
+  <string name="app_name" translatable="false">Simple Chess Clock</string>
+  <string name="pref_category_about">About</string>
+  <string name="pref_category_other">Other Options</string>
+  <string name="pref_category_time">Game Time</string>
+  <string name="pref_dialog_title_delay_length">Enter Time (seconds)</string>
+  <string name="pref_dialog_title_delay_type">Select Time Delay</string>
+  <string name="pref_dialog_title_starting_time">Enter Time (minutes)</string>
+  <string name="pref_summary_alert_ringtone">Set the ringtone to be played when time expires.</string>
+  <string name="pref_summary_delay_length">Set the amount of time used for time delays.</string>
+  <string name="pref_summary_delay_type">Set the time delay scheme to use during play.</string>
+  <string name="pref_summary_haptic_feedback">When enabled, the phone will vibrate slightly after button presses.</string>
+  <string name="pref_summary_haptic_feedback_off">Haptic feedback is disabled.</string>
+  <string name="pref_summary_haptic_feedback_on">Haptic feedback is enabled.</string>
+  <string name="pref_summary_starting_time">Set how much time each player starts with.</string>
+  <string name="pref_title_about">About Simple Chess Clock</string>
+  <string name="pref_title_alert_ringtone">Alert Ringtone</string>
+  <string name="pref_title_delay_length">Delay Length</string>
+  <string name="pref_title_delay_type">Delay Type</string>
+  <string name="pref_title_haptic_feedback">Haptic Feedback</string>
+  <string name="pref_title_starting_time">Game Time</string>
+  <string-array name="delay_types">
+    <item>None</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+  <string-array name="delay_vals" translatable="false">
+    <item>None</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
 </resources>

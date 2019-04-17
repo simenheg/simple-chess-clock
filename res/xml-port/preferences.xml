@@ -2,63 +2,65 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
   <PreferenceCategory
-      android:title="Game Time">
+      android:title="@string/pref_category_time">
     <EditTextPreference
         android:inputType="number"
-        android:dialogTitle="Enter Time (minutes)"
-        android:title="Starting Time"
-        android:summary="Set how much time each player starts with."
+        android:dialogTitle="@string/pref_dialog_title_starting_time"
+        android:title="@string/pref_title_starting_time"
+        android:summary="@string/pref_summary_starting_time"
         android:defaultValue="10"
         android:selectable="true"
         android:enabled="true"
         android:key="prefTime">
     </EditTextPreference>
     <ListPreference
-        android:entries="@array/delayTypes"
-        android:dialogTitle="Select Time Delay"
-        android:entryValues="@array/delayVals"
+        android:entries="@array/delay_types"
+        android:dialogTitle="@string/pref_dialog_title_delay_type"
+        android:entryValues="@array/delay_vals"
         android:selectable="true"
-        android:summary="Set the time delay scheme to use during play."
+        android:summary="@string/pref_summary_delay_type"
         android:enabled="true"
-        android:title="Delay Type"
+        android:title="@string/pref_title_delay_type"
         android:key="prefDelay"
         android:defaultValue="None">
     </ListPreference>
     <EditTextPreference
         android:inputType="number"
         android:key="prefDelayTime"
-        android:summary="Set the amount of time used for time delays."
-        android:title="Delay Length"
+        android:summary="@string/pref_summary_delay_length"
+        android:title="@string/pref_title_delay_length"
         android:enabled="true"
         android:defaultValue="0"
         android:selectable="true"
-        android:dialogTitle="Enter Time (seconds)">
+        android:dialogTitle="@string/pref_dialog_title_delay_length">
     </EditTextPreference>
   </PreferenceCategory>
   <PreferenceCategory
-      android:title="Other Options">
+      android:title="@string/pref_category_other">
     <RingtonePreference
         android:showSilent="true"
         android:enabled="true"
         android:ringtoneType="ringtone|notification|alarm|all"
         android:showDefault="true"
-        android:title="Alert Ringtone"
-        android:summary="Set the ringtone to be played when time expires."
+        android:title="@string/pref_title_alert_ringtone"
+        android:summary="@string/pref_summary_alert_ringtone"
         android:key="prefAlertSound">
     </RingtonePreference>
     <CheckBoxPreference
-        android:title="Haptic Feedback"
+        android:title="@string/pref_title_haptic_feedback"
         android:enabled="true"
         android:selectable="true"
         android:defaultValue="false"
-        android:summary="When enabled, the phone will vibrate slightly after button presses."
-        android:summaryOn="Haptic feedback is enabled."
-        android:summaryOff="Haptic feedback is disabled."
+        android:summary="@string/pref_summary_haptic_feedback"
+        android:summaryOn="@string/pref_summary_haptic_feedback_on"
+        android:summaryOff="@string/pref_summary_haptic_feedback_off"
         android:key="prefHaptic">
     </CheckBoxPreference>
   </PreferenceCategory>
   <PreferenceCategory
-      android:title="About">
-    <Preference android:key="about" android:title="About Simple Chess Clock" />
+      android:title="@string/pref_category_about">
+    <Preference
+        android:key="about"
+        android:title="@string/pref_title_about" />
   </PreferenceCategory>
 </PreferenceScreen>

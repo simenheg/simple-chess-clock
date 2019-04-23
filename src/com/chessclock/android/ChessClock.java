@@ -339,20 +339,24 @@ public class ChessClock extends Activity {
 	/** Creates and displays the "Reset Clocks" alert dialog */
 	private Dialog ResetDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Reset both clocks?")
-		       .setCancelable(false)
-		       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-                       setUpGame(true);
-                       onTheClock = 0;
-                       dialog.dismiss();
-		           }
-		       })
-		       .setNegativeButton("No", new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		                dialog.cancel();
-		           }
-		       });
+        builder.setMessage(R.string.dialog_message_reset)
+            .setCancelable(false)
+            .setPositiveButton(
+                R.string.dialog_button_yes,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        setUpGame(true);
+                        onTheClock = 0;
+                        dialog.dismiss();
+                    }
+                })
+            .setNegativeButton(
+                R.string.dialog_button_no,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
 		AlertDialog alert = builder.create();
 
 		return alert;

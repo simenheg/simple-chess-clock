@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name" translatable="false">Simple Chess Clock</string>
+  <string name="dialog_button_no">No</string>
+  <string name="dialog_button_yes">Yes</string>
+  <string name="dialog_message_about">Design/Coding: Carter Dewey &amp; Simen Heggestøyl\n\nSCC is free software licensed under the GNU GPLv3. You can view the GPLv3 at:\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nPortions of the app icon are licensed under the GFDL. You can view the GFDL at:\nhttps://www.gnu.org/copyleft/fdl.html\n\nThe in-app icons licensed under the Apache License 2.0. You can view the license at:\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nTo report bugs or view source code, visit:\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_reset">Reset both clocks?</string>
   <string name="pref_category_about">About</string>
   <string name="pref_category_other">Other Options</string>
   <string name="pref_category_time">Game Time</string>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="dialog_button_no">Nei</string>
+  <string name="dialog_button_yes">Ja</string>
+  <string name="dialog_message_about">Design/koding: Carter Dewey &amp; Simen Heggestøyl\n\nSCC er fri programvare lisensiert under GNU GPLv3. Du kan se GPLv3 på:\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nDeler av appens ikon er lisensiert under GFDL. Du kan se GFDL på:\nhttps://www.gnu.org/copyleft/fdl.html\n\nIkonene som brukes i appen er lisensiert under Apache License 2.0. Du kan se lisensen på:\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nFor å rapportere feil eller lese kildekoden, besøk:\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_reset">Tilbakestill begge klokkene?</string>
+  <string name="pref_category_about">Om</string>
+  <string name="pref_category_other">Andre innstillinger</string>
+  <string name="pref_category_time">Spilletid</string>
+  <string name="pref_dialog_title_delay_length">Angi tid (sekunder)</string>
+  <string name="pref_dialog_title_delay_type">Velg tilleggstid</string>
+  <string name="pref_dialog_title_starting_time">Angi tid (minutter)</string>
+  <string name="pref_summary_alert_ringtone">Velg en ringetone som spilles av når tiden er ute.</string>
+  <string name="pref_summary_delay_length">Velg hvor mye tid tillegg skal være på.</string>
+  <string name="pref_summary_delay_type">Velg hvilken type tilleggstid som skal brukes i spillet.</string>
+  <string name="pref_summary_haptic_feedback">Når på vil telefonen vibrere etter knappetrykk.</string>
+  <string name="pref_summary_haptic_feedback_off">Vibrasjon er av.</string>
+  <string name="pref_summary_haptic_feedback_on">Vibrasjon er på.</string>
+  <string name="pref_summary_starting_time">Velg hvor mye tid hver spiller starter med.</string>
+  <string name="pref_title_about">Om Simple Chess Clock</string>
+  <string name="pref_title_alert_ringtone">Varseltone</string>
+  <string name="pref_title_delay_length">Mengde tilleggstid</string>
+  <string name="pref_title_delay_type">Type tilleggstid</string>
+  <string name="pref_title_haptic_feedback">Vibrasjon</string>
+  <string name="pref_title_starting_time">Spilletid</string>
+  <string-array name="delay_types">
+    <item>Ingen</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+</resources>

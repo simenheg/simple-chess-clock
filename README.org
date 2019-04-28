@@ -23,6 +23,9 @@
    copyright.
 
 ** Changelog
+   v2.1.1 (4-28-2019)
+   - New translation: Norwegian Bokmål.
+
    v2.1.0 (4-14-2019)
    - Fixed an issue with clocks disappearing on Android 7.0 and above.
    - The minimum Android version was corrected to Android 5.0 and above, since

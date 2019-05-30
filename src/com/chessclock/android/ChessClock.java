@@ -346,7 +346,6 @@ public class ChessClock extends Activity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         setUpGame(true);
-                        onTheClock = 0;
                         dialog.dismiss();
                     }
                 })
@@ -378,12 +377,11 @@ public class ChessClock extends Activity {
          * received our delay.
          */
         onTheClock = 2;
-        if (savedOTC == 0) {
-			delayed = false;
-		} else {
-			savedOTC = 0;
-		}
-		
+        if (savedOTC == 0 || savedOTC == 1) {
+            delayed = false;
+        }
+        savedOTC = 0;
+
         p2.setTextColor(color(R.color.active_text));
         p1.setTextColor(color(R.color.inactive_text));
         l2.setBackgroundColor(color(R.color.highlight));
@@ -524,11 +522,10 @@ public class ChessClock extends Activity {
          * received our delay.
 		 */
         onTheClock = 1;
-        if (savedOTC == 0) {
-			delayed = false;
-		} else {
-			savedOTC = 0;
-		}
+        if (savedOTC == 0 || savedOTC == 2) {
+            delayed = false;
+        }
+        savedOTC = 0;
 
         p1.setTextColor(color(R.color.active_text));
         p2.setTextColor(color(R.color.inactive_text));
@@ -776,7 +773,11 @@ public class ChessClock extends Activity {
 		
 		Uri uri = Uri.parse(alertTone);
 		ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-		
+
+        onTheClock = 0;
+        savedOTC = 0;
+        delayed = false;
+
 		/** Set time equal to minutes * ms per minute */
 		t_P1 = time * 60000;
 		t_P2 = time * 60000;

@@ -23,6 +23,11 @@
    copyright.
 
 ** Changelog
+   v2.1.2 (5-30-2019)
+   - Fixed a bug causing player 1 to sometimes not receive the initial delay.
+   - Fixed a bug causing some delays to be skipped after resuming a paused
+     game.
+
    v2.1.1 (4-28-2019)
    - New translation: Norwegian Bokmål.
 

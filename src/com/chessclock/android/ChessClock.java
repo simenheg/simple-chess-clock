@@ -99,6 +99,7 @@ public class ChessClock extends Activity {
 	
 	/** booleans */
 	private boolean haptic = false;
+    private boolean blackBackground = false;
 	private boolean timeup = false;
 	private boolean prefmenu = false;
 	private boolean delayed = false;
@@ -334,6 +335,12 @@ public class ChessClock extends Activity {
 			// No reason to reload the clocks for this one
             setUpGame(false);
 		}
+
+        boolean new_bb = prefs.getBoolean("prefBlackBackground", false);
+        if (new_bb != blackBackground) {
+            // No reason to reload the clocks for this one
+            setUpGame(false);
+        }
 	}
 	
 	/** Creates and displays the "Reset Clocks" alert dialog */
@@ -732,7 +739,17 @@ public class ChessClock extends Activity {
         b2.setHapticFeedbackEnabled(haptic);
         pause.setHapticFeedbackEnabled(haptic);
         menu.setHapticFeedbackEnabled(haptic);
-        
+
+        /* Set the preferred backgroud color. */
+        blackBackground = prefs.getBoolean("prefBlackBackground", false);
+        if (blackBackground) {
+            b1.setBackgroundColor(color(R.color.bg_black));
+            b2.setBackgroundColor(color(R.color.bg_black));
+        } else {
+            b1.setBackgroundColor(color(R.color.bg_dark));
+            b2.setBackgroundColor(color(R.color.bg_dark));
+        }
+
         if (!resetClocks) {
             return;
         }

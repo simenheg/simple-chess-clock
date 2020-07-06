@@ -52,9 +52,15 @@
         android:selectable="true"
         android:defaultValue="false"
         android:summary="@string/pref_summary_haptic_feedback"
-        android:summaryOn="@string/pref_summary_haptic_feedback_on"
-        android:summaryOff="@string/pref_summary_haptic_feedback_off"
         android:key="prefHaptic">
+    </CheckBoxPreference>
+    <CheckBoxPreference
+        android:title="@string/pref_title_black_background"
+        android:enabled="true"
+        android:selectable="true"
+        android:defaultValue="false"
+        android:summary="@string/pref_summary_black_background"
+        android:key="prefBlackBackground">
     </CheckBoxPreference>
   </PreferenceCategory>
   <PreferenceCategory

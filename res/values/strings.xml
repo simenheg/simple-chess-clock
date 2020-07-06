@@ -14,15 +14,15 @@
   <string name="pref_summary_alert_ringtone">Set the ringtone to be played when time expires.</string>
   <string name="pref_summary_delay_length">Set the amount of time used for time delays.</string>
   <string name="pref_summary_delay_type">Set the time delay scheme to use during play.</string>
-  <string name="pref_summary_haptic_feedback">When enabled, the phone will vibrate slightly after button presses.</string>
-  <string name="pref_summary_haptic_feedback_off">Haptic feedback is disabled.</string>
-  <string name="pref_summary_haptic_feedback_on">Haptic feedback is enabled.</string>
+  <string name="pref_summary_haptic_feedback">Vibrate slightly on button presses.</string>
+  <string name="pref_summary_black_background">Saves power on OLED screens.</string>
   <string name="pref_summary_starting_time">Set how much time each player starts with.</string>
   <string name="pref_title_about">About Simple Chess Clock</string>
   <string name="pref_title_alert_ringtone">Alert Ringtone</string>
   <string name="pref_title_delay_length">Delay Length</string>
   <string name="pref_title_delay_type">Delay Type</string>
   <string name="pref_title_haptic_feedback">Haptic Feedback</string>
+  <string name="pref_title_black_background">Black Background</string>
   <string name="pref_title_starting_time">Game Time</string>
   <string-array name="delay_types">
     <item>None</item>

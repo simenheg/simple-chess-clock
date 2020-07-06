@@ -3,7 +3,7 @@
  * 
  * Implements the Preferences dialog.
  * 
- * Created: 6/23/2010
+ * Created: 2010-06-23
  * 
  * Author: Carter Dewey
  * 

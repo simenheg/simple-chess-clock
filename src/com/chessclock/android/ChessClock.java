@@ -3,7 +3,7 @@
  * 
  * Implements the main form/class for Chess Clock.
  * 
- * Created: 6/22/2010
+ * Created: 2010-06-22
  * 
  * Author: Carter Dewey
  * 

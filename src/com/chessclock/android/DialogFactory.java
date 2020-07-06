@@ -3,7 +3,7 @@
  * 
  * Creates the 'About' dialog.
  * 
- * Created: 7/3/2010
+ * Created: 2010-07-03
  * 
  * Author: Carter Dewey
  * 

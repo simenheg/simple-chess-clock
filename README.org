@@ -23,6 +23,10 @@
    copyright.
 
 ** Changelog
+   v2.2.0 (2020-07-06)
+   - Added an option to use a black background on the main game screen for
+     potential power savings with OLED screens.
+
    v2.1.2 (2019-05-30)
    - Fixed a bug causing player 1 to sometimes not receive the initial delay.
    - Fixed a bug causing some delays to be skipped after resuming a paused

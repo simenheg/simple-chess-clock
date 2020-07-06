@@ -65,8 +65,8 @@ public class ChessClock extends Activity {
 	/** Version info and debug tag constants */
 	public static final String TAG = "INFO";
 	public static final String V_MAJOR = "2";
-	public static final String V_MINOR = "1";
-	public static final String V_MINI = "2";
+	public static final String V_MINOR = "2";
+	public static final String V_MINI = "0";
 
 	/** Constants for the dialog windows */
 	private static final int RESET = 1;

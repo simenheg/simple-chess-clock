@@ -8,7 +8,7 @@
   "Issues" tab).
 
 ** Screenshot
-   [[file:screenshots/screenshot1.jpg]]
+   [[file:metadata/en-US/images/phoneScreenshots/1.jpg]]
 
 ** Modifying/Copying
    SCC is released under the GNU GPLv3, which can be found in the LICENSE

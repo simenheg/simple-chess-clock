@@ -1,0 +1,3 @@
+Simple Chess Clock is what its name implies: a chess clock (that’s simple!). It
+aims to be easy to use and easy to read, while also providing some reasonably
+expected features.

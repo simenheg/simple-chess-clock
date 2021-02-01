@@ -89,6 +89,10 @@ public class ChessClock extends Activity {
 	private Ringtone ringtone = null;
 	
 	/** ints/longs */
+
+    /**
+     * Time per player, in minutes.
+     */
 	private int time;
 	private int b_delay;
 	private long t_P1;
@@ -182,26 +186,31 @@ public class ChessClock extends Activity {
     	super.onDestroy();
     }
 	
-	/**
-	 * Formats the provided time to a readable string
-	 * @param time - time to format
-	 * @return str_time - formatted time (String)
-	 */
-	private String FormatTime(long time) {
-		int secondsLeft = (int)time / 1000;
-		int minutesLeft = secondsLeft / 60;
-	    secondsLeft     = secondsLeft % 60;
-	    
-	    String str_time;
-	    
-	    if (secondsLeft < 10) {
-	        str_time = "" + minutesLeft + ":0" + secondsLeft;
-	    } else {
-	        str_time = "" + minutesLeft + ":" + secondsLeft;            
-	    }
-	    
-	    return str_time;
-	}
+    /**
+     * Format the provided time to a readable string.
+     * @param t - time to format
+     */
+    private String formatTime(long t) {
+        int secondsLeft = (int)t / 1000;
+        int minutesLeft = secondsLeft / 60;
+        secondsLeft = secondsLeft % 60;
+
+        secondsLeft += 1;
+        if (secondsLeft == 60) {
+            minutesLeft += 1;
+            secondsLeft = 0;
+        } else if (t == 0) {
+            secondsLeft = 0;
+        } else if (t == time * 60000) {
+            secondsLeft -= 1;
+        }
+
+        if (secondsLeft < 10) {
+            return "" + minutesLeft + ":0" + secondsLeft;
+        }
+
+        return "" + minutesLeft + ":" + secondsLeft;
+    }
     
     public boolean onPrepareOptionsMenu(Menu menu) {
     	prefmenu = true;
@@ -379,6 +388,11 @@ public class ChessClock extends Activity {
             return;
         }
 
+        if (delay.equals(FISCHER) && (onTheClock == 1 || savedOTC == 1)) {
+            t_P1 += delay_time * 1000;
+            p1.setText(formatTime(t_P1));
+        }
+
         /**
          * Register that player 2's time is running now and that we haven't yet
          * received our delay.
@@ -395,25 +409,8 @@ public class ChessClock extends Activity {
         l1.setVisibility(View.INVISIBLE);
         l2.setVisibility(View.VISIBLE);
 		
-		if ( delay.equals(BRONSTEIN) ) {
-			int secondsLeft = (int) (t_P2 / 1000);
-			int minutesLeft = secondsLeft / 60;
-			secondsLeft     = secondsLeft % 60;
-			
-			secondsLeft += 1;
-			if ( secondsLeft == 60 ) {
-				minutesLeft += 1;
-				secondsLeft = 0;
-			} else if ( t_P2 == 0 ) {
-				secondsLeft = 0;
-			} else if ( t_P2 == time * 60000 ) {
-				secondsLeft -= 1;
-			}
-			if (secondsLeft < 10) {
-                p2.setText("" + minutesLeft + ":0" + secondsLeft);
-			} else {
-                p2.setText("" + minutesLeft + ":" + secondsLeft);
-			}
+        if (delay.equals(BRONSTEIN)) {
+            p2.setText(formatTime(t_P2));
 		}
 			   
 		Button pp = (Button)findViewById(R.id.Pause);
@@ -438,10 +435,7 @@ public class ChessClock extends Activity {
 			String delay_string = "";
 			
 			/** Check for delays and apply them */
-			if ( delay.equals(FISCHER) && !delayed ) {
-				delayed = true;
-				t_P1 += delay_time * 1000;
-			} else if ( delay.equals(BRONSTEIN) && !delayed ) {
+            if (delay.equals(BRONSTEIN) && !delayed) {
 				delayed = true;
 				b_delay = delay_time * 1000; //Deduct the first .1s;
 				t_P1 += 100; //We'll deduct this again shortly
@@ -524,6 +518,11 @@ public class ChessClock extends Activity {
 			return;
         }
 				 
+        if (delay.equals(FISCHER) && (onTheClock == 2 || savedOTC == 2)) {
+            t_P2 += delay_time * 1000;
+            p2.setText(formatTime(t_P2));
+        }
+
 		/** 
          * Register that player 1's time is running now and that we haven't yet
          * received our delay.
@@ -539,28 +538,11 @@ public class ChessClock extends Activity {
         l1.setBackgroundColor(color(R.color.highlight));
         l1.setVisibility(View.VISIBLE);
         l2.setVisibility(View.INVISIBLE);
-		
-		if ( delay.equals(BRONSTEIN) ) {
-			int secondsLeft = (int) (t_P1 / 1000);
-			int minutesLeft = secondsLeft / 60;
-			secondsLeft     = secondsLeft % 60;
-			
-			secondsLeft += 1;
-			if ( secondsLeft == 60 ) {
-				minutesLeft += 1;
-				secondsLeft = 0;
-			} else if ( t_P1 == 0 ) {
-				secondsLeft = 0;
-			} else if ( t_P1 == time * 60000 ) {
-				secondsLeft -= 1;
-			}
-			if (secondsLeft < 10) {
-                p1.setText("" + minutesLeft + ":0" + secondsLeft);
-			} else {
-                p1.setText("" + minutesLeft + ":" + secondsLeft);
-			}
-		}
-		
+
+        if (delay.equals(BRONSTEIN)) {
+            p1.setText(formatTime(t_P1));
+        }
+
 		Button pp = (Button)findViewById(R.id.Pause);
         pp.setBackgroundResource(R.drawable.pause_button);
 		
@@ -583,10 +565,7 @@ public class ChessClock extends Activity {
 			String delay_string = "";
 			
 			/** Check for delays and apply them */
-			if ( delay.equals(FISCHER) && !delayed ) {
-				delayed = true;
-				t_P2 += delay_time * 1000;
-			} else if ( delay.equals(BRONSTEIN) && !delayed ) {
+            if ( delay.equals(BRONSTEIN) && !delayed ) {
 				delayed = true;
 				b_delay = delay_time * 1000; //Deduct the first .1s;
 				t_P2 += 100; //We'll deduct this again shortly
@@ -800,8 +779,8 @@ public class ChessClock extends Activity {
 		t_P2 = time * 60000;
 
         /** Format and display the clocks */
-        p1.setText(FormatTime(t_P1));
-        p2.setText(FormatTime(t_P2));
+        p1.setText(formatTime(t_P1));
+        p2.setText(formatTime(t_P2));
         /** Register the click listeners */
         b1.setOnClickListener(P1ClickHandler);
         b2.setOnClickListener(P2ClickHandler);

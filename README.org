@@ -23,6 +23,9 @@
    copyright.
 
 ** Changelog
+   ?.?.? (TBD)
+   - Bronstein delay games with no initial time is now supported.
+
    v2.2.1 (2021-02-07)
    - With Fischer delay, the extra time is now added at the end of player
      turns, instead of at the beginning.

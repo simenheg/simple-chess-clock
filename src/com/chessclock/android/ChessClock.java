@@ -424,7 +424,16 @@ public class ChessClock extends Activity {
 		myHandler.removeCallbacks(mUpdateTimeTask2);
         myHandler.postDelayed(mUpdateTimeTask2, 100);
 	}
-		
+
+    /** Return true if out of time. */
+    private boolean outOfTime(long timeLeft) {
+        if (delay.equals(BRONSTEIN)) {
+            return timeLeft + b_delay == 0;
+        }
+
+        return timeLeft == 0;
+    }
+
 	/** Handles the "tick" event for Player 1's clock */
 	private Runnable mUpdateTimeTask = new Runnable() {
 		public void run() {
@@ -468,9 +477,8 @@ public class ChessClock extends Activity {
 			} else if ( timeLeft == time * 60000 ) {
 				secondsLeft -= 1;
 			}
-			
-			/** Did we run out of time? */
-			if ( timeLeft == 0 ) {
+
+            if (outOfTime(timeLeft)) {
 				timeup = true;
 				Button pp = (Button)findViewById(R.id.Pause);
                 View l1 = (View)findViewById(R.id.l_Player1);
@@ -598,9 +606,8 @@ public class ChessClock extends Activity {
 			} else if ( timeLeft == time * 60000 ) {
 				secondsLeft -= 1;
 			}
-			
-			/** Did we run out of time? */
-			if ( timeLeft == 0 ) {
+
+            if (outOfTime(timeLeft)) {
 				timeup = true;
 				Button pp = (Button)findViewById(R.id.Pause);
                 View l2 = (View)findViewById(R.id.l_Player2);

@@ -87,21 +87,19 @@ public class ChessClock extends Activity {
 	private String delay = NO_DELAY;
 	private String alertTone;
 	private Ringtone ringtone = null;
-	
-	/** ints/longs */
 
-    /**
-     * Time per player, in minutes.
-     */
-	private int time;
+    /** Time per player, in minutes. */
+    private int initTime1 = 10;
+    private int initTime2 = 10;
+    private boolean differentInitTime = false;
+
 	private int b_delay;
 	private long t_P1;
 	private long t_P2;
 	private int delay_time;
 	private int onTheClock = 0;
 	private int savedOTC = 0;
-	
-	/** booleans */
+
 	private boolean haptic = false;
     private boolean blackBackground = false;
 	private boolean timeup = false;
@@ -185,12 +183,20 @@ public class ChessClock extends Activity {
     	}
     	super.onDestroy();
     }
-	
+
+    /** Return the init time for a player based on the preferences. */
+    private int initTime(int player) {
+        return differentInitTime
+            ? player == 1 ? initTime1 : initTime2
+            : initTime1;
+    }
+
     /**
      * Format the provided time to a readable string.
      * @param t - time to format
+     * @param initTime - initial game time
      */
-    private String formatTime(long t) {
+    private String formatTime(long t, int initTime) {
         int secondsLeft = (int)t / 1000;
         int minutesLeft = secondsLeft / 60;
         secondsLeft = secondsLeft % 60;
@@ -201,7 +207,7 @@ public class ChessClock extends Activity {
             secondsLeft = 0;
         } else if (t == 0) {
             secondsLeft = 0;
-        } else if (t == time * 60000) {
+        } else if (t == initTime * 60000) {
             secondsLeft -= 1;
         }
 
@@ -283,7 +289,24 @@ public class ChessClock extends Activity {
 		Intent prefsActivity = new Intent(ChessClock.this, Prefs.class);
 		startActivity(prefsActivity);
 	}
-	
+
+    /** Return an integer preference. */
+    private int getIntPref(String pref, int fallback) {
+        SharedPreferences prefs = PreferenceManager
+            .getDefaultSharedPreferences(this);
+
+        try {
+            return Integer.parseInt(
+                prefs.getString(pref, Integer.toString(fallback))
+            );
+        } catch (Exception ex) {
+            Editor e = prefs.edit();
+            e.putString(pref, Integer.toString(fallback));
+            e.commit();
+            return fallback;
+        }
+    }
+
 	/** 
 	 * Checks for changes to the current preferences. We only want
 	 * to re-create the game if something has been changed, so we
@@ -307,38 +330,22 @@ public class ChessClock extends Activity {
 		if ( new_delay != delay ) {
             setUpGame(true);
 		}
-		
-		/** Check for a new game time setting */
-		int new_time;
-		
-		try {
-			new_time = Integer.parseInt( prefs.getString("prefTime", "10") );
-		} catch (Exception ex) {
-			new_time = 10;
-			Editor e = prefs.edit();
-			e.putString("prefTime", "10");
-			e.commit();
-		}
-		
-		if ( new_time != time ) {
+
+        /** Check for new game time settings. */
+        if (getIntPref("prefInitTime1", 10) != initTime1
+              || getIntPref("prefInitTime2", 10) != initTime2) {
             setUpGame(true);
-		}
-		
-		/** Check for a new delay time */
-		int new_delay_time;
-		try {
-			new_delay_time = Integer.parseInt( prefs.getString("prefDelayTime", "0" ) );
-		} catch (Exception ex) {
-			new_delay_time = 0;
-			Editor e = prefs.edit();
-			e.putString("prefDelayTime", "0");
-			e.commit();
-		}
-		
-		if ( new_delay_time != delay_time ) {
+        }
+
+        if (prefs.getBoolean("prefDifferentInitTime", false) != differentInitTime) {
             setUpGame(true);
-		}
-		
+        }
+
+        /** Check for a new delay time. */
+        if (getIntPref("prefDelayTime", 0) != delay_time) {
+            setUpGame(true);
+        }
+
 		boolean new_haptic = prefs.getBoolean("prefHaptic", false);
 		if ( new_haptic != haptic ) {
 			// No reason to reload the clocks for this one
@@ -390,7 +397,7 @@ public class ChessClock extends Activity {
 
         if (delay.equals(FISCHER) && (onTheClock == 1 || savedOTC == 1)) {
             t_P1 += delay_time * 1000;
-            p1.setText(formatTime(t_P1));
+            p1.setText(formatTime(t_P1, initTime(1)));
         }
 
         /**
@@ -410,7 +417,7 @@ public class ChessClock extends Activity {
         l2.setVisibility(View.VISIBLE);
 		
         if (delay.equals(BRONSTEIN)) {
-            p2.setText(formatTime(t_P2));
+            p2.setText(formatTime(t_P2, initTime(2)));
 		}
 			   
 		Button pp = (Button)findViewById(R.id.Pause);
@@ -467,16 +474,16 @@ public class ChessClock extends Activity {
 			int secondsLeft = (int) (timeLeft / 1000);
 			int minutesLeft = secondsLeft / 60;
 			secondsLeft     = secondsLeft % 60;
-			
-			secondsLeft += 1;
-			if ( secondsLeft == 60 ) {
-				minutesLeft += 1;
-				secondsLeft = 0;
-			} else if ( timeLeft == 0 ) {
-				secondsLeft = 0;
-			} else if ( timeLeft == time * 60000 ) {
-				secondsLeft -= 1;
-			}
+
+            secondsLeft += 1;
+            if (secondsLeft == 60) {
+                minutesLeft += 1;
+                secondsLeft = 0;
+            } else if (timeLeft == 0) {
+                secondsLeft = 0;
+            } else if (timeLeft == initTime(1) * 60000) {
+                secondsLeft -= 1;
+            }
 
             if (outOfTime(timeLeft)) {
 				timeup = true;
@@ -528,7 +535,7 @@ public class ChessClock extends Activity {
 				 
         if (delay.equals(FISCHER) && (onTheClock == 2 || savedOTC == 2)) {
             t_P2 += delay_time * 1000;
-            p2.setText(formatTime(t_P2));
+            p2.setText(formatTime(t_P2, initTime(2)));
         }
 
 		/** 
@@ -548,7 +555,7 @@ public class ChessClock extends Activity {
         l2.setVisibility(View.INVISIBLE);
 
         if (delay.equals(BRONSTEIN)) {
-            p1.setText(formatTime(t_P1));
+            p1.setText(formatTime(t_P1, initTime(1)));
         }
 
 		Button pp = (Button)findViewById(R.id.Pause);
@@ -596,16 +603,16 @@ public class ChessClock extends Activity {
 			int secondsLeft = (int) (timeLeft / 1000);
 			int minutesLeft = secondsLeft / 60;
 			secondsLeft     = secondsLeft % 60;
-			
-			secondsLeft += 1;
-			if ( secondsLeft == 60 ) {
-				minutesLeft += 1;
-				secondsLeft = 0;
-			} else if ( timeLeft == 0 ) {
-				secondsLeft = 0;
-			} else if ( timeLeft == time * 60000 ) {
-				secondsLeft -= 1;
-			}
+
+            secondsLeft += 1;
+            if (secondsLeft == 60) {
+                minutesLeft += 1;
+                secondsLeft = 0;
+            } else if (timeLeft == 0) {
+                secondsLeft = 0;
+            } else if (timeLeft == initTime(2) * 60000) {
+                secondsLeft -= 1;
+            }
 
             if (outOfTime(timeLeft)) {
 				timeup = true;
@@ -747,25 +754,12 @@ public class ChessClock extends Activity {
 			e.putString("prefDelay", "None");
 			e.commit();
 		}
-		
-		try {
-			time = Integer.parseInt( prefs.getString("prefTime", "10") );	
-		} catch (Exception ex) {
-			time = 10;
-			Editor e = prefs.edit();
-			e.putString("prefTime", "10");
-			e.commit();
-		}
-		
-		try {
-			delay_time = Integer.parseInt( prefs.getString("prefDelayTime", "0") );
-		} catch (Exception ex) {
-			delay_time = 0;
-			Editor e = prefs.edit();
-			e.putString("prefDelayTime", "0");
-			e.commit();
-		}
-		
+
+        differentInitTime = prefs.getBoolean("prefDifferentInitTime", false);
+        initTime1 = getIntPref("prefInitTime1", 10);
+        initTime2 = getIntPref("prefInitTime2", 10);
+        delay_time = getIntPref("prefDelayTime", 0);
+
 		alertTone = prefs.getString("prefAlertSound", Settings.System.DEFAULT_RINGTONE_URI.toString());		
 		if (alertTone.equals("")) {
 			alertTone = Settings.System.DEFAULT_RINGTONE_URI.toString();
@@ -781,13 +775,13 @@ public class ChessClock extends Activity {
         savedOTC = 0;
         delayed = false;
 
-		/** Set time equal to minutes * ms per minute */
-		t_P1 = time * 60000;
-		t_P2 = time * 60000;
+        /** Set time equal to minutes * ms per minute. */
+        t_P1 = initTime(1) * 60000;
+        t_P2 = initTime(2) * 60000;
 
         /** Format and display the clocks */
-        p1.setText(formatTime(t_P1));
-        p2.setText(formatTime(t_P2));
+        p1.setText(formatTime(t_P1, initTime(1)));
+        p2.setText(formatTime(t_P2, initTime(2)));
         /** Register the click listeners */
         b1.setOnClickListener(P1ClickHandler);
         b2.setOnClickListener(P2ClickHandler);

@@ -1,3 +1,6 @@
+*** ?.?.? (TBD)
+    - Players can now have different initial game time.
+
 *** 2.3.0 (2021-05-28)
     - Bronstein delay games with no initial time is now supported.
 

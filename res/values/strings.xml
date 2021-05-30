@@ -17,6 +17,8 @@
   <string name="pref_summary_haptic_feedback">Vibrate slightly on button presses.</string>
   <string name="pref_summary_black_background">Saves power on OLED screens.</string>
   <string name="pref_summary_starting_time">Set how much time each player starts with.</string>
+  <string name="pref_summary_starting_time_2">Set how much time Player 2 starts with.</string>
+  <string name="pref_summary_different_starting_time">Use a different game time for each player.</string>
   <string name="pref_title_about">About Simple Chess Clock</string>
   <string name="pref_title_alert_ringtone">Alert Ringtone</string>
   <string name="pref_title_delay_length">Delay Length</string>
@@ -24,6 +26,8 @@
   <string name="pref_title_haptic_feedback">Haptic Feedback</string>
   <string name="pref_title_black_background">Black Background</string>
   <string name="pref_title_starting_time">Game Time</string>
+  <string name="pref_title_starting_time_2">Game Time (Player 2)</string>
+  <string name="pref_title_different_starting_time">Different Game Time</string>
   <string-array name="delay_types">
     <item>None</item>
     <item>Fischer</item>

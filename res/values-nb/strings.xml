@@ -16,6 +16,8 @@
   <string name="pref_summary_haptic_feedback">Vibrer ved knappetrykk.</string>
   <string name="pref_summary_black_background">Sparer strøm på OLED-skjermer.</string>
   <string name="pref_summary_starting_time">Velg hvor mye tid hver spiller starter med.</string>
+  <string name="pref_summary_starting_time_2">Velg hvor mye tid spiller 2 starter med.</string>
+  <string name="pref_summary_different_starting_time">Bruk ulik spilltid per spiller.</string>
   <string name="pref_title_about">Om Simple Chess Clock</string>
   <string name="pref_title_alert_ringtone">Varseltone</string>
   <string name="pref_title_delay_length">Mengde tilleggstid</string>
@@ -23,6 +25,8 @@
   <string name="pref_title_haptic_feedback">Vibrasjon</string>
   <string name="pref_title_black_background">Sort bakgrunn</string>
   <string name="pref_title_starting_time">Spilletid</string>
+  <string name="pref_title_starting_time_2">Spilletid (spiller 2)</string>
+  <string name="pref_title_different_starting_time">Ulik spilletid</string>
   <string-array name="delay_types">
     <item>Ingen</item>
     <item>Fischer</item>

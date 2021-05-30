@@ -11,7 +11,26 @@
         android:defaultValue="10"
         android:selectable="true"
         android:enabled="true"
-        android:key="prefTime">
+        android:key="prefInitTime1">
+    </EditTextPreference>
+    <CheckBoxPreference
+        android:title="@string/pref_title_different_starting_time"
+        android:enabled="true"
+        android:selectable="true"
+        android:defaultValue="false"
+        android:summary="@string/pref_summary_different_starting_time"
+        android:key="prefDifferentInitTime">
+    </CheckBoxPreference>
+    <EditTextPreference
+        android:inputType="number"
+        android:dialogTitle="@string/pref_dialog_title_starting_time"
+        android:title="@string/pref_title_starting_time_2"
+        android:summary="@string/pref_summary_starting_time_2"
+        android:defaultValue="10"
+        android:selectable="true"
+        android:enabled="true"
+        android:dependency="prefDifferentInitTime"
+        android:key="prefInitTime2">
     </EditTextPreference>
     <ListPreference
         android:entries="@array/delay_types"

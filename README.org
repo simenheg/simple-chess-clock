@@ -23,6 +23,9 @@
    copyright.
 
 ** Changelog
+*** ?.?.? (TBD)
+    - Players can now have different initial game time.
+
 *** 2.3.0 (2021-05-28)
     - Bronstein delay games with no initial time is now supported.
 
@@ -38,8 +41,5 @@
     - Fixed a bug causing player 1 to sometimes not receive the initial delay.
     - Fixed a bug causing some delays to be skipped after resuming a paused
       game.
-
-*** 2.1.1 (2019-04-28)
-    - New translation: Norwegian Bokmål.
 
     [[NEWS.org][View full changelog]]

@@ -1,4 +1,4 @@
-*** ?.?.? (TBD)
+*** 2.4.0 (2021-05-30)
     - Players can now have different initial game time.
 
 *** 2.3.0 (2021-05-28)

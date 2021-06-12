@@ -23,6 +23,9 @@
    copyright.
 
 ** Changelog
+*** 2.4.1 (2021-06-12)
+    - Fixed the pause button for Bronstein delay games with no initial time.
+
 *** 2.4.0 (2021-05-30)
     - Players can now have different initial game time.
 
@@ -36,10 +39,5 @@
 *** 2.2.0 (2020-07-06)
     - Added an option to use a black background on the main game screen for
       potential power savings with OLED screens.
-
-*** 2.1.2 (2019-05-30)
-    - Fixed a bug causing player 1 to sometimes not receive the initial delay.
-    - Fixed a bug causing some delays to be skipped after resuming a paused
-      game.
 
     [[NEWS.org][View full changelog]]

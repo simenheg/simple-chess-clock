@@ -687,7 +687,7 @@ public class ChessClock extends Activity {
 		Button pp = (Button)findViewById(R.id.Pause);
 
         /** Figure out if we need to pause or reset. */
-        if (onTheClock == 0 || t_P1 == 0 || t_P2 == 0) {
+        if (onTheClock == 0 || outOfTime(t_P1) || outOfTime(t_P2)) {
             Log.v(TAG, "Info: Resetting.");
             showDialog(RESET);
         } else {

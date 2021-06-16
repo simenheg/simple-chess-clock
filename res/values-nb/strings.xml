@@ -7,29 +7,38 @@
   <string name="pref_category_about">Om</string>
   <string name="pref_category_other">Andre innstillinger</string>
   <string name="pref_category_time">Spilletid</string>
-  <string name="pref_dialog_title_delay_length">Angi tid (sekunder)</string>
+  <string name="pref_dialog_title_enter_time">Angi tid</string>
   <string name="pref_dialog_title_delay_type">Velg tilleggstid</string>
-  <string name="pref_dialog_title_starting_time">Angi tid (minutter)</string>
+  <string name="pref_dialog_title_time_units">Velg tidsenhet</string>
   <string name="pref_summary_alert_ringtone">Velg en ringetone som spilles av når tiden er ute.</string>
   <string name="pref_summary_delay_length">Velg hvor mye tid tillegg skal være på.</string>
   <string name="pref_summary_delay_type">Velg hvilken type tilleggstid som skal brukes i spillet.</string>
+  <string name="pref_summary_delay_length_units">Velg tidsenheten som tilleggstiden angis i.</string>
   <string name="pref_summary_haptic_feedback">Vibrer ved knappetrykk.</string>
   <string name="pref_summary_black_background">Sparer strøm på OLED-skjermer.</string>
   <string name="pref_summary_starting_time">Velg hvor mye tid hver spiller starter med.</string>
   <string name="pref_summary_starting_time_2">Velg hvor mye tid spiller 2 starter med.</string>
+  <string name="pref_summary_starting_time_units">Velg tidsenheten som spilletiden angis i.</string>
   <string name="pref_summary_different_starting_time">Bruk ulik spilltid per spiller.</string>
   <string name="pref_title_about">Om Simple Chess Clock</string>
   <string name="pref_title_alert_ringtone">Varseltone</string>
   <string name="pref_title_delay_length">Mengde tilleggstid</string>
   <string name="pref_title_delay_type">Type tilleggstid</string>
+  <string name="pref_title_delay_length_units">Tidsenhet for tilleggstid</string>
   <string name="pref_title_haptic_feedback">Vibrasjon</string>
   <string name="pref_title_black_background">Sort bakgrunn</string>
   <string name="pref_title_starting_time">Spilletid</string>
   <string name="pref_title_starting_time_2">Spilletid (spiller 2)</string>
+  <string name="pref_title_starting_time_units">Tidsenhet for spilletid</string>
   <string name="pref_title_different_starting_time">Ulik spilletid</string>
   <string-array name="delay_types">
     <item>Ingen</item>
     <item>Fischer</item>
     <item>Bronstein</item>
+  </string-array>
+  <string-array name="time_units">
+      <item>Sekunder</item>
+      <item>Minutter</item>
+      <item>Timer</item>
   </string-array>
 </resources>

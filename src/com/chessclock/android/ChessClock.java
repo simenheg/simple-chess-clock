@@ -75,6 +75,11 @@ public class ChessClock extends Activity {
 	private static String NO_DELAY = "None";
 	private static String FISCHER = "Fischer";
 	private static String BRONSTEIN = "Bronstein";
+
+    /** Time unit values */
+    private static String HOURS = "Hours";
+    private static String MINUTES = "Minutes";
+    private static String SECONDS = "Seconds";
 	
 	/**-----------------------------------
 	 *     CHESSCLOCK CLASS MEMBERS
@@ -87,8 +92,10 @@ public class ChessClock extends Activity {
 	private String delay = NO_DELAY;
 	private String alertTone;
 	private Ringtone ringtone = null;
+    private String initTimeUnits = MINUTES;
+    private String delayTimeUnits = SECONDS;
 
-    /** Time per player, in minutes. */
+    /** Time per player, in initTimeUnits. */
     private int initTime1 = 10;
     private int initTime2 = 10;
     private boolean differentInitTime = false;
@@ -191,12 +198,25 @@ public class ChessClock extends Activity {
             : initTime1;
     }
 
+    /** Return time in milliseconds based on the specified unit. */
+    private int toMillis(int time, String timeUnit) {
+        if (timeUnit.equals(HOURS)) {
+            return time * 60 * 60 * 1000;
+        } else if (timeUnit.equals(MINUTES)) {
+            return time * 60 * 1000;
+        } else if (timeUnit.equals(SECONDS)) {
+            return time * 1000;
+        } else {
+            throw new java.lang.RuntimeException("Invalid timeUnit: " + timeUnit);
+        }
+    }
+
     /**
      * Format the provided time to a readable string.
      * @param t - time to format
      * @param initTime - initial game time
      */
-    private String formatTime(long t, int initTime) {
+    private String formatTime(long t, int initTime, String initTimeUnits) {
         int secondsLeft = (int)t / 1000;
         int minutesLeft = secondsLeft / 60;
         secondsLeft = secondsLeft % 60;
@@ -207,7 +227,7 @@ public class ChessClock extends Activity {
             secondsLeft = 0;
         } else if (t == 0) {
             secondsLeft = 0;
-        } else if (t == initTime * 60000) {
+        } else if (t == toMillis(initTime, initTimeUnits)) {
             secondsLeft -= 1;
         }
 
@@ -318,20 +338,11 @@ public class ChessClock extends Activity {
 		
 		alertTone = prefs.getString("prefAlertSound", Settings.System.DEFAULT_RINGTONE_URI.toString());
 		
-		/** Check for a new delay style */
-		String new_delay = prefs.getString("prefDelay","None");
-		if (new_delay.equals("")) {
-			new_delay = "None";
-			Editor e = prefs.edit();
-			e.putString("prefDelay", "None");
-			e.commit();
-		}
-		
-		if ( new_delay != delay ) {
-            setUpGame(true);
-		}
-
         /** Check for new game time settings. */
+        if (!prefs.getString("prefInitTimeUnits", MINUTES).equals(initTimeUnits)) {
+            setUpGame(true);
+        };
+
         if (getIntPref("prefInitTime1", 10) != initTime1
               || getIntPref("prefInitTime2", 10) != initTime2) {
             setUpGame(true);
@@ -341,7 +352,15 @@ public class ChessClock extends Activity {
             setUpGame(true);
         }
 
-        /** Check for a new delay time. */
+        /** Check for new delay settings. */
+        if (!prefs.getString("prefDelay", NO_DELAY).equals(delay)){
+            setUpGame(true);
+        }
+
+        if (!prefs.getString("prefDelayTimeUnits", MINUTES).equals(delayTimeUnits)) {
+            setUpGame(true);
+        };
+
         if (getIntPref("prefDelayTime", 0) != delay_time) {
             setUpGame(true);
         }
@@ -396,8 +415,8 @@ public class ChessClock extends Activity {
         }
 
         if (delay.equals(FISCHER) && (onTheClock == 1 || savedOTC == 1)) {
-            t_P1 += delay_time * 1000;
-            p1.setText(formatTime(t_P1, initTime(1)));
+            t_P1 += toMillis(delay_time, delayTimeUnits);
+            p1.setText(formatTime(t_P1, initTime(1), initTimeUnits));
         }
 
         /**
@@ -417,7 +436,7 @@ public class ChessClock extends Activity {
         l2.setVisibility(View.VISIBLE);
 		
         if (delay.equals(BRONSTEIN)) {
-            p2.setText(formatTime(t_P2, initTime(2)));
+            p2.setText(formatTime(t_P2, initTime(2), initTimeUnits));
 		}
 			   
 		Button pp = (Button)findViewById(R.id.Pause);
@@ -453,7 +472,7 @@ public class ChessClock extends Activity {
 			/** Check for delays and apply them */
             if (delay.equals(BRONSTEIN) && !delayed) {
 				delayed = true;
-				b_delay = delay_time * 1000; //Deduct the first .1s;
+				b_delay = toMillis(delay_time, delayTimeUnits);
 				t_P1 += 100; //We'll deduct this again shortly
 				delay_string = "+" + (b_delay / 1000 );
 			} else if ( delay.equals(BRONSTEIN) && delayed ) {
@@ -481,7 +500,7 @@ public class ChessClock extends Activity {
                 secondsLeft = 0;
             } else if (timeLeft == 0) {
                 secondsLeft = 0;
-            } else if (timeLeft == initTime(1) * 60000) {
+            } else if (timeLeft == toMillis(initTime(1), initTimeUnits)) {
                 secondsLeft -= 1;
             }
 
@@ -534,8 +553,8 @@ public class ChessClock extends Activity {
         }
 				 
         if (delay.equals(FISCHER) && (onTheClock == 2 || savedOTC == 2)) {
-            t_P2 += delay_time * 1000;
-            p2.setText(formatTime(t_P2, initTime(2)));
+            t_P2 += toMillis(delay_time, delayTimeUnits);
+            p2.setText(formatTime(t_P2, initTime(2), initTimeUnits));
         }
 
 		/** 
@@ -555,7 +574,7 @@ public class ChessClock extends Activity {
         l2.setVisibility(View.INVISIBLE);
 
         if (delay.equals(BRONSTEIN)) {
-            p1.setText(formatTime(t_P1, initTime(1)));
+            p1.setText(formatTime(t_P1, initTime(1), initTimeUnits));
         }
 
 		Button pp = (Button)findViewById(R.id.Pause);
@@ -582,7 +601,7 @@ public class ChessClock extends Activity {
 			/** Check for delays and apply them */
             if ( delay.equals(BRONSTEIN) && !delayed ) {
 				delayed = true;
-				b_delay = delay_time * 1000; //Deduct the first .1s;
+				b_delay = toMillis(delay_time, delayTimeUnits);
 				t_P2 += 100; //We'll deduct this again shortly
 				delay_string = "+" + ( b_delay / 1000 );
 			} else if ( delay.equals(BRONSTEIN) && delayed ) {
@@ -610,7 +629,7 @@ public class ChessClock extends Activity {
                 secondsLeft = 0;
             } else if (timeLeft == 0) {
                 secondsLeft = 0;
-            } else if (timeLeft == initTime(2) * 60000) {
+            } else if (timeLeft == toMillis(initTime(2), initTimeUnits)) {
                 secondsLeft -= 1;
             }
 
@@ -747,13 +766,9 @@ public class ChessClock extends Activity {
             return;
         }
 	    
-		delay = prefs.getString("prefDelay","None");
-		if ( delay.equals("")) {
-			delay = "None";
-			Editor e = prefs.edit();
-			e.putString("prefDelay", "None");
-			e.commit();
-		}
+        delay = prefs.getString("prefDelay", NO_DELAY);
+        initTimeUnits = prefs.getString("prefInitTimeUnits", MINUTES);
+        delayTimeUnits = prefs.getString("prefDelayTimeUnits", SECONDS);
 
         differentInitTime = prefs.getBoolean("prefDifferentInitTime", false);
         initTime1 = getIntPref("prefInitTime1", 10);
@@ -775,13 +790,12 @@ public class ChessClock extends Activity {
         savedOTC = 0;
         delayed = false;
 
-        /** Set time equal to minutes * ms per minute. */
-        t_P1 = initTime(1) * 60000;
-        t_P2 = initTime(2) * 60000;
+        t_P1 = toMillis(initTime(1), initTimeUnits);
+        t_P2 = toMillis(initTime(2), initTimeUnits);
 
         /** Format and display the clocks */
-        p1.setText(formatTime(t_P1, initTime(1)));
-        p2.setText(formatTime(t_P2, initTime(2)));
+        p1.setText(formatTime(t_P1, initTime(1), initTimeUnits));
+        p2.setText(formatTime(t_P2, initTime(2), initTimeUnits));
         /** Register the click listeners */
         b1.setOnClickListener(P1ClickHandler);
         b2.setOnClickListener(P2ClickHandler);

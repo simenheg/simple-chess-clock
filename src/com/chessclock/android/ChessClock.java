@@ -57,6 +57,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.Math;
+
 public class ChessClock extends Activity {
 	
 	/**-----------------------------------
@@ -70,7 +72,16 @@ public class ChessClock extends Activity {
 
 	/** Constants for the dialog windows */
 	private static final int RESET = 1;
-	
+
+    /** Clock tick length, in milliseconds */
+    private static int TICK_LENGTH = 100;
+
+    /** If showDeciseconds is enabled,
+     * display deciseconds for times shorter than this
+     * threshold, in seconds.
+     */
+    private static int SHOW_DECISECONDS_THRESHOLD = 10;
+
 	/** Time control values */
 	private static String NO_DELAY = "None";
 	private static String FISCHER = "Fischer";
@@ -80,7 +91,7 @@ public class ChessClock extends Activity {
     private static String HOURS = "Hours";
     private static String MINUTES = "Minutes";
     private static String SECONDS = "Seconds";
-	
+
 	/**-----------------------------------
 	 *     CHESSCLOCK CLASS MEMBERS
 	 *-----------------------------------*/
@@ -112,6 +123,7 @@ public class ChessClock extends Activity {
 	private boolean timeup = false;
 	private boolean prefmenu = false;
 	private boolean delayed = false;
+    private boolean showDeciseconds = true;
 
     /** Provide haptic feedback to the user of the given view. */
     private void performHapticFeedback(View v) {
@@ -211,33 +223,50 @@ public class ChessClock extends Activity {
         }
     }
 
+    // Set the given clock to the given time + delay
+    private void setClock(TextView clock, long time, long bronsteinDelay) {
+        String delayTime = formatTime(bronsteinDelay, true);
+        String delayString = (bronsteinDelay > 0) ? ("\n+" + delayTime) : "";
+        clock.setText(formatTime(time) + delayString);
+    }
+
+    private void setClock(TextView clock, long time) {
+        setClock(clock, time, 0);
+    }
+
     /**
      * Format the provided time to a readable string.
-     * @param t - time to format
-     * @param initTime - initial game time
+     * @param t - time, in milliseconds
+     * @param compact - whether or not to use compact format
      */
-    private String formatTime(long t, int initTime, String initTimeUnits) {
-        int secondsLeft = (int)t / 1000;
-        int minutesLeft = secondsLeft / 60;
-        secondsLeft = secondsLeft % 60;
-
-        secondsLeft += 1;
-        if (secondsLeft == 60) {
-            minutesLeft += 1;
-            secondsLeft = 0;
-        } else if (t == 0) {
-            secondsLeft = 0;
-        } else if (t == toMillis(initTime, initTimeUnits)) {
-            secondsLeft -= 1;
+    private String formatTime(long t, boolean compact) {
+        //If not displaying deciseconds, round up to the nearest second.
+        if (!showDeciseconds) {
+            t = (long)Math.ceil(t / 1000.0) * 1000;
         }
 
-        if (secondsLeft < 10) {
-            return "" + minutesLeft + ":0" + secondsLeft;
-        }
+        int deciseconds = (int)(t / 100) % 10;
+        int seconds = (int)(t / 1000) % 60;
+        int minutes = (int)(t / 1000 / 60) % 60;
+        int hours = (int)(t / 1000 / 60 / 60);
 
-        return "" + minutesLeft + ":" + secondsLeft;
+        if (hours > 0) {
+            return String.format("%d:%02d:%02d", hours, minutes, seconds);
+        } else if (minutes > 0) {
+            return String.format("%d:%02d", minutes, seconds);
+        } else if (showDeciseconds && (seconds < SHOW_DECISECONDS_THRESHOLD)) {
+            String format = compact ? "%d.%d" : "0:%02d.%d";
+            return String.format(format, seconds, deciseconds);
+        } else {
+            String format = compact ? "%d": "0:%02d";
+            return String.format(format, seconds);
+        }
     }
-    
+
+    private String formatTime(long t) {
+        return formatTime(t, false);
+    }
+
     public boolean onPrepareOptionsMenu(Menu menu) {
     	prefmenu = true;
     	if ( null != ringtone ) {
@@ -357,7 +386,7 @@ public class ChessClock extends Activity {
             setUpGame(true);
         }
 
-        if (!prefs.getString("prefDelayTimeUnits", MINUTES).equals(delayTimeUnits)) {
+        if (!prefs.getString("prefDelayTimeUnits", SECONDS).equals(delayTimeUnits)) {
             setUpGame(true);
         };
 
@@ -376,7 +405,11 @@ public class ChessClock extends Activity {
             // No reason to reload the clocks for this one
             setUpGame(false);
         }
-	}
+
+        if (prefs.getBoolean("prefShowDeciseconds", true) != showDeciseconds) {
+            setUpGame(false);
+        }
+    }
 	
 	/** Creates and displays the "Reset Clocks" alert dialog */
 	private Dialog ResetDialog() {
@@ -405,28 +438,29 @@ public class ChessClock extends Activity {
 	
 	/** Called when P1ClickHandler registers a click/touch event */
 	private void P1Click() {
+        if (onTheClock == 2) {
+            return;
+        }
+
         TextView p1 = (TextView)findViewById(R.id.t_Player1);
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
         View l1 = (View)findViewById(R.id.l_Player1);
         View l2 = (View)findViewById(R.id.l_Player2);
 
-        if (onTheClock == 2) {
-            return;
-        }
-
         if (delay.equals(FISCHER) && (onTheClock == 1 || savedOTC == 1)) {
             t_P1 += toMillis(delay_time, delayTimeUnits);
-            p1.setText(formatTime(t_P1, initTime(1), initTimeUnits));
+            setClock(p1, t_P1);
         }
 
-        /**
-         * Register that player 2's time is running now and that we haven't yet
-         * received our delay.
-         */
-        onTheClock = 2;
-        if (savedOTC == 0 || savedOTC == 1) {
-            delayed = false;
+        if (delay.equals(BRONSTEIN)) {
+            setClock(p1, t_P1);
+            setClock(p2, t_P2, (savedOTC == 2) ? b_delay : toMillis(delay_time, delayTimeUnits));
         }
+
+        // Register that player 2's time is running now
+        onTheClock = 2;
+        // Unless we're unpausing player 2, reset their delayed status
+        delayed = delayed && (savedOTC == 2);
         savedOTC = 0;
 
         p2.setTextColor(color(R.color.active_text));
@@ -435,20 +469,16 @@ public class ChessClock extends Activity {
         l1.setVisibility(View.INVISIBLE);
         l2.setVisibility(View.VISIBLE);
 		
-        if (delay.equals(BRONSTEIN)) {
-            p2.setText(formatTime(t_P2, initTime(2), initTimeUnits));
-		}
-			   
-		Button pp = (Button)findViewById(R.id.Pause);
+        Button pp = (Button)findViewById(R.id.Pause);
         pp.setBackgroundResource(R.drawable.pause_button);
-			   
-		/** 
+
+        /**
          * Unregister the handler from player 1's clock and create a new one
          * which we register with player 2's clock.
-		 */
-		myHandler.removeCallbacks(mUpdateTimeTask);
-		myHandler.removeCallbacks(mUpdateTimeTask2);
-        myHandler.postDelayed(mUpdateTimeTask2, 100);
+         */
+        myHandler.removeCallbacks(mUpdateTimeTask);
+        myHandler.removeCallbacks(mUpdateTimeTask2);
+        myHandler.postDelayed(mUpdateTimeTask2, TICK_LENGTH);
 	}
 
     /** Return true if out of time. */
@@ -460,87 +490,62 @@ public class ChessClock extends Activity {
         return timeLeft == 0;
     }
 
-	/** Handles the "tick" event for Player 1's clock */
-	private Runnable mUpdateTimeTask = new Runnable() {
-		public void run() {
+    /** Handles the "tick" event for Player 1's clock */
+    private Runnable mUpdateTimeTask = new Runnable() {
+        public void run() {
             Button b1 = (Button)findViewById(R.id.Player1);
             Button b2 = (Button)findViewById(R.id.Player2);
             TextView p1 = (TextView)findViewById(R.id.t_Player1);
             TextView p2 = (TextView)findViewById(R.id.t_Player2);
-			String delay_string = "";
-			
-			/** Check for delays and apply them */
-            if (delay.equals(BRONSTEIN) && !delayed) {
-				delayed = true;
-				b_delay = toMillis(delay_time, delayTimeUnits);
-				t_P1 += 100; //We'll deduct this again shortly
-				delay_string = "+" + (b_delay / 1000 );
-			} else if ( delay.equals(BRONSTEIN) && delayed ) {
-				if ( b_delay > 0 ) {
-					b_delay -= 100;
-					t_P1 += 100;
-				}
-				if (b_delay > 0 ) {
-					delay_string = "+" + ( ( b_delay / 1000 ) + 1 );
-				}
-			}
-			
-			/** Deduct 0.1s from P1's clock */
-			t_P1 -= 100;
-			long timeLeft = t_P1;
-				 
-			/** Format for display purposes */
-			int secondsLeft = (int) (timeLeft / 1000);
-			int minutesLeft = secondsLeft / 60;
-			secondsLeft     = secondsLeft % 60;
 
-            secondsLeft += 1;
-            if (secondsLeft == 60) {
-                minutesLeft += 1;
-                secondsLeft = 0;
-            } else if (timeLeft == 0) {
-                secondsLeft = 0;
-            } else if (timeLeft == toMillis(initTime(1), initTimeUnits)) {
-                secondsLeft -= 1;
+            // Check for delays and apply them
+            if (delay.equals(BRONSTEIN)){
+                if (delayed) {
+                    b_delay = Math.max(0, b_delay - TICK_LENGTH);
+                } else {
+                    delayed = true;
+                    b_delay = toMillis(delay_time, delayTimeUnits);
+                }
+                // If delay remaining, negate tick
+                t_P1 += (b_delay > 0) ? TICK_LENGTH : 0;
             }
 
-            if (outOfTime(timeLeft)) {
-				timeup = true;
-				Button pp = (Button)findViewById(R.id.Pause);
+            // Deduct tick from P1's clock
+            t_P1 -= TICK_LENGTH;
+            setClock(p1, t_P1, b_delay);
+
+            if (outOfTime(t_P1)) {
+                timeup = true;
+                Button pp = (Button)findViewById(R.id.Pause);
                 View l1 = (View)findViewById(R.id.l_Player1);
 
                 l1.setBackgroundColor(color(R.color.timesup));
                 performHapticFeedback(l1);
-                p1.setText("0:00");
-				
-				b1.setClickable(false);
-				b2.setClickable(false);
+
+                b1.setClickable(false);
+                b2.setClickable(false);
                 pp.setBackgroundResource(R.drawable.reset_button);
-				
-				Uri uri = Uri.parse(alertTone);
-				ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-				if ( null != ringtone ) {
-					ringtone.play();
-				}
+
+                Uri uri = Uri.parse(alertTone);
+                ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
+                if (null != ringtone) {
+                    ringtone.play();
+                }
 
                 myHandler.removeCallbacks(mUpdateTimeTask);
-				return;
-			}
-
-			/** Display the time, omitting leading 0's for times < 10 minutes */
-			if (secondsLeft < 10) {
-                p1.setText("" + minutesLeft + ":0" + secondsLeft + delay_string);
-			} else {
-                p1.setText("" + minutesLeft + ":" + secondsLeft + delay_string);
-			}
-			     
-			/** Re-post the handler so it fires in another 0.1s */
-			myHandler.postDelayed(this, 100);
-		}
-	};
+            } else {
+                // Re-post the handler so it waits until the next tick
+                myHandler.postDelayed(this, TICK_LENGTH);
+            }
+        }
+    };
 	
 	/** Called when P2ClickHandler registers a click/touch event */
 	private void P2Click() {
+        if (onTheClock == 1) {
+            return;
+        }
+
         Button b1 = (Button)findViewById(R.id.Player1);
         Button b2 = (Button)findViewById(R.id.Player2);
         TextView p1 = (TextView)findViewById(R.id.t_Player1);
@@ -548,23 +553,20 @@ public class ChessClock extends Activity {
         View l1 = (View)findViewById(R.id.l_Player1);
         View l2 = (View)findViewById(R.id.l_Player2);
 
-        if (onTheClock == 1) {
-			return;
-        }
-				 
         if (delay.equals(FISCHER) && (onTheClock == 2 || savedOTC == 2)) {
             t_P2 += toMillis(delay_time, delayTimeUnits);
-            p2.setText(formatTime(t_P2, initTime(2), initTimeUnits));
+            setClock(p2, t_P2);
         }
 
-		/** 
-         * Register that player 1's time is running now and that we haven't yet
-         * received our delay.
-		 */
-        onTheClock = 1;
-        if (savedOTC == 0 || savedOTC == 2) {
-            delayed = false;
+        if (delay.equals(BRONSTEIN)) {
+            setClock(p2, t_P2);
+            setClock(p1, t_P1, (savedOTC == 1) ? b_delay : toMillis(delay_time, delayTimeUnits));
         }
+
+        // Register that player 1's time is running now
+        onTheClock = 1;
+        // Unless we're unpausing player 1, reset their delayed status
+        delayed = delayed && (savedOTC == 1);
         savedOTC = 0;
 
         p1.setTextColor(color(R.color.active_text));
@@ -572,10 +574,6 @@ public class ChessClock extends Activity {
         l1.setBackgroundColor(color(R.color.highlight));
         l1.setVisibility(View.VISIBLE);
         l2.setVisibility(View.INVISIBLE);
-
-        if (delay.equals(BRONSTEIN)) {
-            p1.setText(formatTime(t_P1, initTime(1), initTimeUnits));
-        }
 
 		Button pp = (Button)findViewById(R.id.Pause);
         pp.setBackgroundResource(R.drawable.pause_button);
@@ -586,87 +584,58 @@ public class ChessClock extends Activity {
 		 */
 		myHandler.removeCallbacks(mUpdateTimeTask);
 		myHandler.removeCallbacks(mUpdateTimeTask2);
-        myHandler.postDelayed(mUpdateTimeTask, 100);
-	}
+        myHandler.postDelayed(mUpdateTimeTask, TICK_LENGTH);
+    }
 				
-	/** Handles the "tick" event for Player 2's clock */
-	private Runnable mUpdateTimeTask2 = new Runnable() {
-		public void run() {
+    /** Handles the "tick" event for Player 2's clock */
+    private Runnable mUpdateTimeTask2 = new Runnable() {
+        public void run() {
             Button b1 = (Button)findViewById(R.id.Player1);
             Button b2 = (Button)findViewById(R.id.Player2);
             TextView p1 = (TextView)findViewById(R.id.t_Player1);
             TextView p2 = (TextView)findViewById(R.id.t_Player2);
-			String delay_string = "";
-			
-			/** Check for delays and apply them */
-            if ( delay.equals(BRONSTEIN) && !delayed ) {
-				delayed = true;
-				b_delay = toMillis(delay_time, delayTimeUnits);
-				t_P2 += 100; //We'll deduct this again shortly
-				delay_string = "+" + ( b_delay / 1000 );
-			} else if ( delay.equals(BRONSTEIN) && delayed ) {
-				if ( b_delay > 0 ) {
-					b_delay -= 100;
-					t_P2 += 100;
-				}
-				if (b_delay > 0 ) {
-					delay_string = "+" + ( ( b_delay / 1000 ) + 1 );
-				}
-			}
-			
-			/** Deduct 0.1s from P2's clock */
-			t_P2 -= 100;
-			long timeLeft = t_P2;
-					
-			/** Format for display purposes */
-			int secondsLeft = (int) (timeLeft / 1000);
-			int minutesLeft = secondsLeft / 60;
-			secondsLeft     = secondsLeft % 60;
 
-            secondsLeft += 1;
-            if (secondsLeft == 60) {
-                minutesLeft += 1;
-                secondsLeft = 0;
-            } else if (timeLeft == 0) {
-                secondsLeft = 0;
-            } else if (timeLeft == toMillis(initTime(2), initTimeUnits)) {
-                secondsLeft -= 1;
+            // Check for delays and apply them
+            if (delay.equals(BRONSTEIN)){
+                if (delayed) {
+                    b_delay = Math.max(0, b_delay - TICK_LENGTH);
+                } else {
+                    delayed = true;
+                    b_delay = toMillis(delay_time, delayTimeUnits);
+                }
+                // If delay remaining, negate tick
+                t_P2 += (b_delay > 0) ? TICK_LENGTH : 0;
             }
 
-            if (outOfTime(timeLeft)) {
-				timeup = true;
-				Button pp = (Button)findViewById(R.id.Pause);
+            // Deduct tick from P2's clock
+            t_P2 -= TICK_LENGTH;
+            setClock(p2, t_P2, b_delay);
+
+            if (outOfTime(t_P2)) {
+                timeup = true;
+                Button pp = (Button)findViewById(R.id.Pause);
                 View l2 = (View)findViewById(R.id.l_Player2);
 
                 l2.setBackgroundColor(color(R.color.timesup));
                 performHapticFeedback(l2);
-				p2.setText("0:00");
-				
-				b1.setClickable(false);
+
+                b1.setClickable(false);
                 b2.setClickable(false);
                 pp.setBackgroundResource(R.drawable.reset_button);
-				
-				Uri uri = Uri.parse(alertTone);
-				ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-				if ( null != ringtone ) {
-					ringtone.play();
-				}
 
-				myHandler.removeCallbacks(mUpdateTimeTask2);
-                return;
-			}
+                Uri uri = Uri.parse(alertTone);
+                ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
+                if (null != ringtone) {
+                    ringtone.play();
+                }
 
-			/** Display the time, omitting leading 0's for times < 10 minutes */
-			if (secondsLeft < 10) {
-                p2.setText("" + minutesLeft + ":0" + secondsLeft + delay_string);
-			} else {
-                p2.setText("" + minutesLeft + ":" + secondsLeft + delay_string);
-			}
-					     
-			/** Re-post the handler so it fires in another 0.1s */
-			myHandler.postDelayed(this, 100);
-		}
-	};
+                myHandler.removeCallbacks(mUpdateTimeTask2);
+            } else {
+                // Re-post the handler so it waits until the next tick
+                myHandler.postDelayed(this, TICK_LENGTH);
+            }
+        }
+    };
 
 	/** 
 	 * Pauses both clocks. This is called when the options
@@ -762,44 +731,46 @@ public class ChessClock extends Activity {
             b2.setBackgroundColor(color(R.color.bg_dark));
         }
 
-        if (!resetClocks) {
-            return;
+        showDeciseconds = prefs.getBoolean("prefShowDeciseconds", true);
+
+        if (resetClocks) {
+            delay = prefs.getString("prefDelay", NO_DELAY);
+            initTimeUnits = prefs.getString("prefInitTimeUnits", MINUTES);
+            delayTimeUnits = prefs.getString("prefDelayTimeUnits", SECONDS);
+
+            differentInitTime = prefs.getBoolean("prefDifferentInitTime", false);
+            initTime1 = getIntPref("prefInitTime1", 10);
+            initTime2 = getIntPref("prefInitTime2", 10);
+            delay_time = getIntPref("prefDelayTime", 0);
+
+            alertTone = prefs.getString("prefAlertSound", Settings.System.DEFAULT_RINGTONE_URI.toString());
+            if (alertTone.equals("")) {
+                alertTone = Settings.System.DEFAULT_RINGTONE_URI.toString();
+                Editor e = prefs.edit();
+                e.putString("prefAlertSound", alertTone);
+                e.commit();
+            }
+
+            Uri uri = Uri.parse(alertTone);
+            ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
+
+            onTheClock = 0;
+            savedOTC = 0;
+            delayed = false;
+
+            t_P1 = toMillis(initTime(1), initTimeUnits);
+            t_P2 = toMillis(initTime(2), initTimeUnits);
+            b_delay = delay.equals(BRONSTEIN) ? toMillis(delay_time, delayTimeUnits) : 0;
+
+            // Register the click listeners
+            b1.setOnClickListener(P1ClickHandler);
+            b2.setOnClickListener(P2ClickHandler);
+            pause.setOnClickListener(PauseListener);
+            menu.setOnClickListener(MenuListener);
         }
-	    
-        delay = prefs.getString("prefDelay", NO_DELAY);
-        initTimeUnits = prefs.getString("prefInitTimeUnits", MINUTES);
-        delayTimeUnits = prefs.getString("prefDelayTimeUnits", SECONDS);
 
-        differentInitTime = prefs.getBoolean("prefDifferentInitTime", false);
-        initTime1 = getIntPref("prefInitTime1", 10);
-        initTime2 = getIntPref("prefInitTime2", 10);
-        delay_time = getIntPref("prefDelayTime", 0);
-
-		alertTone = prefs.getString("prefAlertSound", Settings.System.DEFAULT_RINGTONE_URI.toString());		
-		if (alertTone.equals("")) {
-			alertTone = Settings.System.DEFAULT_RINGTONE_URI.toString();
-			Editor e = prefs.edit();
-			e.putString("prefAlertSound", alertTone);
-			e.commit();
-		}
-		
-		Uri uri = Uri.parse(alertTone);
-		ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-
-        onTheClock = 0;
-        savedOTC = 0;
-        delayed = false;
-
-        t_P1 = toMillis(initTime(1), initTimeUnits);
-        t_P2 = toMillis(initTime(2), initTimeUnits);
-
-        /** Format and display the clocks */
-        p1.setText(formatTime(t_P1, initTime(1), initTimeUnits));
-        p2.setText(formatTime(t_P2, initTime(2), initTimeUnits));
-        /** Register the click listeners */
-        b1.setOnClickListener(P1ClickHandler);
-        b2.setOnClickListener(P2ClickHandler);
-        pause.setOnClickListener(PauseListener);
-        menu.setOnClickListener(MenuListener);
+        // Format and display the clocks
+        setClock(p1, t_P1, (savedOTC == 1) ? b_delay : 0);
+        setClock(p2, t_P2, (savedOTC == 2) ? b_delay : 0);
 	}
 }

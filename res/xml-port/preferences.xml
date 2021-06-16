@@ -75,6 +75,14 @@
         android:selectable="true"
         android:dialogTitle="@string/pref_dialog_title_enter_time">
     </EditTextPreference>
+    <CheckBoxPreference
+        android:title="@string/pref_title_show_deciseconds"
+        android:enabled="true"
+        android:selectable="true"
+        android:defaultValue="true"
+        android:summary="@string/pref_summary_show_deciseconds"
+        android:key="prefShowDeciseconds">
+    </CheckBoxPreference>
   </PreferenceCategory>
   <PreferenceCategory
       android:title="@string/pref_category_other">

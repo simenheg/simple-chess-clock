@@ -8,25 +8,29 @@
   <string name="pref_category_about">About</string>
   <string name="pref_category_other">Other Options</string>
   <string name="pref_category_time">Game Time</string>
-  <string name="pref_dialog_title_delay_length">Enter Time (seconds)</string>
+  <string name="pref_dialog_title_enter_time">Enter Time</string>
   <string name="pref_dialog_title_delay_type">Select Time Delay</string>
-  <string name="pref_dialog_title_starting_time">Enter Time (minutes)</string>
+  <string name="pref_dialog_title_time_units">Select Time Units</string>
   <string name="pref_summary_alert_ringtone">Set the ringtone to be played when time expires.</string>
   <string name="pref_summary_delay_length">Set the amount of time used for time delays.</string>
   <string name="pref_summary_delay_type">Set the time delay scheme to use during play.</string>
+  <string name="pref_summary_delay_length_units">Set units in which to specify delay length.</string>
   <string name="pref_summary_haptic_feedback">Vibrate slightly on button presses.</string>
   <string name="pref_summary_black_background">Saves power on OLED screens.</string>
   <string name="pref_summary_starting_time">Set how much time each player starts with.</string>
   <string name="pref_summary_starting_time_2">Set how much time Player 2 starts with.</string>
+  <string name="pref_summary_starting_time_units">Set units in which to specify game time.</string>
   <string name="pref_summary_different_starting_time">Use a different game time for each player.</string>
   <string name="pref_title_about">About Simple Chess Clock</string>
   <string name="pref_title_alert_ringtone">Alert Ringtone</string>
   <string name="pref_title_delay_length">Delay Length</string>
   <string name="pref_title_delay_type">Delay Type</string>
+  <string name="pref_title_delay_length_units">Delay Length Units</string>
   <string name="pref_title_haptic_feedback">Haptic Feedback</string>
   <string name="pref_title_black_background">Black Background</string>
   <string name="pref_title_starting_time">Game Time</string>
   <string name="pref_title_starting_time_2">Game Time (Player 2)</string>
+  <string name="pref_title_starting_time_units">Game Time Units</string>
   <string name="pref_title_different_starting_time">Different Game Time</string>
   <string-array name="delay_types">
     <item>None</item>
@@ -37,5 +41,15 @@
     <item>None</item>
     <item>Fischer</item>
     <item>Bronstein</item>
+  </string-array>
+  <string-array name="time_units">
+      <item>Seconds</item>
+      <item>Minutes</item>
+      <item>Hours</item>
+  </string-array>
+  <string-array name="time_unit_vals" translatable="false">
+      <item>Seconds</item>
+      <item>Minutes</item>
+      <item>Hours</item>
   </string-array>
 </resources>

@@ -3,9 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
   <PreferenceCategory
       android:title="@string/pref_category_time">
+    <ListPreference
+        android:entries="@array/time_units"
+        android:dialogTitle="@string/pref_dialog_title_time_units"
+        android:entryValues="@array/time_unit_vals"
+        android:selectable="true"
+        android:summary="@string/pref_summary_starting_time_units"
+        android:enabled="true"
+        android:title="@string/pref_title_starting_time_units"
+        android:key="prefInitTimeUnits"
+        android:defaultValue="Minutes">
+    </ListPreference>
     <EditTextPreference
         android:inputType="number"
-        android:dialogTitle="@string/pref_dialog_title_starting_time"
+        android:dialogTitle="@string/pref_dialog_title_enter_time"
         android:title="@string/pref_title_starting_time"
         android:summary="@string/pref_summary_starting_time"
         android:defaultValue="10"
@@ -23,7 +34,7 @@
     </CheckBoxPreference>
     <EditTextPreference
         android:inputType="number"
-        android:dialogTitle="@string/pref_dialog_title_starting_time"
+        android:dialogTitle="@string/pref_dialog_title_enter_time"
         android:title="@string/pref_title_starting_time_2"
         android:summary="@string/pref_summary_starting_time_2"
         android:defaultValue="10"
@@ -43,6 +54,17 @@
         android:key="prefDelay"
         android:defaultValue="None">
     </ListPreference>
+    <ListPreference
+        android:entries="@array/time_units"
+        android:dialogTitle="@string/pref_dialog_title_time_units"
+        android:entryValues="@array/time_unit_vals"
+        android:selectable="true"
+        android:summary="@string/pref_summary_delay_length_units"
+        android:enabled="true"
+        android:title="@string/pref_title_delay_length_units"
+        android:key="prefDelayTimeUnits"
+        android:defaultValue="Seconds">
+    </ListPreference>
     <EditTextPreference
         android:inputType="number"
         android:key="prefDelayTime"
@@ -51,7 +73,7 @@
         android:enabled="true"
         android:defaultValue="0"
         android:selectable="true"
-        android:dialogTitle="@string/pref_dialog_title_delay_length">
+        android:dialogTitle="@string/pref_dialog_title_enter_time">
     </EditTextPreference>
   </PreferenceCategory>
   <PreferenceCategory

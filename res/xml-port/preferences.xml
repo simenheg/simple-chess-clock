@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+  xmlns:android="http://schemas.android.com/apk/res/android">
   <PreferenceCategory
-      android:title="@string/pref_category_time">
+    android:title="@string/pref_category_time">
     <ListPreference
-        android:entries="@array/time_units"
-        android:dialogTitle="@string/pref_dialog_title_time_units"
-        android:entryValues="@array/time_unit_vals"
-        android:selectable="true"
-        android:summary="@string/pref_summary_starting_time_units"
-        android:enabled="true"
-        android:title="@string/pref_title_starting_time_units"
-        android:key="prefInitTimeUnits"
-        android:defaultValue="Minutes">
+      android:entries="@array/time_units"
+      android:dialogTitle="@string/pref_dialog_title_time_units"
+      android:entryValues="@array/time_unit_vals"
+      android:selectable="true"
+      android:summary="@string/pref_summary_starting_time_units"
+      android:enabled="true"
+      android:title="@string/pref_title_starting_time_units"
+      android:key="prefInitTimeUnits"
+      android:defaultValue="Minutes">
     </ListPreference>
     <EditTextPreference
-        android:inputType="number"
-        android:dialogTitle="@string/pref_dialog_title_enter_time"
-        android:title="@string/pref_title_starting_time"
-        android:summary="@string/pref_summary_starting_time"
-        android:defaultValue="10"
-        android:selectable="true"
-        android:enabled="true"
-        android:key="prefInitTime1">
+      android:inputType="number"
+      android:dialogTitle="@string/pref_dialog_title_enter_time"
+      android:title="@string/pref_title_starting_time"
+      android:summary="@string/pref_summary_starting_time"
+      android:defaultValue="10"
+      android:selectable="true"
+      android:enabled="true"
+      android:key="prefInitTime1">
     </EditTextPreference>
     <CheckBoxPreference
-        android:title="@string/pref_title_different_starting_time"
-        android:enabled="true"
-        android:selectable="true"
-        android:defaultValue="false"
-        android:summary="@string/pref_summary_different_starting_time"
-        android:key="prefDifferentInitTime">
+      android:title="@string/pref_title_different_starting_time"
+      android:enabled="true"
+      android:selectable="true"
+      android:defaultValue="false"
+      android:summary="@string/pref_summary_different_starting_time"
+      android:key="prefDifferentInitTime">
     </CheckBoxPreference>
     <EditTextPreference
-        android:inputType="number"
-        android:dialogTitle="@string/pref_dialog_title_enter_time"
-        android:title="@string/pref_title_starting_time_2"
-        android:summary="@string/pref_summary_starting_time_2"
-        android:defaultValue="10"
-        android:selectable="true"
-        android:enabled="true"
-        android:dependency="prefDifferentInitTime"
-        android:key="prefInitTime2">
+      android:inputType="number"
+      android:dialogTitle="@string/pref_dialog_title_enter_time"
+      android:title="@string/pref_title_starting_time_2"
+      android:summary="@string/pref_summary_starting_time_2"
+      android:defaultValue="10"
+      android:selectable="true"
+      android:enabled="true"
+      android:dependency="prefDifferentInitTime"
+      android:key="prefInitTime2">
     </EditTextPreference>
     <ListPreference
-        android:entries="@array/delay_types"
-        android:dialogTitle="@string/pref_dialog_title_delay_type"
-        android:entryValues="@array/delay_vals"
-        android:selectable="true"
-        android:summary="@string/pref_summary_delay_type"
-        android:enabled="true"
-        android:title="@string/pref_title_delay_type"
-        android:key="prefDelay"
-        android:defaultValue="None">
+      android:entries="@array/delay_types"
+      android:dialogTitle="@string/pref_dialog_title_delay_type"
+      android:entryValues="@array/delay_vals"
+      android:selectable="true"
+      android:summary="@string/pref_summary_delay_type"
+      android:enabled="true"
+      android:title="@string/pref_title_delay_type"
+      android:key="prefDelay"
+      android:defaultValue="None">
     </ListPreference>
     <ListPreference
-        android:entries="@array/time_units"
-        android:dialogTitle="@string/pref_dialog_title_time_units"
-        android:entryValues="@array/time_unit_vals"
-        android:selectable="true"
-        android:summary="@string/pref_summary_delay_length_units"
-        android:enabled="true"
-        android:title="@string/pref_title_delay_length_units"
-        android:key="prefDelayTimeUnits"
-        android:defaultValue="Seconds">
+      android:entries="@array/time_units"
+      android:dialogTitle="@string/pref_dialog_title_time_units"
+      android:entryValues="@array/time_unit_vals"
+      android:selectable="true"
+      android:summary="@string/pref_summary_delay_length_units"
+      android:enabled="true"
+      android:title="@string/pref_title_delay_length_units"
+      android:key="prefDelayTimeUnits"
+      android:defaultValue="Seconds">
     </ListPreference>
     <EditTextPreference
-        android:inputType="number"
-        android:key="prefDelayTime"
-        android:summary="@string/pref_summary_delay_length"
-        android:title="@string/pref_title_delay_length"
-        android:enabled="true"
-        android:defaultValue="0"
-        android:selectable="true"
-        android:dialogTitle="@string/pref_dialog_title_enter_time">
+      android:inputType="number"
+      android:key="prefDelayTime"
+      android:summary="@string/pref_summary_delay_length"
+      android:title="@string/pref_title_delay_length"
+      android:enabled="true"
+      android:defaultValue="0"
+      android:selectable="true"
+      android:dialogTitle="@string/pref_dialog_title_enter_time">
     </EditTextPreference>
     <CheckBoxPreference
-        android:title="@string/pref_title_show_deciseconds"
-        android:enabled="true"
-        android:selectable="true"
-        android:defaultValue="true"
-        android:summary="@string/pref_summary_show_deciseconds"
-        android:key="prefShowDeciseconds">
+      android:title="@string/pref_title_show_deciseconds"
+      android:enabled="true"
+      android:selectable="true"
+      android:defaultValue="true"
+      android:summary="@string/pref_summary_show_deciseconds"
+      android:key="prefShowDeciseconds">
     </CheckBoxPreference>
   </PreferenceCategory>
   <PreferenceCategory
-      android:title="@string/pref_category_other">
+    android:title="@string/pref_category_other">
     <RingtonePreference
-        android:showSilent="true"
-        android:enabled="true"
-        android:ringtoneType="ringtone|notification|alarm|all"
-        android:showDefault="true"
-        android:title="@string/pref_title_alert_ringtone"
-        android:summary="@string/pref_summary_alert_ringtone"
-        android:key="prefAlertSound">
+      android:showSilent="true"
+      android:enabled="true"
+      android:ringtoneType="ringtone|notification|alarm|all"
+      android:showDefault="true"
+      android:title="@string/pref_title_alert_ringtone"
+      android:summary="@string/pref_summary_alert_ringtone"
+      android:key="prefAlertSound">
     </RingtonePreference>
     <CheckBoxPreference
-        android:title="@string/pref_title_haptic_feedback"
-        android:enabled="true"
-        android:selectable="true"
-        android:defaultValue="false"
-        android:summary="@string/pref_summary_haptic_feedback"
-        android:key="prefHaptic">
+      android:title="@string/pref_title_haptic_feedback"
+      android:enabled="true"
+      android:selectable="true"
+      android:defaultValue="false"
+      android:summary="@string/pref_summary_haptic_feedback"
+      android:key="prefHaptic">
     </CheckBoxPreference>
     <CheckBoxPreference
-        android:title="@string/pref_title_black_background"
-        android:enabled="true"
-        android:selectable="true"
-        android:defaultValue="false"
-        android:summary="@string/pref_summary_black_background"
-        android:key="prefBlackBackground">
+      android:title="@string/pref_title_black_background"
+      android:enabled="true"
+      android:selectable="true"
+      android:defaultValue="false"
+      android:summary="@string/pref_summary_black_background"
+      android:key="prefBlackBackground">
     </CheckBoxPreference>
   </PreferenceCategory>
   <PreferenceCategory
-      android:title="@string/pref_category_about">
+    android:title="@string/pref_category_about">
     <Preference
-        android:key="about"
-        android:title="@string/pref_title_about" />
+      android:key="about"
+      android:title="@string/pref_title_about" />
   </PreferenceCategory>
 </PreferenceScreen>

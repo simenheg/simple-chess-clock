@@ -1,136 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <LinearLayout
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+      android:layout_weight="1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
 
       <!-- Player 1 (top) -->
       <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <Button
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/Player1"
-            android:width="980sp"
-            android:background="@color/bg_dark"
-            android:onClick="P1ClickHandler">
+          android:layout_alignParentTop="true"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:id="@+id/Player1"
+          android:width="980sp"
+          android:background="@color/bg_dark"
+          android:onClick="P1ClickHandler">
         </Button>
       </LinearLayout>
 
       <TextView
-          android:rotation="180"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:id="@+id/t_Player1"
-          android:layout_centerHorizontal="true"
-          android:layout_centerVertical="true"
-          android:textAlignment="gravity"
-          android:fontFamily="sans-serif"
-          android:textSize="90sp">
+        android:rotation="180"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/t_Player1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textAlignment="gravity"
+        android:fontFamily="sans-serif"
+        android:textSize="90sp">
       </TextView>
 
       <View
-          android:id="@+id/l_Player1"
-          android:layout_width="0sp"
-          android:layout_height="5sp"
-          android:layout_above="@+id/t_Player1"
-          android:layout_alignLeft="@+id/t_Player1"
-          android:layout_alignRight="@+id/t_Player1"
-          android:background="@color/highlight"
-          android:visibility="invisible">
+        android:id="@+id/l_Player1"
+        android:layout_width="0sp"
+        android:layout_height="5sp"
+        android:layout_above="@+id/t_Player1"
+        android:layout_alignLeft="@+id/t_Player1"
+        android:layout_alignRight="@+id/t_Player1"
+        android:background="@color/highlight"
+        android:visibility="invisible">
       </View>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_height="5sp"
-        android:background="@color/bg_light"
-        android:layout_width="match_parent">
+      android:layout_height="5sp"
+      android:background="@color/bg_light"
+      android:layout_width="match_parent">
     </RelativeLayout>
 
     <!-- Player 2 (bottom) -->
     <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+      android:layout_weight="1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
 
       <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <Button
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/Player2"
-            android:width="980sp"
-            android:background="@color/bg_dark"
-            android:onClick="P2ClickHandler">
+          android:layout_alignParentBottom="true"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:id="@+id/Player2"
+          android:width="980sp"
+          android:background="@color/bg_dark"
+          android:onClick="P2ClickHandler">
         </Button>
       </LinearLayout>
 
       <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:id="@+id/t_Player2"
-          android:layout_centerHorizontal="true"
-          android:layout_centerVertical="true"
-          android:textAlignment="gravity"
-          android:fontFamily="sans-serif"
-          android:textSize="90sp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/t_Player2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textAlignment="gravity"
+        android:fontFamily="sans-serif"
+        android:textSize="90sp">
       </TextView>
 
       <View
-          android:id="@+id/l_Player2"
-          android:layout_width="0sp"
-          android:layout_height="5sp"
-          android:layout_below="@+id/t_Player2"
-          android:layout_alignLeft="@+id/t_Player2"
-          android:layout_alignRight="@+id/t_Player2"
-          android:background="@color/highlight"
-          android:visibility="invisible">
+        android:id="@+id/l_Player2"
+        android:layout_width="0sp"
+        android:layout_height="5sp"
+        android:layout_below="@+id/t_Player2"
+        android:layout_alignLeft="@+id/t_Player2"
+        android:layout_alignRight="@+id/t_Player2"
+        android:background="@color/highlight"
+        android:visibility="invisible">
       </View>
     </RelativeLayout>
   </LinearLayout>
 
   <!-- Menu button -->
   <Button
-      android:layout_width="wrap_content"
-      android:layout_alignParentLeft="true"
-      android:layout_centerVertical="true"
-      android:layout_height="wrap_content"
-      android:id="@+id/Menu"
-      android:height="50sp"
-      android:width="50sp"
-      android:layout_gravity="center"
-      android:background="@drawable/menu_button"
-      android:onClick="MenuListener">
+    android:layout_width="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:layout_height="wrap_content"
+    android:id="@+id/Menu"
+    android:height="50sp"
+    android:width="50sp"
+    android:layout_gravity="center"
+    android:background="@drawable/menu_button"
+    android:onClick="MenuListener">
   </Button>
 
   <!-- Pause button -->
   <Button
-      android:layout_width="wrap_content"
-      android:layout_alignParentRight="true"
-      android:layout_centerVertical="true"
-      android:layout_height="wrap_content"
-      android:id="@+id/Pause"
-      android:height="50sp"
-      android:width="50sp"
-      android:layout_gravity="center"
-      android:background="@drawable/reset_button"
-      android:onClick="PauseListener">
+    android:layout_width="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:layout_height="wrap_content"
+    android:id="@+id/Pause"
+    android:height="50sp"
+    android:width="50sp"
+    android:layout_gravity="center"
+    android:background="@drawable/reset_button"
+    android:onClick="PauseListener">
   </Button>
 </RelativeLayout>

@@ -1,16 +1,16 @@
 /*************************************************************************
  * File: Prefs.java
- * 
+ *
  * Implements the Preferences dialog.
- * 
+ *
  * Created: 2010-06-23
- * 
+ *
  * Author: Carter Dewey
- * 
+ *
  *************************************************************************
  *
  *   This file is part of Simple Chess Clock (SCC).
- *    
+ *
  *   SCC is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.util.Log;
- 
+
 public class Prefs extends PreferenceActivity {
     private static final int ABOUT = 1;
 
@@ -55,12 +55,12 @@ public class Prefs extends PreferenceActivity {
         return dialog;
     }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	    Log.v("INFO", "INFO: Read prefs.xml");
-	    addPreferencesFromResource(R.xml.preferences);
-	    Log.v("INFO", "INFO: Finished onCreate");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.v("INFO", "INFO: Read prefs.xml");
+        addPreferencesFromResource(R.xml.preferences);
+        Log.v("INFO", "INFO: Finished onCreate");
 
         Preference about = (Preference)getPreferenceScreen().findPreference("about");
         about.setOnPreferenceClickListener(new OnPreferenceClickListener() {

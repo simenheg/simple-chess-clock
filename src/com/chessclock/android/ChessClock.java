@@ -1,16 +1,16 @@
 /*************************************************************************
  * File: ChessClock.java
- * 
+ *
  * Implements the main form/class for Chess Clock.
- * 
+ *
  * Created: 2010-06-22
- * 
+ *
  * Author: Carter Dewey
- * 
+ *
  *************************************************************************
  *
  *   This file is part of Simple Chess Clock (SCC).
- *    
+ *
  *   SCC is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, either version 3 of the License, or
@@ -60,18 +60,18 @@ import android.widget.TextView;
 import java.lang.Math;
 
 public class ChessClock extends Activity {
-	
-	/**-----------------------------------
-	 *            CONSTANTS
-	 *-----------------------------------*/
-	/** Version info and debug tag constants */
-	public static final String TAG = "INFO";
-	public static final String V_MAJOR = "2";
-	public static final String V_MINOR = "5";
-	public static final String V_MINI = "0";
 
-	/** Constants for the dialog windows */
-	private static final int RESET = 1;
+    /**-----------------------------------
+     *            CONSTANTS
+     *-----------------------------------*/
+    /** Version info and debug tag constants */
+    public static final String TAG = "INFO";
+    public static final String V_MAJOR = "2";
+    public static final String V_MINOR = "5";
+    public static final String V_MINI = "0";
+
+    /** Constants for the dialog windows */
+    private static final int RESET = 1;
 
     /** Clock tick length, in milliseconds */
     private static int TICK_LENGTH = 100;
@@ -82,27 +82,27 @@ public class ChessClock extends Activity {
      */
     private static int SHOW_DECISECONDS_THRESHOLD = 10;
 
-	/** Time control values */
-	private static String NO_DELAY = "None";
-	private static String FISCHER = "Fischer";
-	private static String BRONSTEIN = "Bronstein";
+    /** Time control values */
+    private static String NO_DELAY = "None";
+    private static String FISCHER = "Fischer";
+    private static String BRONSTEIN = "Bronstein";
 
     /** Time unit values */
     private static String HOURS = "Hours";
     private static String MINUTES = "Minutes";
     private static String SECONDS = "Seconds";
 
-	/**-----------------------------------
-	 *     CHESSCLOCK CLASS MEMBERS
-	 *-----------------------------------*/
-	/** Objects/Classes */
-	private Handler myHandler = new Handler();
-	private DialogFactory DF = new DialogFactory();
-	private PowerManager pm;
-	private WakeLock wl;
-	private String delay = NO_DELAY;
-	private String alertTone;
-	private Ringtone ringtone = null;
+    /**-----------------------------------
+     *     CHESSCLOCK CLASS MEMBERS
+     *-----------------------------------*/
+    /** Objects/Classes */
+    private Handler myHandler = new Handler();
+    private DialogFactory DF = new DialogFactory();
+    private PowerManager pm;
+    private WakeLock wl;
+    private String delay = NO_DELAY;
+    private String alertTone;
+    private Ringtone ringtone = null;
     private String initTimeUnits = MINUTES;
     private String delayTimeUnits = SECONDS;
 
@@ -111,18 +111,18 @@ public class ChessClock extends Activity {
     private int initTime2 = 10;
     private boolean differentInitTime = false;
 
-	private int b_delay;
-	private long t_P1;
-	private long t_P2;
-	private int delay_time;
-	private int onTheClock = 0;
-	private int savedOTC = 0;
+    private int b_delay;
+    private long t_P1;
+    private long t_P2;
+    private int delay_time;
+    private int onTheClock = 0;
+    private int savedOTC = 0;
 
-	private boolean haptic = false;
+    private boolean haptic = false;
     private boolean blackBackground = false;
-	private boolean timeup = false;
-	private boolean prefmenu = false;
-	private boolean delayed = false;
+    private boolean timeup = false;
+    private boolean prefmenu = false;
+    private boolean delayed = false;
     private boolean showDeciseconds = true;
 
     /** Provide haptic feedback to the user of the given view. */
@@ -144,63 +144,65 @@ public class ChessClock extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);    
-        
+        super.onCreate(savedInstanceState);
+
         /** Get rid of the status bar */
-        requestWindowFeature(Window.FEATURE_NO_TITLE);  
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
-        						WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
+
         /** Create a PowerManager object so we can get the wakelock */
-        pm = (PowerManager) getSystemService(ChessClock.POWER_SERVICE);  
+        pm = (PowerManager) getSystemService(ChessClock.POWER_SERVICE);
         wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "ChessWakeLock");
-        
+
         setContentView(R.layout.main);
-        
+
         setUpGame(true);
     }
-    
+
     @Override
     public void onPause() {
-    	if ( wl.isHeld() ) {
-    		wl.release();
-    	}
-    	
-    	if (null != ringtone) {
-	    	if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-    	}
-    	
-    	PauseGame();
-    	super.onPause();
+        if (wl.isHeld()) {
+            wl.release();
+        }
+
+        if (null != ringtone) {
+            if (ringtone.isPlaying()) {
+                ringtone.stop();
+            }
+        }
+
+        PauseGame();
+        super.onPause();
     }
-    
+
     @Override
     public void onResume() {
-    	/** Get the wakelock */
-	    wl.acquire();
-	    
-	    if (null != ringtone) {
-		    if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-	    }
-	    super.onResume();
+        /** Get the wakelock */
+        wl.acquire();
+
+        if (null != ringtone) {
+            if (ringtone.isPlaying()) {
+                ringtone.stop();
+            }
+        }
+        super.onResume();
     }
-    
+
     @Override
     public void onDestroy() {
-    	if ( wl.isHeld() ) {
-    		wl.release();
-    	}
+        if (wl.isHeld()) {
+            wl.release();
+        }
 
-    	if (null != ringtone) {
-	    	if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-    	}
-    	super.onDestroy();
+        if (null != ringtone) {
+            if (ringtone.isPlaying()) {
+                ringtone.stop();
+            }
+        }
+        super.onDestroy();
     }
 
     /** Return the init time for a player based on the preferences. */
@@ -268,63 +270,63 @@ public class ChessClock extends Activity {
     }
 
     public boolean onPrepareOptionsMenu(Menu menu) {
-    	prefmenu = true;
-    	if ( null != ringtone ) {
-	    	if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-    	}
-    	PauseGame();
-    	return true;
+        prefmenu = true;
+        if (null != ringtone) {
+            if (ringtone.isPlaying()) {
+                ringtone.stop();
+            }
+        }
+        PauseGame();
+        return true;
     }
 
-	public void onWindowFocusChanged(boolean b) {
-		if ( !prefmenu ) {
-			CheckForNewPrefs();
-		} else {
-			prefmenu = false;
-		}
-	}
-	
-	protected Dialog onCreateDialog(int id) {
-		Dialog dialog = new Dialog(this);
-		switch ( id ) {
-			case RESET:
-				dialog = ResetDialog();
-				break;
-		}
-		
-		return dialog;
-	}
-	
-	/** Click handler for player 1's clock. */
-	public OnClickListener P1ClickHandler = new OnClickListener() {
-		public void onClick(View v) {
+    public void onWindowFocusChanged(boolean b) {
+        if (!prefmenu) {
+            CheckForNewPrefs();
+        } else {
+            prefmenu = false;
+        }
+    }
+
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog = new Dialog(this);
+        switch (id) {
+            case RESET:
+                dialog = ResetDialog();
+                break;
+        }
+
+        return dialog;
+    }
+
+    /** Click handler for player 1's clock. */
+    public OnClickListener P1ClickHandler = new OnClickListener() {
+        public void onClick(View v) {
             if (onTheClock == 1 || onTheClock == 0) {
                 performHapticFeedback(v);
             }
-			P1Click();
-		}
-	};
-	
-	/** Click handler for player 2's clock */
-	public OnClickListener P2ClickHandler = new OnClickListener() {
-		public void onClick(View v) {
+            P1Click();
+        }
+    };
+
+    /** Click handler for player 2's clock */
+    public OnClickListener P2ClickHandler = new OnClickListener() {
+        public void onClick(View v) {
             if (onTheClock == 2 || onTheClock == 0) {
                 performHapticFeedback(v);
             }
-			P2Click();
-		}
-	};
-	
-	/** Click handler for the pause button */
-	public OnClickListener PauseListener = new OnClickListener() {
-		public void onClick(View v) {
+            P2Click();
+        }
+    };
+
+    /** Click handler for the pause button */
+    public OnClickListener PauseListener = new OnClickListener() {
+        public void onClick(View v) {
             performHapticFeedback(v);
             PauseToggle();
-		}
-	};
-	
+        }
+    };
+
     /** Click handler for the menu button */
     public OnClickListener MenuListener = new OnClickListener() {
         public void onClick(View v) {
@@ -333,47 +335,43 @@ public class ChessClock extends Activity {
         }
     };
 
-	/** Starts the Preferences menu intent */
-	private void showPrefs() {
-		Intent prefsActivity = new Intent(ChessClock.this, Prefs.class);
-		startActivity(prefsActivity);
-	}
+    /** Starts the Preferences menu intent */
+    private void showPrefs() {
+        Intent prefsActivity = new Intent(ChessClock.this, Prefs.class);
+        startActivity(prefsActivity);
+    }
 
     /** Return an integer preference. */
     private int getIntPref(String pref, int fallback) {
-        SharedPreferences prefs = PreferenceManager
-            .getDefaultSharedPreferences(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String stringFallback = Integer.toString(fallback);
 
         try {
-            return Integer.parseInt(
-                prefs.getString(pref, Integer.toString(fallback))
-            );
+            return Integer.parseInt(prefs.getString(pref, stringFallback));
         } catch (Exception ex) {
             Editor e = prefs.edit();
-            e.putString(pref, Integer.toString(fallback));
+            e.putString(pref, stringFallback);
             e.commit();
             return fallback;
         }
     }
 
-	/** 
-	 * Checks for changes to the current preferences. We only want
-	 * to re-create the game if something has been changed, so we
-	 * check for differences any time onWindowFocusChanged() is called.
-	 */
-	public void CheckForNewPrefs() {
-		SharedPreferences prefs = PreferenceManager
-    	.getDefaultSharedPreferences(this);
-		
-		alertTone = prefs.getString("prefAlertSound", Settings.System.DEFAULT_RINGTONE_URI.toString());
-		
+    /**
+     * Checks for changes to the current preferences. We only want
+     * to re-create the game if something has been changed, so we
+     * check for differences any time onWindowFocusChanged() is called.
+     */
+    public void CheckForNewPrefs() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        alertTone = prefs.getString("prefAlertSound", Settings.System.DEFAULT_RINGTONE_URI.toString());
+
         /** Check for new game time settings. */
         if (!prefs.getString("prefInitTimeUnits", MINUTES).equals(initTimeUnits)) {
             setUpGame(true);
         };
 
-        if (getIntPref("prefInitTime1", 10) != initTime1
-              || getIntPref("prefInitTime2", 10) != initTime2) {
+        if ((getIntPref("prefInitTime1", 10) != initTime1) || (getIntPref("prefInitTime2", 10) != initTime2)) {
             setUpGame(true);
         }
 
@@ -394,15 +392,11 @@ public class ChessClock extends Activity {
             setUpGame(true);
         }
 
-		boolean new_haptic = prefs.getBoolean("prefHaptic", false);
-		if ( new_haptic != haptic ) {
-			// No reason to reload the clocks for this one
+        if (prefs.getBoolean("prefHaptic", false) != haptic ) {
             setUpGame(false);
-		}
+        }
 
-        boolean new_bb = prefs.getBoolean("prefBlackBackground", false);
-        if (new_bb != blackBackground) {
-            // No reason to reload the clocks for this one
+        if (prefs.getBoolean("prefBlackBackground", false) != blackBackground) {
             setUpGame(false);
         }
 
@@ -410,34 +404,34 @@ public class ChessClock extends Activity {
             setUpGame(false);
         }
     }
-	
-	/** Creates and displays the "Reset Clocks" alert dialog */
-	private Dialog ResetDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.dialog_message_reset)
-            .setCancelable(false)
-            .setPositiveButton(
-                R.string.dialog_button_yes,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        setUpGame(true);
-                        dialog.dismiss();
-                    }
-                })
-            .setNegativeButton(
-                R.string.dialog_button_no,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-		AlertDialog alert = builder.create();
 
-		return alert;
-	}
-	
-	/** Called when P1ClickHandler registers a click/touch event */
-	private void P1Click() {
+    /** Creates and displays the "Reset Clocks" alert dialog */
+    private Dialog ResetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setUpGame(true);
+                dialog.dismiss();
+            }
+        };
+        DialogInterface.OnClickListener negativeListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        };
+
+        builder
+            .setMessage(R.string.dialog_message_reset)
+            .setCancelable(false)
+            .setPositiveButton(R.string.dialog_button_yes, positiveListener)
+            .setNegativeButton(R.string.dialog_button_no, negativeListener);
+
+        AlertDialog alert = builder.create();
+        return alert;
+    }
+
+    /** Called when P1ClickHandler registers a click/touch event */
+    private void P1Click() {
         if (onTheClock == 2) {
             return;
         }
@@ -468,7 +462,7 @@ public class ChessClock extends Activity {
         l2.setBackgroundColor(color(R.color.highlight));
         l1.setVisibility(View.INVISIBLE);
         l2.setVisibility(View.VISIBLE);
-		
+
         Button pp = (Button)findViewById(R.id.Pause);
         pp.setBackgroundResource(R.drawable.pause_button);
 
@@ -479,7 +473,7 @@ public class ChessClock extends Activity {
         myHandler.removeCallbacks(mUpdateTimeTask);
         myHandler.removeCallbacks(mUpdateTimeTask2);
         myHandler.postDelayed(mUpdateTimeTask2, TICK_LENGTH);
-	}
+    }
 
     /** Return true if out of time. */
     private boolean outOfTime(long timeLeft) {
@@ -539,9 +533,9 @@ public class ChessClock extends Activity {
             }
         }
     };
-	
-	/** Called when P2ClickHandler registers a click/touch event */
-	private void P2Click() {
+
+    /** Called when P2ClickHandler registers a click/touch event */
+    private void P2Click() {
         if (onTheClock == 1) {
             return;
         }
@@ -575,18 +569,18 @@ public class ChessClock extends Activity {
         l1.setVisibility(View.VISIBLE);
         l2.setVisibility(View.INVISIBLE);
 
-		Button pp = (Button)findViewById(R.id.Pause);
+        Button pp = (Button)findViewById(R.id.Pause);
         pp.setBackgroundResource(R.drawable.pause_button);
-		
-		/** 
+
+        /**
          * Unregister the handler from player 2's clock and create a new one
          * which we register with player 1's clock.
-		 */
-		myHandler.removeCallbacks(mUpdateTimeTask);
-		myHandler.removeCallbacks(mUpdateTimeTask2);
+         */
+        myHandler.removeCallbacks(mUpdateTimeTask);
+        myHandler.removeCallbacks(mUpdateTimeTask2);
         myHandler.postDelayed(mUpdateTimeTask, TICK_LENGTH);
     }
-				
+
     /** Handles the "tick" event for Player 2's clock */
     private Runnable mUpdateTimeTask2 = new Runnable() {
         public void run() {
@@ -637,42 +631,42 @@ public class ChessClock extends Activity {
         }
     };
 
-	/** 
-	 * Pauses both clocks. This is called when the options
-	 * menu is opened, since the game needs to pause
-	 * but not un-pause, whereas PauseToggle() will switch
-	 * back and forth between the two.
-	 *  */
-	private void PauseGame() {
+    /**
+     * Pauses both clocks. This is called when the options
+     * menu is opened, since the game needs to pause
+     * but not un-pause, whereas PauseToggle() will switch
+     * back and forth between the two.
+     *  */
+    private void PauseGame() {
         TextView p1 = (TextView)findViewById(R.id.t_Player1);
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
         View l1 = (View)findViewById(R.id.l_Player1);
         View l2 = (View)findViewById(R.id.l_Player2);
-		Button pp = (Button)findViewById(R.id.Pause);
-		
-		/** Save the currently running clock, then pause */
-		if ( ( onTheClock != 0 ) && ( !timeup ) ) {
-			savedOTC = onTheClock;
-			onTheClock = 0;
-			
+        Button pp = (Button)findViewById(R.id.Pause);
+
+        /** Save the currently running clock, then pause */
+        if ((onTheClock != 0) && (!timeup)) {
+            savedOTC = onTheClock;
+            onTheClock = 0;
+
             p1.setTextColor(color(R.color.inactive_text));
             p2.setTextColor(color(R.color.inactive_text));
             l1.setBackgroundColor(color(R.color.inactive_text));
             l2.setBackgroundColor(color(R.color.inactive_text));
             pp.setBackgroundResource(R.drawable.reset_button);
-		
-			myHandler.removeCallbacks(mUpdateTimeTask);
-			myHandler.removeCallbacks(mUpdateTimeTask2);
-		}
-	}
-	
-	/** Called when the pause button is clicked */
-	private void PauseToggle() {
+
+            myHandler.removeCallbacks(mUpdateTimeTask);
+            myHandler.removeCallbacks(mUpdateTimeTask2);
+        }
+    }
+
+    /** Called when the pause button is clicked */
+    private void PauseToggle() {
         TextView p1 = (TextView)findViewById(R.id.t_Player1);
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
         View l1 = (View)findViewById(R.id.l_Player1);
         View l2 = (View)findViewById(R.id.l_Player2);
-		Button pp = (Button)findViewById(R.id.Pause);
+        Button pp = (Button)findViewById(R.id.Pause);
 
         /** Figure out if we need to pause or reset. */
         if (onTheClock == 0 || outOfTime(t_P1) || outOfTime(t_P2)) {
@@ -691,13 +685,12 @@ public class ChessClock extends Activity {
             myHandler.removeCallbacks(mUpdateTimeTask);
             myHandler.removeCallbacks(mUpdateTimeTask2);
         }
-	}
-	
-	/** Set up (or refresh) all game parameters */
+    }
+
+    /** Set up (or refresh) all game parameters */
     private void setUpGame(boolean resetClocks) {
-	    /** Load all stored preferences */
-	    SharedPreferences prefs = PreferenceManager
-    	.getDefaultSharedPreferences(this);
+        /** Load all stored preferences */
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         TextView p1 = (TextView)findViewById(R.id.t_Player1);
         TextView p2 = (TextView)findViewById(R.id.t_Player2);
@@ -772,5 +765,5 @@ public class ChessClock extends Activity {
         // Format and display the clocks
         setClock(p1, t_P1, (savedOTC == 1) ? b_delay : 0);
         setClock(p2, t_P2, (savedOTC == 2) ? b_delay : 0);
-	}
+    }
 }

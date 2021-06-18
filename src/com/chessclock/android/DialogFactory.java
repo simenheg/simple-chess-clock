@@ -1,16 +1,16 @@
 /*************************************************************************
  * File: DialogFactory.java
- * 
+ *
  * Creates the 'About' dialog.
- * 
+ *
  * Created: 2010-07-03
- * 
+ *
  * Author: Carter Dewey
- * 
+ *
  *************************************************************************
  *
  *   This file is part of Simple Chess Clock (SCC).
- *    
+ *
  *   SCC is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, either version 3 of the License, or
@@ -32,22 +32,18 @@ import android.content.Context;
 import android.widget.TextView;
 
 public class DialogFactory {
-	public DialogFactory() {
-		
-	}
-	
-	public Dialog AboutDialog(Context c, String MAJOR, String MINOR, String MINI) {
-		Dialog d = new Dialog(c);
-		
-		d.setContentView(R.layout.about_dialog);
-        d.setTitle(String.format("%s v%s.%s.%s",
-                                 c.getResources().getString(R.string.app_name),
-                                 MAJOR, MINOR, MINI));
+    public DialogFactory() {}
 
-		TextView text = (TextView) d.findViewById(R.id.text);
+    public Dialog AboutDialog(Context c, String MAJOR, String MINOR, String MINI) {
+        String appName = c.getResources().getString(R.string.app_name);
+
+        Dialog d = new Dialog(c);
+        d.setContentView(R.layout.about_dialog);
+        d.setTitle(String.format("%s v%s.%s.%s", appName, MAJOR, MINOR, MINI));
+
+        TextView text = (TextView) d.findViewById(R.id.text);
         text.setText(R.string.dialog_message_about);
 
-		return d;
-	}
-
+        return d;
+    }
 }

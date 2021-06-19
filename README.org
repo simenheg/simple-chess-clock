@@ -23,6 +23,11 @@
    copyright.
 
 ** Changelog
+*** 2.5.0 (2021-06-19)
+    - Game time and delay can be specified in seconds, minutes or hours.
+    - Time display shows hours.
+    - Time display can optionally show deciseconds.
+
 *** 2.4.1 (2021-06-12)
     - Fixed the pause button for Bronstein delay games with no initial time.
 
@@ -35,9 +40,5 @@
 *** 2.2.1 (2021-02-07)
     - With Fischer delay, the extra time is now added at the end of player
       turns, instead of at the beginning.
-
-*** 2.2.0 (2020-07-06)
-    - Added an option to use a black background on the main game screen for
-      potential power savings with OLED screens.
 
     [[NEWS.org][View full changelog]]

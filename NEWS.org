@@ -1,3 +1,8 @@
+*** 2.5.0 (2021-06-19)
+    - Game time and delay can be specified in seconds, minutes or hours.
+    - Time display shows hours.
+    - Time display can optionally show deciseconds.
+
 *** 2.4.1 (2021-06-12)
     - Fixed the pause button for Bronstein delay games with no initial time.
 

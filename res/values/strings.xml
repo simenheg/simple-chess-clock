@@ -17,6 +17,7 @@
   <string name="pref_summary_delay_length_units">Set units in which to specify delay length.</string>
   <string name="pref_summary_haptic_feedback">Vibrate slightly on button presses.</string>
   <string name="pref_summary_black_background">Saves power on OLED screens.</string>
+  <string name="pref_summary_show_deciseconds">Display tenths of seconds when clock or delay is below 10 seconds.</string>
   <string name="pref_summary_starting_time">Set how much time each player starts with.</string>
   <string name="pref_summary_starting_time_2">Set how much time Player 2 starts with.</string>
   <string name="pref_summary_starting_time_units">Set units in which to specify game time.</string>
@@ -28,6 +29,7 @@
   <string name="pref_title_delay_length_units">Delay Length Units</string>
   <string name="pref_title_haptic_feedback">Haptic Feedback</string>
   <string name="pref_title_black_background">Black Background</string>
+  <string name="pref_title_show_deciseconds">Display Deciseconds</string>
   <string name="pref_title_starting_time">Game Time</string>
   <string name="pref_title_starting_time_2">Game Time (Player 2)</string>
   <string name="pref_title_starting_time_units">Game Time Units</string>

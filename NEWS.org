@@ -1,4 +1,4 @@
-*** ?.?.? (TBD)
+*** 2.5.1 (2021-08-21)
     - The about screen is now scrollable to be readable when there is less
       screen space.
 

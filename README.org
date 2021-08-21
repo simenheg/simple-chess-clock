@@ -23,6 +23,10 @@
    copyright.
 
 ** Changelog
+*** 2.5.1 (2021-08-21)
+    - The about screen is now scrollable to be readable when there is less
+      screen space.
+
 *** 2.5.0 (2021-06-19)
     - Game time and delay can be specified in seconds, minutes or hours.
     - Time display shows hours.
@@ -36,9 +40,5 @@
 
 *** 2.3.0 (2021-05-28)
     - Bronstein delay games with no initial time is now supported.
-
-*** 2.2.1 (2021-02-07)
-    - With Fischer delay, the extra time is now added at the end of player
-      turns, instead of at the beginning.
 
     [[NEWS.org][View full changelog]]

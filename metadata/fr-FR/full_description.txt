@@ -1,0 +1,3 @@
+Simple Chess Clock est comme son nom l'indique : une pendule d'échecs (simple !). Elle
+vise à être facile à utiliser et à lire, tout en fournissant les
+fonctionnalités attendues.

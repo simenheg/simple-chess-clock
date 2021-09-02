@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name" translatable="false">Simple Chess Clock</string>
+  <string name="dialog_button_no">Non</string>
+  <string name="dialog_button_yes">Oui</string>
+  <string name="dialog_message_about">Design/Code: Carter Dewey et Simen Heggestøyl\n\nSCC est un logiciel libre sous licence GNU GPLv3. Vous pouvez consulter la GPLv3 sur :\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nDes parties de l'icône de l'application sont sous licence GFDL. Vous pouvez consulter la GFDL sur :\nhttps://www.gnu.org/copyleft/fdl.html\n\nLes icônes dans l'app sont sous licence Apache License 2.0. Vous pouvez consulter la licence sur :\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nPour signaler des bugs ou afficher le code source, visitez :\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_reset">Réinitialiser les deux horloges ?</string>
+  <string name="pref_category_about">À propos</string>
+  <string name="pref_category_other">Autres options</string>
+  <string name="pref_category_time">Temps de jeu</string>
+  <string name="pref_dialog_title_enter_time">Entrer le temps</string>
+  <string name="pref_dialog_title_delay_type">Sélectionner le type d'incrément</string>
+  <string name="pref_dialog_title_time_units">Sélectionner les unités de temps</string>
+  <string name="pref_summary_alert_ringtone">Régle la sonnerie à jouer lorsque le temps expire.</string>
+  <string name="pref_summary_delay_length">Définit la durée utilisée pour les incréments.</string>
+  <string name="pref_summary_delay_type">Définit le type de cadence à utiliser pendant le jeu.</string>
+  <string name="pref_summary_delay_length_units">Définit les unités dans lesquelles spécifier l'incrément.</string>
+  <string name="pref_summary_haptic_feedback">Vibre légèrement lors des pressions sur les boutons.</string>
+  <string name="pref_summary_black_background">Économise de l'énergie sur les écrans OLED.</string>
+  <string name="pref_summary_show_deciseconds">Affiche les dixièmes de secondes lorsque le temps restant sur l'horloge ou l'incrément est inférieur à 10 secondes.</string>
+  <string name="pref_summary_starting_time">Définit avec combien de temps chaque joueur commence.</string>
+  <string name="pref_summary_starting_time_2">Définit avec combien de temps le deuxième joueur commence.</string>
+  <string name="pref_summary_starting_time_units">Définit les unités dans lesquelles spécifier le temps de jeu.</string>
+  <string name="pref_summary_different_starting_time">Utilise un temps de jeu différent pour chaque joueur.</string>
+  <string name="pref_title_about">À propos de Simple Chess Clock</string>
+  <string name="pref_title_alert_ringtone">Sonnerie d'alerte</string>
+  <string name="pref_title_delay_length">Durée de l'incrément</string>
+  <string name="pref_title_delay_type">Type d'incrément</string>
+  <string name="pref_title_delay_length_units">Unités du temps d'incrément</string>
+  <string name="pref_title_haptic_feedback">Retour haptique</string>
+  <string name="pref_title_black_background">Fond noir</string>
+  <string name="pref_title_show_deciseconds">Afficher les dixièmes de secondes</string>
+  <string name="pref_title_starting_time">Temps de jeu</string>
+  <string name="pref_title_starting_time_2">Temps de jeu (Deuxième joueur)</string>
+  <string name="pref_title_starting_time_units">Unités du temps de jeu</string>
+  <string name="pref_title_different_starting_time">Temps de jeu différent</string>
+  <string-array name="delay_types">
+    <item>Aucun</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+  <string-array name="delay_vals" translatable="false">
+    <item>None</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+  <string-array name="time_units">
+      <item>Secondes</item>
+      <item>Minutes</item>
+      <item>Heures</item>
+  </string-array>
+  <string-array name="time_unit_vals" translatable="false">
+      <item>Seconds</item>
+      <item>Minutes</item>
+      <item>Hours</item>
+  </string-array>
+</resources>

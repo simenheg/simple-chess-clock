@@ -1,0 +1,1 @@
+- Fixed the pause button for Bronstein delay games with no initial time.

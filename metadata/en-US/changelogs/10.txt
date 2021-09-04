@@ -1,0 +1,3 @@
+- Fixed an issue with clocks disappearing on Android 7.0 and above.
+- The minimum Android version was corrected to Android 5.0 and above, since SCC is using scalable vector graphics.
+- Material theme is now applied in menus and dialogs.

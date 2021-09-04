@@ -1,0 +1,1 @@
+- Bronstein delay games with no initial time is now supported.

@@ -1,0 +1,2 @@
+- Fixed a bug causing player 1 to sometimes not receive the initial delay.
+- Fixed a bug causing some delays to be skipped after resuming a paused game.

@@ -1,0 +1,1 @@
+- With Fischer delay, the extra time is now added at the end of player turns, instead of at the beginning.

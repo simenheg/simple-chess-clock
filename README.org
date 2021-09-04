@@ -23,6 +23,9 @@
    copyright.
 
 ** Changelog
+*** 2.6.0 (2021-09-04)
+    - New translation: French.
+
 *** 2.5.1 (2021-08-21)
     - The about screen is now scrollable to be readable when there is less
       screen space.
@@ -37,8 +40,5 @@
 
 *** 2.4.0 (2021-05-30)
     - Players can now have different initial game time.
-
-*** 2.3.0 (2021-05-28)
-    - Bronstein delay games with no initial time is now supported.
 
     [[NEWS.org][View full changelog]]

@@ -23,7 +23,7 @@
   <string name="pref_summary_different_starting_time">Utilise un temps de jeu différent pour chaque joueur.</string>
   <string name="pref_title_about">À propos de Simple Chess Clock</string>
   <string name="pref_title_alert_ringtone">Sonnerie d\'alerte</string>
-  <string name="pref_title_delay_length">Duréef de l\'incrément</string>
+  <string name="pref_title_delay_length">Durée de l\'incrément</string>
   <string name="pref_title_delay_type">Type d\'incrément</string>
   <string name="pref_title_delay_length_units">Unités du temps d\'incrément</string>
   <string name="pref_title_haptic_feedback">Retour haptique</string>

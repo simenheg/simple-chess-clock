@@ -11,16 +11,10 @@
    [[file:metadata/en-US/images/phoneScreenshots/1.jpg]]
 
 ** Modifying/Copying
-   SCC is released under the GNU GPLv3, which can be found in the LICENSE
-   file. You may also view the text of the license the GNU website:
-
-   https://www.gnu.org/licenses/gpl-3.0-standalone.html
-
-   This means that SCC is free open-source software, currently both "free" as
-   in speech and "free" as in beer. You may copy or modify the source however
-   you like, but if you redistribute the application you also need to provide
-   the source (and license it under the GPL) and include the original
-   copyright.
+   Simple Chess Clock is [[https://www.fsf.org/about/what-is-free-software][free software]]: you can redistribute it and/or modify
+   it under the terms of the [[file:LICENSE][GNU General Public License]] as published by the
+   Free Software Foundation, either version 3 of the License, or (at your
+   option) any later version.
 
 ** Changelog
 *** 2.6.0 (2021-09-04)

@@ -17,6 +17,9 @@
    option) any later version.
 
 ** Changelog
+*** 2.6.1 (2021-09-12)
+    - Text fixes.
+
 *** 2.6.0 (2021-09-04)
     - New translation: French.
 
@@ -31,8 +34,5 @@
 
 *** 2.4.1 (2021-06-12)
     - Fixed the pause button for Bronstein delay games with no initial time.
-
-*** 2.4.0 (2021-05-30)
-    - Players can now have different initial game time.
 
     [[NEWS.org][View full changelog]]

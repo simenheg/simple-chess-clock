@@ -511,7 +511,9 @@ public class ChessClock extends Activity {
             }
 
             // Deduct tick from P1's clock
-            t_P1 -= TICK_LENGTH;
+            if (t_P1 > 0) {
+                t_P1 -= TICK_LENGTH;
+            }
             setClock(p1, t_P1, b_delay);
 
             if (outOfTime(t_P1)) {
@@ -608,7 +610,9 @@ public class ChessClock extends Activity {
             }
 
             // Deduct tick from P2's clock
-            t_P2 -= TICK_LENGTH;
+            if (t_P2 > 0) {
+                t_P2 -= TICK_LENGTH;
+            }
             setClock(p2, t_P2, b_delay);
 
             if (outOfTime(t_P2)) {

@@ -226,7 +226,9 @@ public class ChessClock extends Activity {
     // Set the given clock to the given time + delay
     private void setClock(TextView clock, long time, long bronsteinDelay) {
         String delayTime = formatTime(bronsteinDelay, true);
-        String delayString = (bronsteinDelay > 0) ? ("\n+" + delayTime) : "";
+        String delayString = bronsteinDelay > 0
+            ? (showDeciseconds ? "\n" : "") + "+" + delayTime
+            : "";
         clock.setText(formatTime(time) + delayString);
     }
 

@@ -1,0 +1,2 @@
+- Fixed a bug where Bronstein delay games with no initial time would run into negative time.
+- Bronstein delays are displayed on the same line as the total time again when decisecond display is disabled.

@@ -17,6 +17,9 @@
    option) any later version.
 
 ** Changelog
+*** 2.7.0 (2022-01-01)
+    - New translation: Spanish, by Daniel Garcia Pallaviccini.
+
 *** 2.6.2 (2021-09-20)
     - Fixed a bug where Bronstein delay games with no initial time would run
       into negative time.
@@ -27,15 +30,10 @@
     - Text fixes.
 
 *** 2.6.0 (2021-09-04)
-    - New translation: French.
+    - New translation: French, by Sitavi.
 
 *** 2.5.1 (2021-08-21)
     - The about screen is now scrollable to be readable when there is less
       screen space.
-
-*** 2.5.0 (2021-06-19)
-    - Game time and delay can be specified in seconds, minutes or hours.
-    - Time display shows hours.
-    - Time display can optionally show deciseconds.
 
     [[NEWS.org][View full changelog]]

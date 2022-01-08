@@ -1,0 +1,1 @@
+Simple Chess Clock er som navnet tilsier: en enkel sjakklokke. Den har som mål å være enkel i bruk og lett og lese, men samtidig tilby funksjoner man forventer av en sjakklokke.

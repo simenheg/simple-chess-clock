@@ -165,13 +165,7 @@ public class ChessClock extends Activity {
     	if ( wl.isHeld() ) {
     		wl.release();
     	}
-    	
-    	if (null != ringtone) {
-	    	if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-    	}
-    	
+        stopAlert();
     	PauseGame();
     	super.onPause();
     }
@@ -180,12 +174,7 @@ public class ChessClock extends Activity {
     public void onResume() {
     	/** Get the wakelock */
 	    wl.acquire();
-	    
-	    if (null != ringtone) {
-		    if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-	    }
+        stopAlert();
 	    super.onResume();
     }
     
@@ -194,12 +183,7 @@ public class ChessClock extends Activity {
     	if ( wl.isHeld() ) {
     		wl.release();
     	}
-
-    	if (null != ringtone) {
-	    	if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-    	}
+        stopAlert();
     	super.onDestroy();
     }
 
@@ -269,13 +253,27 @@ public class ChessClock extends Activity {
         return formatTime(t, false);
     }
 
+    private void initRingtone() {
+        Uri uri = Uri.parse(alertTone);
+        ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
+    }
+
+    private void playAlert() {
+        initRingtone();
+        if (ringtone != null) {
+            ringtone.play();
+        }
+    }
+
+    private void stopAlert() {
+        if (ringtone != null && ringtone.isPlaying()) {
+            ringtone.stop();
+        }
+    }
+
     public boolean onPrepareOptionsMenu(Menu menu) {
     	prefmenu = true;
-    	if ( null != ringtone ) {
-	    	if ( ringtone.isPlaying() ) {
-	    		ringtone.stop();
-	    	}
-    	}
+        stopAlert();
     	PauseGame();
     	return true;
     }
@@ -529,13 +527,7 @@ public class ChessClock extends Activity {
                 b1.setClickable(false);
                 b2.setClickable(false);
                 pp.setBackgroundResource(R.drawable.reset_button);
-
-                Uri uri = Uri.parse(alertTone);
-                ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-                if (null != ringtone) {
-                    ringtone.play();
-                }
-
+                playAlert();
                 myHandler.removeCallbacks(mUpdateTimeTask);
             } else {
                 // Re-post the handler so it waits until the next tick
@@ -628,13 +620,7 @@ public class ChessClock extends Activity {
                 b1.setClickable(false);
                 b2.setClickable(false);
                 pp.setBackgroundResource(R.drawable.reset_button);
-
-                Uri uri = Uri.parse(alertTone);
-                ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-                if (null != ringtone) {
-                    ringtone.play();
-                }
-
+                playAlert();
                 myHandler.removeCallbacks(mUpdateTimeTask2);
             } else {
                 // Re-post the handler so it waits until the next tick
@@ -683,6 +669,7 @@ public class ChessClock extends Activity {
         /** Figure out if we need to pause or reset. */
         if (onTheClock == 0 || outOfTime(t_P1) || outOfTime(t_P2)) {
             Log.v(TAG, "Info: Resetting.");
+            stopAlert();
             showDialog(RESET);
         } else {
             savedOTC = onTheClock;
@@ -757,9 +744,7 @@ public class ChessClock extends Activity {
                 e.commit();
             }
 
-            Uri uri = Uri.parse(alertTone);
-            ringtone = RingtoneManager.getRingtone(getBaseContext(), uri);
-
+            initRingtone();
             onTheClock = 0;
             savedOTC = 0;
             delayed = false;

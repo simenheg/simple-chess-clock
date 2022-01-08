@@ -1,0 +1,1 @@
+Simple Chess Clock ist das, was der englische Name aussagt: eine einfache Schachuhr. Sie soll leicht zu benutzen und zu lesen sein, bietet aber auch einige fortgeschrittene Funktionen.

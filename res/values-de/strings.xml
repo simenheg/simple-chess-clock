@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="dialog_button_no">Nein</string>
+  <string name="dialog_button_yes">Ja</string>
+  <string name="dialog_message_about">Design/Programmierung: Carter Dewey &amp; Simen Heggestøyl\n\nSCC ist freie Software, die unter GNU GPLv3 lizenziert ist. Sie können die GPLv3-Lizenz einsehen unter:\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nTeile des App-Symbols sind unter der GFDL lizenziert. Sie können die GFDL-Lizenz einsehen unter:\nhttps://www.gnu.org/copyleft/fdl.html\n\nDie In-App-Symbole sind unter der Apache License 2.0 lizenziert. Sie können die Apache-Lizenz einsehen unter:\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nUm Fehler zu melden oder den Quellcode einzusehen, rufen Sie bitte das GitHub-Repository des Projekts auf:\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_reset">Beide Uhren zurücksetzen?</string>
+  <string name="pref_category_about">Über</string>
+  <string name="pref_category_other">Andere Optionen</string>
+  <string name="pref_category_time">Spielzeit</string>
+  <string name="pref_dialog_title_enter_time">Zeit eingeben</string>
+  <string name="pref_dialog_title_delay_type">Zeitverzögerung auswählen</string>
+  <string name="pref_dialog_title_time_units">Zeiteinheiten auswählen</string>
+  <string name="pref_summary_alert_ringtone">Einstellen des Klingeltons, der bei Ablauf der Zeit abgespielt werden soll.</string>
+  <string name="pref_summary_delay_length">Stellen Sie die Zeitspanne ein, die für die Zeitverzögerung verwendet wird.</string>
+  <string name="pref_summary_delay_type">Das Zeitverzögerungsschema einstellen, das während der Wiedergabe verwendet werden soll.</string>
+  <string name="pref_summary_delay_length_units">Die Einheiten festlegen, in denen die Verzögerungslänge angegeben werden soll.</string>
+  <string name="pref_summary_haptic_feedback">Leichtes Vibrieren bei Tastendruck.</string>
+  <string name="pref_summary_black_background">Spart Strom bei Geräten mit OLED-Bildschirmen.</string>
+  <string name="pref_summary_show_deciseconds">Zehntelsekunden anzeigen, wenn Uhr oder Verzögerung unter 10 Sekunden liegen.</string>
+  <string name="pref_summary_starting_time">Einstellen, mit wie viel Zeit jeder Spieler beginnt.</string>
+  <string name="pref_summary_starting_time_2">Auswählen mit wie viel Zeit Spieler 2 beginnt.</string>
+  <string name="pref_summary_starting_time_units">Die Einheit festlegen, in denen die Spielzeit angegeben werden soll.</string>
+  <string name="pref_summary_different_starting_time">Eine andere Spielzeit für jeden Spieler verwenden.</string>
+  <string name="pref_title_about">Über Simple Chess Clock</string>
+  <string name="pref_title_alert_ringtone">Alarm-Klingelton</string>
+  <string name="pref_title_delay_length">Verzögerungslänge</string>
+  <string name="pref_title_delay_type">Verzögerungstyp</string>
+  <string name="pref_title_delay_length_units">Verzögerungslänge Einheiten</string>
+  <string name="pref_title_haptic_feedback">Haptisches Feedback</string>
+  <string name="pref_title_black_background">Schwarzer Hintergrund</string>
+  <string name="pref_title_show_deciseconds">Decisekunden anzeigen</string>
+  <string name="pref_title_starting_time">Spielzeit</string>
+  <string name="pref_title_starting_time_2">Spielzeit (Spieler 2)</string>
+  <string name="pref_title_starting_time_units">Spielzeiteinheiten</string>
+  <string name="pref_title_different_starting_time">Abweichende Spielzeit</string>
+  <string-array name="delay_types">
+    <item>Keine</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+  <string-array name="time_units">
+      <item>Sekunden</item>
+      <item>Minuten</item>
+      <item>Stunden</item>
+  </string-array>
+</resources>

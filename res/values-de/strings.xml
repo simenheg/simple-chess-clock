@@ -39,8 +39,8 @@
     <item>Bronstein</item>
   </string-array>
   <string-array name="time_units">
-      <item>Sekunden</item>
-      <item>Minuten</item>
-      <item>Stunden</item>
+    <item>Sekunden</item>
+    <item>Minuten</item>
+    <item>Stunden</item>
   </string-array>
 </resources>

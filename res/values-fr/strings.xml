@@ -44,13 +44,13 @@
     <item>Bronstein</item>
   </string-array>
   <string-array name="time_units">
-      <item>Secondes</item>
-      <item>Minutes</item>
-      <item>Heures</item>
+    <item>Secondes</item>
+    <item>Minutes</item>
+    <item>Heures</item>
   </string-array>
   <string-array name="time_unit_vals" translatable="false">
-      <item>Seconds</item>
-      <item>Minutes</item>
-      <item>Hours</item>
+    <item>Seconds</item>
+    <item>Minutes</item>
+    <item>Hours</item>
   </string-array>
 </resources>

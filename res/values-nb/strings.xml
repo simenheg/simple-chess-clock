@@ -39,8 +39,8 @@
     <item>Bronstein</item>
   </string-array>
   <string-array name="time_units">
-      <item>Sekunder</item>
-      <item>Minutter</item>
-      <item>Timer</item>
+    <item>Sekunder</item>
+    <item>Minutter</item>
+    <item>Timer</item>
   </string-array>
 </resources>

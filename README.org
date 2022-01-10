@@ -17,6 +17,10 @@
    option) any later version.
 
 ** Changelog
+*** 2.8.0 (2022-01-10)
+    - New translation: German, by Petra Mirelli.
+    - Bugfix: The alarm now stops playing when hitting the reset button.
+
 *** 2.7.0 (2022-01-01)
     - New translation: Spanish, by Daniel Garcia Pallaviccini.
 
@@ -31,9 +35,5 @@
 
 *** 2.6.0 (2021-09-04)
     - New translation: French, by Sitavi.
-
-*** 2.5.1 (2021-08-21)
-    - The about screen is now scrollable to be readable when there is less
-      screen space.
 
     [[NEWS.org][View full changelog]]

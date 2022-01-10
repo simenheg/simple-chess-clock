@@ -1,0 +1,2 @@
+- New translation: German, by Petra Mirelli.
+- Bugfix: The alarm now stops playing when hitting the reset button.

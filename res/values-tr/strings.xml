@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="dialog_button_no">Hayır</string>
+  <string name="dialog_button_yes">Evet</string>
+  <string name="dialog_message_about">Tasarım/Kod: Carter Dewey &amp; Simen Heggestøyl\n\nSCC, GNU GPLv3 lisansı kapsamında dağıtılan ücretsiz bir yazılımdır. GPLv3 hakkında detaylı bilgi:\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nUygulama simgesinin bazı kısımları GFDL kapsamında lisanslanmıştır. GFDL hakkında detaylı bilgi:\nhttps://www.gnu.org/copyleft/fdl.html\n\nUygulama içi simgeler Apache Lisansı 2.0 kapsamında lisanslanmıştır. Apache Lisansı 2.0 hakkında detaylı bilgi:\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nSorun bildirmek veya kaynak kodunu görüntülemek için lütfen Github sayfamızı ziyaret edin:\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_reset">İki saat de sıfırlansın mı?</string>
+  <string name="pref_category_about">Hakkında</string>
+  <string name="pref_category_other">Diğer Ayarlar</string>
+  <string name="pref_category_time">Oyun Süresi Ayarları</string>
+  <string name="pref_dialog_title_enter_time">Süre Girin</string>
+  <string name="pref_dialog_title_delay_type">Gecikme Türü Seçin</string>
+  <string name="pref_dialog_title_time_units">Zaman Birimi Seçin</string>
+  <string name="pref_summary_alert_ringtone">Süre dolduğunda çalacak zil sesini seçin.</string>
+  <string name="pref_summary_delay_length">Gecikme süresi miktarını ayarlayın.</string>
+  <string name="pref_summary_delay_type">Oyun sırasında kullanılacak gecikme türünü seçin.</string>
+  <string name="pref_summary_delay_length_units">Gecikme süresi için kullanılacak zaman birimini seçin.</string>
+  <string name="pref_summary_haptic_feedback">Ekrana dokunduğunuzda hafif titreşimli bir geri bildirim alın.</string>
+  <string name="pref_summary_black_background">OLED ekranlarda enerji tasarrufu sağlar.</string>
+  <string name="pref_summary_show_deciseconds">Kalan süre 10 saniyeden az olunca küsuratlı gösterilir.</string>
+  <string name="pref_summary_starting_time">Oyuncuların sahip olduğu oyun süresini ayarlayın.</string>
+  <string name="pref_summary_starting_time_2">2. oyuncunun sahip olduğu oyun süresini ayarlayın.</string>
+  <string name="pref_summary_starting_time_units">Oyun süresi için kullanılacak zaman birimini seçin.</string>
+  <string name="pref_summary_different_starting_time">İki oyuncu için farklı oyun süreleri kullanın.</string>
+  <string name="pref_title_about">Simple Chess Clock Hakkında</string>
+  <string name="pref_title_alert_ringtone">Alarm Sesi</string>
+  <string name="pref_title_delay_length">Gecikme Miktarı</string>
+  <string name="pref_title_delay_type">Gecikme Türü</string>
+  <string name="pref_title_delay_length_units">Gecikme Süresi Zaman Birimi</string>
+  <string name="pref_title_haptic_feedback">Titreşimli Geri Bildirim</string>
+  <string name="pref_title_black_background">Siyah Arka Plan</string>
+  <string name="pref_title_show_deciseconds">Küsuratı Göster</string>
+  <string name="pref_title_starting_time">Oyun Süresi</string>
+  <string name="pref_title_starting_time_2">Oyun Süresi (2. Oyuncu)</string>
+  <string name="pref_title_starting_time_units">Oyun Süresi Zaman Birimi</string>
+  <string name="pref_title_different_starting_time">Farklı Oyun Süreleri</string>
+  <string-array name="delay_types">
+    <item>Yok</item>
+    <item>Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+  <string-array name="time_units">
+    <item>Saniye</item>
+    <item>Dakika</item>
+    <item>Saat</item>
+  </string-array>
+</resources>

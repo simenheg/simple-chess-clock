@@ -1,0 +1,1 @@
+Simple Chess Clock, basit bir satranç saatidir. Uygulama, sade tasarımıyla rahat bir kullanıcı deneyimi sağlamanın yanı sıra gerekli birçok özelliği de kullanıcılara sunmaktadır.

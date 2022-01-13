@@ -1,3 +1,6 @@
+*** ?.?.? (TBD)
+    - New translation: Turkish, by Alparslan Şakçi.
+
 *** 2.8.0 (2022-01-10)
     - New translation: German, by Petra Mirelli.
     - Bugfix: The alarm now stops playing when hitting the reset button.

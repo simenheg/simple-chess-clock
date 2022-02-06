@@ -17,6 +17,9 @@
    option) any later version.
 
 ** Changelog
+*** 2.9.0 (2022-02-06)
+    - New translation: Turkish, by Alparslan Şakçi.
+
 *** 2.8.0 (2022-01-10)
     - New translation: German, by Petra Mirelli.
     - Bugfix: The alarm now stops playing when hitting the reset button.
@@ -32,8 +35,5 @@
 
 *** 2.6.1 (2021-09-12)
     - Text fixes.
-
-*** 2.6.0 (2021-09-04)
-    - New translation: French, by Sitavi.
 
     [[NEWS.org][View full changelog]]

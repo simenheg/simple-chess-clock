@@ -1,4 +1,4 @@
-*** ?.?.? (TBD)
+*** 2.9.0 (2022-02-06)
     - New translation: Turkish, by Alparslan Şakçi.
 
 *** 2.8.0 (2022-01-10)

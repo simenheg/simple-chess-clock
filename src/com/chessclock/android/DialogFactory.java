@@ -40,7 +40,7 @@ public class DialogFactory {
 		Dialog d = new Dialog(c);
 		
 		d.setContentView(R.layout.about_dialog);
-        d.setTitle(String.format("%s v%s.%s.%s",
+        d.setTitle(String.format("%s %s.%s.%s",
                                  c.getResources().getString(R.string.app_name),
                                  MAJOR, MINOR, MINI));
 

@@ -17,6 +17,9 @@
    option) any later version.
 
 ** Changelog
+*** 2.10.0 (2022-03-28)
+    - New delay type: Capped Fischer.
+
 *** 2.9.0 (2022-02-06)
     - New translation: Turkish, by Alparslan Şakçi.
 
@@ -32,8 +35,5 @@
       into negative time.
     - Bronstein delays are displayed on the same line as the total time again
       when decisecond display is disabled.
-
-*** 2.6.1 (2021-09-12)
-    - Text fixes.
 
     [[NEWS.org][View full changelog]]

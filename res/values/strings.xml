@@ -35,13 +35,19 @@
   <string name="pref_title_starting_time_units">Game Time Units</string>
   <string name="pref_title_different_starting_time">Different Game Time</string>
   <string-array name="delay_types">
-    <item>None</item>
-    <item>Fischer</item>
-    <item>Bronstein</item>
+    <item>@string/delay_none</item>
+    <item>@string/delay_fischer</item>
+    <item>@string/delay_capped_fischer</item>
+    <item>@string/delay_bronstein</item>
   </string-array>
+  <string name="delay_none">Ingen</string>
+  <string name="delay_fischer">Fischer</string>
+  <string name="delay_capped_fischer">Capped Fischer</string>
+  <string name="delay_bronstein">Bronstein</string>
   <string-array name="delay_vals" translatable="false">
     <item>None</item>
     <item>Fischer</item>
+    <item>Capped Fischer</item>
     <item>Bronstein</item>
   </string-array>
   <string-array name="time_units">

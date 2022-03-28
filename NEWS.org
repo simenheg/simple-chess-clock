@@ -1,3 +1,6 @@
+*** ?.?.? (TBD)
+    - New delay type: Capped Fischer.
+
 *** 2.9.0 (2022-02-06)
     - New translation: Turkish, by Alparslan Şakçi.
 

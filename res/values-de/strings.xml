@@ -33,11 +33,9 @@
   <string name="pref_title_starting_time_2">Spielzeit (Spieler 2)</string>
   <string name="pref_title_starting_time_units">Spielzeiteinheiten</string>
   <string name="pref_title_different_starting_time">Abweichende Spielzeit</string>
-  <string-array name="delay_types">
-    <item>Keine</item>
-    <item>Fischer</item>
-    <item>Bronstein</item>
-  </string-array>
+  <string name="delay_none">Keine</string>
+  <string name="delay_fischer">Fischer</string>
+  <string name="delay_bronstein">Bronstein</string>
   <string-array name="time_units">
     <item>Sekunden</item>
     <item>Minuten</item>

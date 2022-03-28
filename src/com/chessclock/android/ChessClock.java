@@ -85,6 +85,7 @@ public class ChessClock extends Activity {
 	/** Time control values */
 	private static String NO_DELAY = "None";
 	private static String FISCHER = "Fischer";
+    private static String CAPPED_FISCHER = "Capped Fischer";
 	private static String BRONSTEIN = "Bronstein";
 
     /** Time unit values */
@@ -447,8 +448,14 @@ public class ChessClock extends Activity {
         View l1 = (View)findViewById(R.id.l_Player1);
         View l2 = (View)findViewById(R.id.l_Player2);
 
-        if (delay.equals(FISCHER) && (onTheClock == 1 || savedOTC == 1)) {
+        if ((delay.equals(FISCHER) || delay.equals(CAPPED_FISCHER))
+                && (onTheClock == 1 || savedOTC == 1)) {
             t_P1 += toMillis(delay_time, delayTimeUnits);
+
+            if (delay.equals(CAPPED_FISCHER)) {
+                t_P1 = Math.min(t_P1, toMillis(initTime(1), initTimeUnits));
+            }
+
             setClock(p1, t_P1);
         }
 
@@ -549,8 +556,14 @@ public class ChessClock extends Activity {
         View l1 = (View)findViewById(R.id.l_Player1);
         View l2 = (View)findViewById(R.id.l_Player2);
 
-        if (delay.equals(FISCHER) && (onTheClock == 2 || savedOTC == 2)) {
+        if ((delay.equals(FISCHER) || delay.equals(CAPPED_FISCHER))
+                && (onTheClock == 2 || savedOTC == 2)) {
             t_P2 += toMillis(delay_time, delayTimeUnits);
+
+            if (delay.equals(CAPPED_FISCHER)) {
+                t_P2 = Math.min(t_P2, toMillis(initTime(2), initTimeUnits));
+            }
+
             setClock(p2, t_P2);
         }
 

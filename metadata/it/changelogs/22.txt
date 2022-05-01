@@ -1,0 +1,2 @@
+- Risolto un bug per cui i giochi con ritardo Bronstein senza tempo iniziale si verificavano in un tempo negativo.
+- I ritardi Bronstein vengono visualizzati di nuovo sulla stessa riga del tempo totale quando la visualizzazione dei decisecondi è disabilitata.

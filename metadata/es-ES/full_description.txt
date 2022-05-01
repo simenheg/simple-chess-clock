@@ -1,1 +1,1 @@
-Simple Chess Clock es, como lo dice su nombre, un reloj de ajedrez (que es sencillo de usar).  Está hecho para ser fácil de usar y de leer, y a la vez contar con algunas funciones que un reloj de ajedrez razonablemente debe tener.
+Simple Chess Clock es, como lo dice su nombre, un reloj de ajedrez (que es sencillo de usar). Está hecho para ser fácil de usar y de leer, y a la vez contar con algunas funciones que un reloj de ajedrez razonablemente debe tener.

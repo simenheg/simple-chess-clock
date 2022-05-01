@@ -1,0 +1,2 @@
+- Nuova traduzione: tedesco, di Petra Mirelli.
+- Bugfix: l'allarme ora smette di suonare quando si preme il pulsante di ripristino.

@@ -1,0 +1,3 @@
+- Il tempo di gioco e il ritardo possono essere specificati in secondi, minuti o ore.
+- Il display dell'ora mostra le ore.
+- Il display dell'ora può mostrare opzionalmente i decisecondi.

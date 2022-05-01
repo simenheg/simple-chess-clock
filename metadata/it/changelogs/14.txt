@@ -1,0 +1,1 @@
+- Con il ritardo Fischer, il tempo extra viene ora aggiunto alla fine dei turni del giocatore, invece che all'inizio.

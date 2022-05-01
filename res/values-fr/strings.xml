@@ -2,7 +2,19 @@
 <resources>
   <string name="dialog_button_no">Non</string>
   <string name="dialog_button_yes">Oui</string>
-  <string name="dialog_message_about">Design/Code: Carter Dewey et Simen Heggestøyl\n\nSCC est un logiciel libre sous licence GNU GPLv3. Vous pouvez consulter la GPLv3 sur :\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nDes parties de l\'icône de l\'application sont sous licence GFDL. Vous pouvez consulter la GFDL sur :\nhttps://www.gnu.org/copyleft/fdl.html\n\nLes icônes dans l\'app sont sous licence Apache License 2.0. Vous pouvez consulter la licence sur :\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nPour signaler des bugs ou afficher le code source, visitez :\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_about">Design/Code : Carter Dewey et Simen Heggestøyl
+  \n
+  \nSCC est un logiciel libre sous licence GNU GPLv3. Vous pouvez consulter la GPLv3 sur :
+  \nhttps ://www.gnu.org/licenses/gpl-3.0.html
+  \n
+  \nDes parties de l\'icône de l\'application sont sous licence GFDL. Vous pouvez consulter la GFDL sur :
+  \nhttps ://www.gnu.org/copyleft/fdl.html
+  \n
+  \nLes icônes dans l\'app sont sous licence Apache License 2.0. Vous pouvez consulter la licence sur :
+  \nhttps ://www.apache.org/licenses/LICENSE-2.0.html
+  \n
+  \nPour signaler des bugs ou afficher le code source, visitez :
+  \nhttps ://github.com/simenheg/simple-chess-clock</string>
   <string name="dialog_message_reset">Réinitialiser les deux horloges ?</string>
   <string name="pref_category_about">À propos</string>
   <string name="pref_category_other">Autres options</string>

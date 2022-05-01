@@ -1,4 +1,6 @@
 *** ?.?.? (TBD)
+    - New translation: Italian.
+    - Updated translations: French and Norwegian Bokmål.
     - Screens with aspect ratios between 1.86 and 2.1 should no longer have
       black bars appear at the top or bottom of the screen.
 

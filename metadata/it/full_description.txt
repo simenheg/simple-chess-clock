@@ -1,0 +1,1 @@
+Simple Chess Clock è ciò che suggerisce il nome: un orologio per gli scacchi (è semplice!). Mira ad essere facile da usare e da leggere, fornendo anche alcune funzionalità ragionevolmente previste.

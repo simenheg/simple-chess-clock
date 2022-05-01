@@ -1,0 +1,2 @@
+- Risolto un bug per il quale il giocatore 1 a volte non riceveva il ritardo iniziale.
+- Risolto un bug che impediva di saltare alcuni ritardi dopo aver ripreso un gioco in pausa.

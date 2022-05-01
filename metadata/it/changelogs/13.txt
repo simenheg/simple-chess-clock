@@ -1,0 +1,1 @@
+- Aggiunta un'opzione per utilizzare uno sfondo nero sulla schermata di gioco principale per potenziali risparmi energetici con gli schermi OLED.

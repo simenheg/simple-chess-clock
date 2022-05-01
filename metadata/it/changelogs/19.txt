@@ -1,0 +1,1 @@
+- La schermata Informazioni ora è scorrevole per essere leggibile quando c'è meno spazio sullo schermo.

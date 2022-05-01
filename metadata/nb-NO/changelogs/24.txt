@@ -1,0 +1,2 @@
+- Ny oversettelse: Tysk, ved Petra Mirelli.
+- Feilfiks: Alarmen stopper når tilbakestillingsknappen trykkes.

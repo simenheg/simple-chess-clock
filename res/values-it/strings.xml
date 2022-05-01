@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="dialog_button_yes">Sì</string>
+  <string name="dialog_message_reset">Resettare entrambi gli orologi\?</string>
+  <string name="pref_category_time">Tempo di gioco</string>
+  <string name="pref_dialog_title_delay_type">Seleziona Ritardo</string>
+  <string name="pref_summary_delay_length">Impostare la quantità di tempo utilizzata per i ritardi.</string>
+  <string name="pref_summary_delay_type">Imposta lo schema di ritardo da utilizzare durante il gioco.</string>
+  <string name="pref_summary_show_deciseconds">Visualizza i decimi di secondo quando l\'orologio o il ritardo sono inferiori a 10 secondi.</string>
+  <string name="pref_summary_starting_time_units">Imposta le unità in cui specificare il tempo di gioco.</string>
+  <string name="pref_summary_different_starting_time">Usa un tempo di gioco diverso per ogni giocatore.</string>
+  <string name="pref_title_alert_ringtone">Suoneria di avviso</string>
+  <string name="pref_title_delay_length">Durata del ritardo</string>
+  <string name="pref_title_delay_type">Tipo di ritardo</string>
+  <string name="pref_title_delay_length_units">Unità di lunghezza del ritardo</string>
+  <string name="pref_title_haptic_feedback">Feedback tattile</string>
+  <string name="pref_title_show_deciseconds">Visualizza i decisecondi</string>
+  <string name="pref_title_starting_time">Tempo di gioco</string>
+  <string name="pref_title_starting_time_2">Tempo di gioco (giocatore 2)</string>
+  <string name="pref_title_starting_time_units">Unità di tempo di gioco</string>
+  <string name="pref_title_different_starting_time">Tempo di gioco diverso</string>
+  <string name="dialog_button_no">No</string>
+  <string name="dialog_message_about">Design/codifica: Carter Dewey &amp; Simen Heggestøyl
+  \n
+  \nSCC è un software libero con licenza GNU GPLv3. È possibile visualizzare la GPLv3 su:
+  \nhttps://www.gnu.org/licenses/gpl-3.0.html
+  \n
+  \nPorzioni dell\'icona dell\'app sono concesse in licenza ai sensi della GFDL. È possibile visualizzare il GFDL su:
+  \nhttps://www.gnu.org/copyleft/fdl.html
+  \n
+  \nLe icone in-app concesse in licenza con la licenza Apache 2.0. È possibile visualizzare la licenza su:
+  \nhttps://www.apache.org/licenses/LICENSE-2.0.html
+  \n
+  \nPer segnalare bug o visualizzare il codice sorgente, visita:
+  \nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="pref_category_other">Altre opzioni</string>
+  <string name="pref_dialog_title_enter_time">Inserisci l\'ora</string>
+  <string name="pref_dialog_title_time_units">Seleziona Unità di tempo</string>
+  <string name="pref_summary_alert_ringtone">Imposta la suoneria da riprodurre allo scadere del tempo.</string>
+  <string name="pref_summary_delay_length_units">Impostare le unità in cui specificare la lunghezza del ritardo.</string>
+  <string name="pref_summary_haptic_feedback">Vibra leggermente alla pressione dei pulsanti.</string>
+  <string name="pref_summary_black_background">Risparmia energia sugli schermi OLED.</string>
+  <string name="pref_summary_starting_time">Imposta quanto tempo inizia ogni giocatore.</string>
+  <string name="pref_summary_starting_time_2">Imposta quanto tempo inizia il giocatore 2.</string>
+  <string name="pref_title_black_background">Sfondo nero</string>
+</resources>

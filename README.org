@@ -16,6 +16,10 @@
    Free Software Foundation, either version 3 of the License, or (at your
    option) any later version.
 
+** Helping with translations
+   You can help translate the app by using the [[https://weblate.bubu1.eu/projects/simple-chess-clock/][Weblate]] web interface, or by
+   submitting a pull request directly on GitHub if you prefer.
+
 ** Changelog
 *** 2.10.0 (2022-03-28)
     - New delay type: Capped Fischer.

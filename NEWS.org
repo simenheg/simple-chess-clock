@@ -1,3 +1,7 @@
+*** ?.?.? (TBD)
+    - Screens with aspect ratios between 1.86 and 2.1 should no longer have
+      black bars appear at the top or bottom of the screen.
+
 *** 2.10.0 (2022-03-28)
     - New delay type: Capped Fischer.
 

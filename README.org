@@ -21,6 +21,12 @@
    submitting a pull request directly on GitHub if you prefer.
 
 ** Changelog
+*** 2.11.0 (2022-05-02)
+    - New translation: Italian.
+    - Updated translations: French and Norwegian Bokmål.
+    - Screens with aspect ratios between 1.86 and 2.1 should no longer have
+      black bars appear at the top or bottom of the screen.
+
 *** 2.10.0 (2022-03-28)
     - New delay type: Capped Fischer.
 
@@ -33,11 +39,5 @@
 
 *** 2.7.0 (2022-01-01)
     - New translation: Spanish, by Daniel Garcia Pallaviccini.
-
-*** 2.6.2 (2021-09-20)
-    - Fixed a bug where Bronstein delay games with no initial time would run
-      into negative time.
-    - Bronstein delays are displayed on the same line as the total time again
-      when decisecond display is disabled.
 
     [[NEWS.org][View full changelog]]

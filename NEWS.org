@@ -2,6 +2,8 @@
     - The app no longer requires a special wake lock permission for keeping the
       screen turned on, but uses another technique instead which might also
       turn out beneficial to CPU and power usage.
+    - Target SDK version has been increased from 23 (Android 6.0) to 24
+      (Android 7.0).
 
 *** 2.11.0 (2022-05-02)
     - New translation: Italian.

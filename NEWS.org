@@ -1,4 +1,4 @@
-*** ?.?.? (TBD)
+*** 2.11.1 (2022-05-07)
     - The app no longer requires a special wake lock permission for keeping the
       screen turned on, but uses another technique instead which might also
       turn out beneficial to CPU and power usage.

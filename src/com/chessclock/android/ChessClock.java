@@ -42,8 +42,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.provider.*;
 import android.util.Log;
@@ -99,8 +97,6 @@ public class ChessClock extends Activity {
 	/** Objects/Classes */
 	private Handler myHandler = new Handler();
 	private DialogFactory DF = new DialogFactory();
-	private PowerManager pm;
-	private WakeLock wl;
 	private String delay = NO_DELAY;
 	private String alertTone;
 	private Ringtone ringtone = null;
@@ -146,16 +142,12 @@ public class ChessClock extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    
-        
+
         /** Get rid of the status bar */
-        requestWindowFeature(Window.FEATURE_NO_TITLE);  
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
-        						WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
-        /** Create a PowerManager object so we can get the wakelock */
-        pm = (PowerManager) getSystemService(ChessClock.POWER_SERVICE);  
-        wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "ChessWakeLock");
-        
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.main);
         
         setUpGame(true);
@@ -163,9 +155,6 @@ public class ChessClock extends Activity {
     
     @Override
     public void onPause() {
-    	if ( wl.isHeld() ) {
-    		wl.release();
-    	}
         stopAlert();
     	PauseGame();
     	super.onPause();
@@ -173,17 +162,12 @@ public class ChessClock extends Activity {
     
     @Override
     public void onResume() {
-    	/** Get the wakelock */
-	    wl.acquire();
         stopAlert();
 	    super.onResume();
     }
     
     @Override
     public void onDestroy() {
-    	if ( wl.isHeld() ) {
-    		wl.release();
-    	}
         stopAlert();
     	super.onDestroy();
     }

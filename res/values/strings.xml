@@ -40,7 +40,7 @@
     <item>@string/delay_capped_fischer</item>
     <item>@string/delay_bronstein</item>
   </string-array>
-  <string name="delay_none">Ingen</string>
+  <string name="delay_none">None</string>
   <string name="delay_fischer">Fischer</string>
   <string name="delay_capped_fischer">Capped Fischer</string>
   <string name="delay_bronstein">Bronstein</string>

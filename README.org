@@ -8,9 +8,9 @@
   "Issues" tab).
 
 ** Screenshot
-   [[file:metadata/en-US/images/phoneScreenshots/1.jpg]]
-   [[file:metadata/en-US/images/phoneScreenshots/2.jpg]]
-   [[file:metadata/en-US/images/phoneScreenshots/3.jpg]]
+   [[file:metadata/en-US/images/phoneScreenshots/1.png]]
+   [[file:metadata/en-US/images/phoneScreenshots/2.png]]
+   [[file:metadata/en-US/images/phoneScreenshots/3.png]]
 
 ** Modifying/Copying
    Simple Chess Clock is [[https://www.fsf.org/about/what-is-free-software][free software]]: you can redistribute it and/or modify

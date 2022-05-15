@@ -60,4 +60,4 @@ You can help translate the app by using the [Weblate](https://weblate.bubu1.eu/p
 * New translation: German, by Petra Mirelli.
 * Bugfix: The alarm now stops playing when hitting the reset button.
 
-[View full changelog](https://github.com/simenheg/simple-chess-clock/blob/master/NEWS.org)
+[View full changelog](/NEWS.md)

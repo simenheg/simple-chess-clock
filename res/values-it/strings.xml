@@ -43,4 +43,10 @@
   <string name="pref_summary_starting_time">Imposta quanto tempo inizia ogni giocatore.</string>
   <string name="pref_summary_starting_time_2">Imposta quanto tempo inizia il giocatore 2.</string>
   <string name="pref_title_black_background">Sfondo nero</string>
+  <string name="pref_category_about">Informazioni su questa app</string>
+  <string name="pref_title_about">Informazioni su Simple Chess Clock (orologio per scacchi semplice)</string>
+  <string name="delay_none">Nessuno</string>
+  <string name="delay_fischer">Fischer</string>
+  <string name="delay_capped_fischer">Capped Fischer</string>
+  <string name="delay_bronstein">Bronstein</string>
 </resources>

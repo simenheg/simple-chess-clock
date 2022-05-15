@@ -6,6 +6,11 @@
   If you experience problems on your device, please visit
   https://github.com/simenheg/simple-chess-clock to report a bug (click the
   "Issues" tab).
+  
+** Download
+    #+html: <a href="https://f-droid.org/en/packages/com.chessclock.android">
+    #+html:   <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height=100>
+    #+html:</a>
 
 ** Screenshot
    [[file:metadata/en-US/images/phoneScreenshots/1.jpg]]
@@ -17,6 +22,9 @@
    option) any later version.
 
 ** Helping with translations
+    #+html: <a href="https://weblate.bubu1.eu/engage/simple-chess-clock/">
+    #+html:   <img src="https://weblate.bubu1.eu/widgets/simple-chess-clock/-/svg-badge.svg" alt="Translation status" />
+    #+html:  </a>
    You can help translate the app by using the [[https://weblate.bubu1.eu/projects/simple-chess-clock/][Weblate]] web interface, or by
    submitting a pull request directly on GitHub if you prefer.
 

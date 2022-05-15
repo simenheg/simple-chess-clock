@@ -16,15 +16,15 @@
    [[file:metadata/en-US/images/phoneScreenshots/1.jpg]]
 
 ** Modifying/Copying
-    #+html: <a href="https://weblate.bubu1.eu/engage/simple-chess-clock/">
-    #+html:   <img src="https://weblate.bubu1.eu/widgets/simple-chess-clock/-/svg-badge.svg" alt="Translation status" />
-    #+html:  </a>
    Simple Chess Clock is [[https://www.fsf.org/about/what-is-free-software][free software]]: you can redistribute it and/or modify
    it under the terms of the [[file:LICENSE][GNU General Public License]] as published by the
    Free Software Foundation, either version 3 of the License, or (at your
    option) any later version.
 
 ** Helping with translations
+    #+html: <a href="https://weblate.bubu1.eu/engage/simple-chess-clock/">
+    #+html:   <img src="https://weblate.bubu1.eu/widgets/simple-chess-clock/-/svg-badge.svg" alt="Translation status" />
+    #+html:  </a>
    You can help translate the app by using the [[https://weblate.bubu1.eu/projects/simple-chess-clock/][Weblate]] web interface, or by
    submitting a pull request directly on GitHub if you prefer.
 

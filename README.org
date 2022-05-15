@@ -6,7 +6,7 @@
   If you experience problems on your device, please visit
   https://github.com/simenheg/simple-chess-clock to report a bug (click the
   "Issues" tab).
-  
+
 ** Download
     #+html: <a href="https://f-droid.org/en/packages/com.chessclock.android">
     #+html:   <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height=100>
@@ -29,6 +29,12 @@
    submitting a pull request directly on GitHub if you prefer.
 
 ** Changelog
+*** 2.11.2 (2022-05-15)
+    - Fixed "None" option text in the English version of the app.
+    - Updated translations: French, Italian, and Spanish.
+    - Target SDK version has been increased from 24 (Android 7.0) to 25
+      (Android 7.1).
+
 *** 2.11.1 (2022-05-07)
     - The app no longer requires a special wake lock permission for keeping the
       screen turned on, but uses another technique instead which might also
@@ -47,9 +53,5 @@
 
 *** 2.9.0 (2022-02-06)
     - New translation: Turkish, by Alparslan Şakçi.
-
-*** 2.8.0 (2022-01-10)
-    - New translation: German, by Petra Mirelli.
-    - Bugfix: The alarm now stops playing when hitting the reset button.
 
     [[NEWS.org][View full changelog]]

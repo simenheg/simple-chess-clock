@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.chessclock.android" android:installLocation="auto"
-          android:versionCode="28" android:versionName="2.11.1">
+          android:versionCode="29" android:versionName="2.11.2">
   <application android:label="@string/app_name" android:icon="@drawable/icon">
     <activity android:name=".ChessClock"
               android:label="@string/app_name"

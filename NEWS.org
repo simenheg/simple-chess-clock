@@ -1,4 +1,4 @@
-*** ?.?.? (TBD)
+*** 2.11.2 (2022-05-15)
     - Fixed "None" option text in the English version of the app.
     - Updated translations: French, Italian, and Spanish.
     - Target SDK version has been increased from 24 (Android 7.0) to 25

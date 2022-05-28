@@ -1,0 +1,2 @@
+- Se corrigió un error que causaba que el jugador 1 a veces no recibiera el retraso inicial.
+- Se corrigió un error que causaba que se omitieran algunos retrasos después de reanudar un juego en pausa.

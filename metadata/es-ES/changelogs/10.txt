@@ -1,0 +1,3 @@
+- Se solucionó un problema con los relojes que desaparecían en Android 7.0 y superior.
+- La versión mínima de Android se corrigió a Android 5.0 y superior, ya que SCC esta usando gráficos vectoriales escalables.
+- El tema Material ahora se aplica en menús y cuadros de diálogo.

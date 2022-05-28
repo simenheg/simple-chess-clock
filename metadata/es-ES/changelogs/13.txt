@@ -1,0 +1,1 @@
+- Se agregó una opción para usar un fondo negro en la pantalla principal del juego para ahorrar energía con las pantallas OLED.

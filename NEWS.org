@@ -1,5 +1,7 @@
 *** ?.?.? (TBD)
     - Updated translation: Turkish.
+    - Target SDK version has been increased from 25 (Android 7.1) to 26
+      (Android 8.0).
 
 *** 2.11.2 (2022-05-15)
     - Fixed "None" option text in the English version of the app.

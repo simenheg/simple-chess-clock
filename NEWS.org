@@ -1,4 +1,4 @@
-*** ?.?.? (TBD)
+*** 2.11.3 (2022-07-09)
     - Updated translation: Turkish.
     - Target SDK version has been increased from 25 (Android 7.1) to 26
       (Android 8.0).

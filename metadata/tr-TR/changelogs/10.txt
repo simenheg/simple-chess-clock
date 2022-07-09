@@ -1,0 +1,3 @@
+- Android 7.0 ve üzeri sürümlerde saatlerin kaybolmasına yol açan bir hata giderildi.
+- Uygulama, ölçeklenebilir vektör grafikleri kullandığı için minimum Android sürümü Android 5.0 ve üzeri olarak düzeltildi.
+- Menülerde ve iletişim kutularında da Material tema uygulanmaya başlandı.

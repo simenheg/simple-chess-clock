@@ -1,0 +1,3 @@
+- Neue Übersetzung: Italienisch.
+- Aktualisierte Übersetzungen: Französisch und norwegisches Bokmål.
+- Bei Bildschirmen mit einem Seitenverhältnis zwischen 1.86 und 2.1 sollten keine schwarzen Balken mehr am oberen oder unteren Rand des Bildschirms erscheinen.

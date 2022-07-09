@@ -1,0 +1,1 @@
+- OLED ekranlarda güç tasarrufu imkânı sağlamak için ana ekranda saf siyah arka plan kullanma seçeneği eklendi.

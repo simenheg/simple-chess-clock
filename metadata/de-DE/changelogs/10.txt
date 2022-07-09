@@ -1,0 +1,3 @@
+- Ein Problem mit verschwindenden Uhren unter Android 7.0 und höher wurde behoben.
+- Die minimale Android-Version wurde auf Android 5.0 und höher korrigiert, da SCC skalierbare Vektorgrafiken verwendet.
+- Das Material Theme wird nun in Menüs und Dialogen angewendet.

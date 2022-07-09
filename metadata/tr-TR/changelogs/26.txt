@@ -1,0 +1,1 @@
+- Yeni gecikme türü: Fischer (Sınırlı).

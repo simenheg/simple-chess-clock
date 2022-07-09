@@ -1,0 +1,2 @@
+- Başlangıç zamanı olmayan Bronstein gecikmeli oyunlarda oyun süresinin negatif değerlere geçmesine sebep olan bir hata giderildi.
+- Bronstein gecikmeleri, küsüratlı saniye gösterimi devre dışı bırakıldığında toplam süre ile aynı satırda tekrar gösterilecek.

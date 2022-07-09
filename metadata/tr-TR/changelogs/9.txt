@@ -1,0 +1,2 @@
+- Kullanıcı arayüzünde büyük değişiklikler yapıldı.
+- Uygulama artık modern Android sürümlerinde de sorunsuz olarak çalışıyor.

@@ -1,0 +1,2 @@
+- Es wurde ein Fehler behoben, der dazu führte, dass Spieler 1 manchmal nicht die initiale Verzögerung erhielt.
+- Es wurde ein Fehler behoben, der dazu führte, dass einige Verzögerungen übersprungen wurden, nachdem ein pausiertes Spiel wieder aufgenommen wurde.

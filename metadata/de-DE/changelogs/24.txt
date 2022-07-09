@@ -1,0 +1,2 @@
+- Neue Übersetzung: Deutsch, von Petra Mirelli.
+- Bugfix: Der Alarm hört jetzt auf, wenn man den Reset-Button drückt.

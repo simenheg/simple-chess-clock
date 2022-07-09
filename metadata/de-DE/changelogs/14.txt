@@ -1,0 +1,1 @@
+- Bei der Fischer-Verzögerung wird die zusätzliche Zeit nun am Ende der Spielerzüge hinzugefügt, anstatt am Anfang.

@@ -1,0 +1,2 @@
+- 1. Oyuncunun bazen ilk gecikmeyi alamamasına neden olan bir hata giderildi.
+- Duraklatılmış bir oyunu yeniden başlattıktan sonra bazı gecikmelerin atlanmasına sebep olan bir hata giderildi.

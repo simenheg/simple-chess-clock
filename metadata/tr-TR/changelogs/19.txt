@@ -1,0 +1,1 @@
+- Hakkında sekmesi ekran alanı az olan cihazlarda da okunabilir olması için kaydırılabilir hâle getirildi.

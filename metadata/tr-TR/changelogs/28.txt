@@ -1,0 +1,2 @@
+- Uygulama artık ekranı açık tutmak için özel bir uyandırma kilidi izni gerektirmiyor, bunun yerine işlemci ve güç kullanımına da faydalı olabilecek başka bir teknik kullanılmaya başladı.
+- Hedef SDK sürümü 23'ten (Android 6.0) 24'e (Android 7.0) yükseltildi.

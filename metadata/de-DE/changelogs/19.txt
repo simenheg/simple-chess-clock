@@ -1,0 +1,1 @@
+- Der Info-Bildschirm kann jetzt gescrollt werden, damit er auch auf kleineren Bildschirmen lesbar ist.

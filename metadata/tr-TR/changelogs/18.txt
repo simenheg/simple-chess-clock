@@ -1,0 +1,3 @@
+- Oyun süresi ve gecikme süresi artık saniye, dakika veya saat olarak ayarlanabilir.
+- Oyun süresinde artık saatler de gösteriliyor.
+- Oyun süresi isteğe bağlı olarak küsuratlı olarak gösterilebilir.

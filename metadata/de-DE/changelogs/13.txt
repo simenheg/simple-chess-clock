@@ -1,0 +1,1 @@
+- Es wurde die Option hinzugefügt, einen schwarzen Hintergrund auf dem Hauptspielbildschirm zu verwenden, um gegebenenfalls auf OLED-Bildschirmen Strom zu sparen.

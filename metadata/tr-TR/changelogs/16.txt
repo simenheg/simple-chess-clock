@@ -1,0 +1,1 @@
+- Oyuncular artık farklı oyun süreleriyle başlayabilir.

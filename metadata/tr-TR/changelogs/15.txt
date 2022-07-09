@@ -1,0 +1,1 @@
+- Başlangıç zamanı olmadan Bronstein gecikmeli oyun desteği getirildi.

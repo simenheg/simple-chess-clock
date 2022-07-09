@@ -41,4 +41,5 @@
     <item>Dakika</item>
     <item>Saat</item>
   </string-array>
+  <string name="delay_capped_fischer">Fischer (Sınırlı)</string>
 </resources>

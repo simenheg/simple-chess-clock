@@ -10,3 +10,6 @@ default:
 
 install:
 	adb install -r build/ChessClock.apk;
+
+clean:
+	rm -rf build;

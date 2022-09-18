@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name" translatable="false">Einföld skákklukka</string>
   <string name="dialog_button_no">Nei</string>
   <string name="dialog_button_yes">Já</string>
   <string name="dialog_message_about">Hönnun/Forritun: Carter Dewey &amp; Simen Heggestøyl\n\nSCC er frjáls hugbúnaður gefinn út með GNU GPLv3 notkunarleyfi. Þú getur skoðað GPLv3 á:\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nHlutar forritstáknmyndarinnar eru gefnir út undir GFDL-leyfi. Þú getur skoðað GFDL-notkunarleyfið á:\nhttps://www.gnu.org/copyleft/fdl.html\n\nTáknmyndirnar í forritinu eru gefnir út undir Apache notkunarleyfi 2.0. Þú getur skoðað Apache-notkunarleyfið á:\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nTil að tilkynna villur eða skoða grunnkóðann geturðu farið á:\nhttps://github.com/simenheg/simple-chess-clock</string>
@@ -44,18 +43,7 @@
   <string name="delay_fischer">Fischer</string>
   <string name="delay_capped_fischer">Takmarkað Fischer</string>
   <string name="delay_bronstein">Bronstein</string>
-  <string-array name="delay_vals" translatable="false">
-    <item>Ekkert</item>
-    <item>Fischer</item>
-    <item>Takmarkað Fischer</item>
-    <item>Bronstein</item>
-  </string-array>
   <string-array name="time_units">
-    <item>Sekúndur</item>
-    <item>Mínútur</item>
-    <item>Klukkustundir</item>
-  </string-array>
-  <string-array name="time_unit_vals" translatable="false">
     <item>Sekúndur</item>
     <item>Mínútur</item>
     <item>Klukkustundir</item>

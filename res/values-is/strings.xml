@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name" translatable="false">Einföld skákklukka</string>
+  <string name="dialog_button_no">Nei</string>
+  <string name="dialog_button_yes">Já</string>
+  <string name="dialog_message_about">Hönnun/Forritun: Carter Dewey &amp; Simen Heggestøyl\n\nSCC er frjáls hugbúnaður gefinn út með GNU GPLv3 notkunarleyfi. Þú getur skoðað GPLv3 á:\nhttps://www.gnu.org/licenses/gpl-3.0.html\n\nHlutar forritstáknmyndarinnar eru gefnir út undir GFDL-leyfi. Þú getur skoðað GFDL-notkunarleyfið á:\nhttps://www.gnu.org/copyleft/fdl.html\n\nTáknmyndirnar í forritinu eru gefnir út undir Apache notkunarleyfi 2.0. Þú getur skoðað Apache-notkunarleyfið á:\nhttps://www.apache.org/licenses/LICENSE-2.0.html\n\nTil að tilkynna villur eða skoða grunnkóðann geturðu farið á:\nhttps://github.com/simenheg/simple-chess-clock</string>
+  <string name="dialog_message_reset">Endurstilla báðar klukkur?</string>
+  <string name="pref_category_about">Um hugbúnaðinn</string>
+  <string name="pref_category_other">Aðrir valkostir</string>
+  <string name="pref_category_time">Leiktími</string>
+  <string name="pref_dialog_title_enter_time">Settu inn tíma</string>
+  <string name="pref_dialog_title_delay_type">Veldu tímatöf</string>
+  <string name="pref_dialog_title_time_units">Veldu tímaeiningar</string>
+  <string name="pref_summary_alert_ringtone">Stilltu hringitón þegar tíminn rennur út.</string>
+  <string name="pref_summary_delay_length">tilltu hve mikinn tíma á að nota fyrir tafir.</string>
+  <string name="pref_summary_delay_type">Stilltu tímatafarskemað sem á að nota við leikinn.</string>
+  <string name="pref_summary_delay_length_units">Stilltu hvaða einingar á að nota fyrir lengd tafar.</string>
+  <string name="pref_summary_haptic_feedback">Titra lítillega þegar ýtt er á hnappa.</string>
+  <string name="pref_summary_black_background">Sparar orku á OLED-skjám.</string>
+  <string name="pref_summary_show_deciseconds">Birta tíundu hluta úr sekúndu þegar klukkan eða töf á eftir innan við 10 sekúndur.</string>
+  <string name="pref_summary_starting_time">Stilltu hve mikinn tíma hvor leikmaður byrjar með.</string>
+  <string name="pref_summary_starting_time_2">Stilltu hve mikinn tíma leikmaður 2 byrjar með.</string>
+  <string name="pref_summary_starting_time_units">Stilltu hvaða einingar á að nota fyrir leiktíma.</string>
+  <string name="pref_summary_different_starting_time">Nota mismunandi leiktíma fyrir leikmenn.</string>
+  <string name="pref_title_about">Um Simple Chess Clock</string>
+  <string name="pref_title_alert_ringtone">Hringitónn aðvörunar</string>
+  <string name="pref_title_delay_length">Lengd tafar</string>
+  <string name="pref_title_delay_type">Tegund tafar</string>
+  <string name="pref_title_delay_length_units">Einingar fyrir lengd tafar</string>
+  <string name="pref_title_haptic_feedback">Svörun með hreyfingum</string>
+  <string name="pref_title_black_background">Svartur bakgrunnur</string>
+  <string name="pref_title_show_deciseconds">Birta tíundu hluta úr sekúndu</string>
+  <string name="pref_title_starting_time">Leiktími</string>
+  <string name="pref_title_starting_time_2">Leiktími (leikmaður 2)</string>
+  <string name="pref_title_starting_time_units">Tímaeiningar leiks</string>
+  <string name="pref_title_different_starting_time">Annar leiktími</string>
+  <string-array name="delay_types">
+    <item>@string/delay_none</item>
+    <item>@string/delay_fischer</item>
+    <item>@string/delay_capped_fischer</item>
+    <item>@string/delay_bronstein</item>
+  </string-array>
+  <string name="delay_none">Ekkert</string>
+  <string name="delay_fischer">Fischer</string>
+  <string name="delay_capped_fischer">Takmarkað Fischer</string>
+  <string name="delay_bronstein">Bronstein</string>
+  <string-array name="delay_vals" translatable="false">
+    <item>Ekkert</item>
+    <item>Fischer</item>
+    <item>Takmarkað Fischer</item>
+    <item>Bronstein</item>
+  </string-array>
+  <string-array name="time_units">
+    <item>Sekúndur</item>
+    <item>Mínútur</item>
+    <item>Klukkustundir</item>
+  </string-array>
+  <string-array name="time_unit_vals" translatable="false">
+    <item>Sekúndur</item>
+    <item>Mínútur</item>
+    <item>Klukkustundir</item>
+  </string-array>
+</resources>

@@ -1,0 +1,2 @@
+- New translation: Icelandic, by Sveinn í Felli.
+- Target SDK version has been increased from 26 (Android 8.0) to 27 (Android 8.1).

@@ -29,6 +29,11 @@
    submitting a pull request directly on GitHub if you prefer.
 
 ** Changelog
+*** 2.12.0 (2022-09-18)
+    - New translation: Icelandic, by Sveinn í Felli.
+    - Target SDK version has been increased from 26 (Android 8.0) to 27
+      (Android 8.1).
+
 *** 2.11.3 (2022-07-09)
     - Updated translation: Turkish.
     - Target SDK version has been increased from 25 (Android 7.1) to 26
@@ -52,8 +57,5 @@
     - Updated translations: French and Norwegian Bokmål.
     - Screens with aspect ratios between 1.86 and 2.1 should no longer have
       black bars appear at the top or bottom of the screen.
-
-*** 2.10.0 (2022-03-28)
-    - New delay type: Capped Fischer.
 
     [[NEWS.org][View full changelog]]

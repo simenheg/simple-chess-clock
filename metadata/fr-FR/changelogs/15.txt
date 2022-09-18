@@ -1,0 +1,1 @@
+- Les jeux de retard Bronstein sans temps initial sont maintenant supportés.

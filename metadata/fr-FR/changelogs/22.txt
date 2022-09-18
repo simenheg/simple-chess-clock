@@ -1,0 +1,2 @@
+- Correction d'un bogue pour lequel les jeux à retard Bronstein sans temps initial pouvaient atteindre un temps négatif.
+- Les délais Bronstein sont à nouveau affichés sur la même ligne que le temps total lorsque l'affichage en décimales est désactivé.

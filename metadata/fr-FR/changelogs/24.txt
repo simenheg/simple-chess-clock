@@ -1,0 +1,2 @@
+- Nouvelle traduction : Allemand, par Petra Mirelli.
+- Correction : L'alarme s'arrête maintenant de jouer lorsque vous appuyez sur le bouton de réinitialisation.

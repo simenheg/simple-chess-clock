@@ -1,0 +1,1 @@
+- L'écran "À propos" peut désormais défiler pour être lisible lorsque l'espace disponible à l'écran est réduit.

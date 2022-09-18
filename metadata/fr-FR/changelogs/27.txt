@@ -1,0 +1,3 @@
+- Nouvelle traduction : Italien.
+- Traductions mises à jour : Français et norvégien Bokmål.
+- Les écrans dont le rapport hauteur/largeur est compris entre 1,86 et 2,1 ne devraient plus voir apparaître de barres noires en haut ou en bas de l'écran.

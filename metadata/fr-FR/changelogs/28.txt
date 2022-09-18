@@ -1,0 +1,2 @@
+- L'application n'a plus besoin d'une autorisation spéciale de verrouillage du réveil pour garder l'écran allumé, mais utilise une autre technique à la place qui pourrait également s'avérer bénéfique pour l'utilisation du CPU et de l'énergie.
+- La version du SDK cible a été augmentée de 23 (Android 6.0) à 24 (Android 7.0).

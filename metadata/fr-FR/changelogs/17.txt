@@ -1,0 +1,1 @@
+- Correction du bouton de pause pour les jeux à retardement Bronstein sans temps initial.

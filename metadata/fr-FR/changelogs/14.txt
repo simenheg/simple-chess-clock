@@ -1,0 +1,1 @@
+- Avec le retard de Fischer, le temps supplémentaire est maintenant ajouté à la fin des tours des joueurs, au lieu du début.

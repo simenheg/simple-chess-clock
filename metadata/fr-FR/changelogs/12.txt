@@ -1,0 +1,2 @@
+- Correction d'un bug à cause duquel le joueur 1 ne recevait parfois pas le délai initial.
+- Correction d'un problème à cause duquel certains délais étaient ignorés après la reprise d'une partie en pause.

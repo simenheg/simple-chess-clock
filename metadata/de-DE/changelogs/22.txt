@@ -1,0 +1,2 @@
+- Ein Fehler wurde behoben, bei dem Bronstein-Verzögerungsspiele ohne Anfangszeit in die negative Zeit liefen.
+- Bronstein-Verzögerungen werden wieder in der gleichen Zeile wie die Gesamtzeit angezeigt, wenn die Anzeige in Dezisekunden deaktiviert ist.

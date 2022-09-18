@@ -1,0 +1,3 @@
+- Spielzeit und Verzögerung können in Sekunden, Minuten oder Stunden angegeben werden.
+- Die Zeitanzeige zeigt Stunden an.
+- Die Zeitanzeige kann optional Dezisekunden anzeigen.

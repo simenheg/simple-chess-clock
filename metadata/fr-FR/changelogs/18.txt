@@ -1,0 +1,3 @@
+- Le temps de jeu et le retard peuvent être spécifiés en secondes, minutes ou heures.
+- L'affichage du temps indique les heures.
+- L'affichage de l'heure peut, en option, indiquer les décisecondes.

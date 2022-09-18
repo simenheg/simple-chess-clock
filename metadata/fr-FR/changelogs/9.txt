@@ -1,0 +1,2 @@
+- Révision majeure de l'interface utilisateur.
+- Devrait maintenant fonctionner sur les versions modernes d'Android.

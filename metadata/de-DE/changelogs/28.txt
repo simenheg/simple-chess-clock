@@ -1,0 +1,2 @@
+- Die App benötigt nicht mehr die spezielle Berechtigung zum Sperren beim Aufwachen, um den Bildschirm eingeschaltet zu halten, sondern verwendet stattdessen eine andere Technik, die sich auch als vorteilhaft für die CPU- und Stromnutzung erweisen könnte.
+- Die Ziel-SDK-Version wurde von 23 (Android 6.0) auf 24 (Android 7.0) erhöht.

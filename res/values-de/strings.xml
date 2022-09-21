@@ -35,6 +35,7 @@
   <string name="pref_title_different_starting_time">Abweichende Spielzeit</string>
   <string name="delay_none">Keine</string>
   <string name="delay_fischer">Fischer</string>
+  <string name="delay_capped_fischer">Gekappter Fischer</string>
   <string name="delay_bronstein">Bronstein</string>
   <string-array name="time_units">
     <item>Sekunden</item>

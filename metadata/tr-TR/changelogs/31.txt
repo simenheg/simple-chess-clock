@@ -1,0 +1,2 @@
+- Yeni çeviri: İzlandaca (Çevirmen: Sveinn í Felli).
+- Hedef SDK sürümü 26'dan (Android 8.0) 27'ye (Android 8.1) yükseltildi.

@@ -1,0 +1,2 @@
+- Türkçe çeviride güncellemeler yapıldı.
+- Hedef SDK sürümü 25'ten (Android 7.1) 26'ya (Android 8.0) yükseltildi.

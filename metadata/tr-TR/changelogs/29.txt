@@ -1,0 +1,3 @@
+- Uygulamanın İngilizce sürümündeki "None" seçeneğindeki hata düzeltildi.
+- Fransızca, İtalyanca ve İspanyolca çevirilerde güncellemeler yapıldı.
+- Hedef SDK sürümü 24'ten (Android 7.0) 25'e (Android 7.1) yükseltildi.

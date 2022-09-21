@@ -1,0 +1,2 @@
+- Neue Übersetzung: Isländisch, von Sveinn í Felli.
+- Die Ziel-SDK-Version wurde von 26 (Android 8.0) auf 27 (Android 8.1) erhöht.

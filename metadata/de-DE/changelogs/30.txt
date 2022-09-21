@@ -1,0 +1,2 @@
+- Aktualisierte Übersetzung: Türkisch.
+- Die Ziel-SDK-Version wurde von 25 (Android 7.1) auf 26 (Android 8.0) erhöht.

@@ -1,0 +1,3 @@
+- Der Text der Option "None" in der englischen Version der App wurde korrigiert.
+- Aktualisierte Übersetzungen: Französisch, Italienisch und Spanisch.
+- Die Ziel-SDK-Version wurde von 24 (Android 7.0) auf 25 (Android 7.1) erhöht.

@@ -1,11 +1,9 @@
 * Simple Chess Clock
-  Simple Chess Clock is what its name implies: a chess clock (that's
-  simple!). It aims to be easy to use and easy to read, while also providing
-  some reasonably expected features.
+  In the aim to be simple, it also provides some expected features.
 
-  If you experience problems on your device, please visit
+  Please visit
   https://github.com/simenheg/simple-chess-clock to report a bug (click the
-  "Issues" tab).
+  "Issues" tab) if you experience problems.
 
 ** Download
     #+html: <a href="https://f-droid.org/en/packages/com.chessclock.android">
@@ -21,12 +19,12 @@
    Free Software Foundation, either version 3 of the License, or (at your
    option) any later version.
 
-** Helping with translations
-    #+html: <a href="https://weblate.bubu1.eu/engage/simple-chess-clock/">
-    #+html:   <img src="https://weblate.bubu1.eu/widgets/simple-chess-clock/-/svg-badge.svg" alt="Translation status" />
+** Translations
+    #+html: <a href="https://hosted.weblate.org/engage/simple-chess-clock/">
+    #+html:   <img src="https://hosted.weblate.org/widgets/simple-chess-clock/-/svg-badge.svg" alt="Translation status" />
     #+html:  </a>
-   You can help translate the app by using the [[https://weblate.bubu1.eu/projects/simple-chess-clock/][Weblate]] web interface, or by
-   submitting a pull request directly on GitHub if you prefer.
+   Help translate the app by using the web interface on [[https://hosted.weblate.org/engage/simple-chess-clock/][Hosted Weblate]],
+   or by submitting a pull request directly on GitHub.
 
 ** Changelog
 *** 2.12.0 (2022-09-18)

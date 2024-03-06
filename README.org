@@ -28,6 +28,9 @@
    You can help translate the app by using the [[https://hosted.weblate.org/projects/simple-chess-clock/][Weblate]] web interface, or by
    submitting a pull request directly on GitHub if you prefer.
 
+**  Requirements
+  * Android 5.0+
+
 ** Changelog
 *** 2.12.0 (2022-09-18)
     - New translation: Icelandic, by Sveinn í Felli.

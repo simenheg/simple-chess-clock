@@ -1,0 +1,1 @@
+- Spillere kan nå ha forskjellig tid til gode ved spillets start.

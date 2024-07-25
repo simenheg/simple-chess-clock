@@ -22,11 +22,8 @@
    option) any later version.
 
 ** Helping with translations
-    #+html: <a href="https://hosted.weblate.org/engage/simple-chess-clock/">
-    #+html:   <img src="https://hosted.weblate.org/widgets/simple-chess-clock/-/svg-badge.svg" alt="Translation status" />
-    #+html:  </a>
-   You can help translate the app by using the [[https://hosted.weblate.org/projects/simple-chess-clock/][Weblate]] web interface, or by
-   submitting a pull request directly on GitHub if you prefer.
+   You can help translate the app by submitting a pull request directly on
+   GitHub.
 
 ** Requirements
    - Android 5.0+
